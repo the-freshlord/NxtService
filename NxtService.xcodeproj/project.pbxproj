@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8851FEDF1CAB4354007B7B55 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851FEDE1CAB4354007B7B55 /* LocationSearchViewController.swift */; };
+		8851FEE11CAB4579007B7B55 /* LocationSearchViewBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851FEE01CAB4579007B7B55 /* LocationSearchViewBar.swift */; };
 		885B789B1CA38FB800F61EC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B789A1CA38FB800F61EC1 /* AppDelegate.swift */; };
 		885B789D1CA38FB800F61EC1 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B789C1CA38FB800F61EC1 /* StartViewController.swift */; };
 		885B78A01CA38FB800F61EC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885B789E1CA38FB800F61EC1 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8851FEDE1CAB4354007B7B55 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
+		8851FEE01CAB4579007B7B55 /* LocationSearchViewBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchViewBar.swift; sourceTree = "<group>"; };
 		885B78971CA38FB700F61EC1 /* NxtService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NxtService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		885B789A1CA38FB800F61EC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		885B789C1CA38FB800F61EC1 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 			children = (
 				88E966C51CA9B7CA00ED4674 /* MaterialButton.swift */,
 				88E966C91CA9B94200ED4674 /* MaterialView.swift */,
+				8851FEE01CAB4579007B7B55 /* LocationSearchViewBar.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -101,6 +106,7 @@
 				885B789C1CA38FB800F61EC1 /* StartViewController.swift */,
 				88DA7F631CA9F90900D3D486 /* LoginViewController.swift */,
 				88DA7F671CAA0F4500D3D486 /* SignUpViewController.swift */,
+				8851FEDE1CAB4354007B7B55 /* LocationSearchViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -208,8 +214,10 @@
 				885B789D1CA38FB800F61EC1 /* StartViewController.swift in Sources */,
 				885B789B1CA38FB800F61EC1 /* AppDelegate.swift in Sources */,
 				88E966CA1CA9B94200ED4674 /* MaterialView.swift in Sources */,
+				8851FEE11CAB4579007B7B55 /* LocationSearchViewBar.swift in Sources */,
 				88E966C61CA9B7CA00ED4674 /* MaterialButton.swift in Sources */,
 				88E966C81CA9B83A00ED4674 /* Constants.swift in Sources */,
+				8851FEDF1CAB4354007B7B55 /* LocationSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
