@@ -11,3 +11,6 @@ import UIKit
 
 //Material Design
 let SHADOW_COLOR: CGFloat = 157.0 / 255.0
+
+//Keys
+let KEY_ACCOUNTID = "uid"
