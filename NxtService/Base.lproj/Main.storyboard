@@ -237,6 +237,9 @@
                                         <state key="normal" title="Log in / Sign up">
                                             <color key="titleColor" red="0.87058823529411766" green="0.89411764705882346" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginSignUpButtonTapped:" destination="YOs-s5-NkG" eventType="touchUpInside" id="tHh-jG-CQx"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPn-22-gM5">
                                         <rect key="frame" x="217" y="176" width="167" height="17"/>
@@ -299,6 +302,10 @@
                             <constraint firstItem="jGY-Bq-yGs" firstAttribute="centerX" secondItem="FfT-jK-71T" secondAttribute="centerX" id="yUE-rS-krn"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="6zJ-AV-vdO" id="CO6-C4-MgB"/>
+                        <outlet property="passwordTextField" destination="hIB-ui-S8y" id="c6Y-8Z-0ug"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPw-q1-lwc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

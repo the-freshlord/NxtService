@@ -37,6 +37,7 @@ class Account {
         return _accountID
     }
     
+    // TODO: - Implement create and delete account
     init(email: String, password: String) {
     }
     
