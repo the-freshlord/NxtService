@@ -1,0 +1,6 @@
+framework module Pods_NxtService {
+  umbrella header "Pods-NxtService-umbrella.h"
+
+  export *
+  module * { export * }
+}
