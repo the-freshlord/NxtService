@@ -9,6 +9,8 @@
 import UIKit
 
 class ProfileMenuViewController: UIViewController {
+    var account: Account!
+    var provider: Provider!
     
     // MARK: - Navigation
     override func viewDidLoad() {

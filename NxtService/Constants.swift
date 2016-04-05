@@ -14,3 +14,10 @@ let SHADOW_COLOR: CGFloat = 157.0 / 255.0
 
 //Keys
 let KEY_ACCOUNTID = "uid"
+
+//Firebase error codes
+let STATUS_ACCOUNT_NONEXIST = -8
+
+//Segue Identifiers
+let SEGUE_SIGNUP = "gotosignupview"
+let SEGUE_PROFILE_MENU = "gotoprofilemenu"

@@ -9,17 +9,17 @@
 import Foundation
 
 class Account {
-    private var _username: String!
+    private var _email: String!
     private var _password: String!
-    private var _accountID: Int!
+    private var _accountID: String?
     
-    var username: String! {
+    var email: String! {
         get {
-            return _username
+            return _email
         }
         
         set {
-            _username = newValue
+            _email = newValue
         }
     }
     
@@ -33,12 +33,18 @@ class Account {
         }
     }
     
-    var accountID: Int! {
+    var accountID: String? {
         return _accountID
     }
     
     // TODO: - Implement create and delete account
-    init(email: String, password: String) {
+    init(email: String, password: String, accountID: String?) {
+        _email = email
+        _password = password
+        
+        if let tempAccountID = accountID {
+            _accountID = tempAccountID
+        }
     }
     
     func createAccount() -> Int {

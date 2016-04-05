@@ -9,14 +9,14 @@
 import Foundation
 
 class Provider {
-    private var _accountID: Int!
-    private var _providerID: Int!
+    private var _accountID: String!
+    private var _providerID: String!
     
-    var accountID: Int! {
+    var accountID: String! {
         return _accountID
     }
     
-    var providerID: Int! {
+    var providerID: String! {
         return _providerID
     }
 }
