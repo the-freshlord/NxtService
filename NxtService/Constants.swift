@@ -17,6 +17,7 @@ let KEY_ACCOUNTID = "uid"
 
 //Firebase error codes
 let STATUS_ACCOUNT_NONEXIST = -8
+let STATUS_INVALID_EMAIL = -5
 
 //Segue Identifiers
 let SEGUE_SIGNUP = "gotosignupview"

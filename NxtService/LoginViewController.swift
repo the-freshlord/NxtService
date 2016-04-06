@@ -65,12 +65,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     print(NSError.debugDescription)
                     
                     //Check error code
-                    if NSError.code == STATUS_ACCOUNT_NONEXIST {
+                    switch NSError.code {
+                    case STATUS_ACCOUNT_NONEXIST:
                         //Send user to sign up storyboard
                         self.goToSignUpStoryBoard(email, password: password)
-                    } else {
+                    case STATUS_INVALID_EMAIL:
                         self.stopSpinning()
-                        self.showErrorAlert("Could not login", message: "Please check your email or password")
+                        self.showErrorAlert("Invalid email", message: "The email entered is not valid")
+                    default:
+                        self.stopSpinning()
+                        self.showErrorAlert("Invalid login", message: "Please check your email or password")
                     }
                     
                 } else {
