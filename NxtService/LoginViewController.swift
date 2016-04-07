@@ -56,15 +56,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginSignUpButtonTapped(sender: MaterialButton) {
         if let email = emailTextField.text where email != "", let password = passwordTextField.text where password != "" {
             
-            //Start activity indicator animation
+            // Start activity indicator animation
             startSpinning()
             
             DataService.dataService.REF_BASE.authUser(email, password: password, withCompletionBlock: { NSError, FAuthData in
-                //Check if login successful
+                // Check if login successful
                 if NSError != nil {
                     print(NSError.debugDescription)
                     
-                    //Check error code
+                    // Check error code
                     switch NSError.code {
                     case STATUS_ACCOUNT_NONEXIST:
                         //Send user to sign up storyboard
@@ -78,7 +78,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     }
                     
                 } else {
-                    //Send user to profile menu controller
+                    // Send user to profile menu controller
                     self.goToProfileMenuStoryBoard(email, password: password, accountID: FAuthData.uid)
                 }
             })
