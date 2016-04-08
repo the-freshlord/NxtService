@@ -9,14 +9,13 @@
 import UIKit
 import CoreLocation
 
-class SignUpViewController: UIViewController, CLLocationManagerDelegate {
+class SignUpViewController: UIViewController, CLLocationManagerDelegate, GooglePlacesAutocompleteDelegate {
     var account: Account!
     var provider: Provider!
     var locationManager = CLLocationManager()
-    var streetAddress: String?
-    var city: String?
-    var state: String?
-    var zip: String?
+    var streetAddress: String!
+    
+    let googlePlacesAutoCompleteViewController = GooglePlacesAutocomplete(apiKey: GOOGLE_API_KEY, placeType: .Address)
     
     // MARK: - Navigation
     override func viewDidLoad() {
@@ -28,6 +27,12 @@ class SignUpViewController: UIViewController, CLLocationManagerDelegate {
         if locationAuthorizationStatus() {
             locationManager.startUpdatingLocation()
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        googlePlacesAutoCompleteViewController.placeDelegate = self
     }
     
     // MARK: - Location manager
@@ -56,9 +61,30 @@ class SignUpViewController: UIViewController, CLLocationManagerDelegate {
         showErrorAlert("Error getting location", message: "Tap on your location to manually enter in your address")
     }
     
+    // MARK: - Google Places Autocomplete
+    func placeSelected(place: Place) {
+        place.getDetails { (PlaceDetails) in
+            print(PlaceDetails.formattedAddress)
+            self.googlePlacesAutoCompleteViewController.gpaViewController.searchBar.text = PlaceDetails.formattedAddress
+            self.streetAddress = PlaceDetails.formattedAddress
+        }
+    }
+    
+    func placeViewClosed() {
+        googlePlacesAutoCompleteViewController.gpaViewController.searchBar.text = ""
+        googlePlacesAutoCompleteViewController.gpaViewController.searchBar(googlePlacesAutoCompleteViewController.gpaViewController.searchBar, textDidChange: "")
+        dismissViewControllerAnimated(true, completion: nil)
+        print("Exiting Autocomplete")
+        print("Last Address: \(streetAddress)")
+    }
+    
     // MARK: - Events
     @IBAction func backButtonTapped(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func locationTapped(sender: UITapGestureRecognizer) {
+        presentViewController(googlePlacesAutoCompleteViewController, animated: true, completion: nil)
     }
     
     // MARK: - Helper methods
@@ -85,20 +111,45 @@ class SignUpViewController: UIViewController, CLLocationManagerDelegate {
     
     func parseAddress(placeMark: CLPlacemark) {
         if let tempStreetAddress = placeMark.addressDictionary?[CLPLACEMARK_ADDRESSDICTIONARY_STREET] as? String {
+            print(tempStreetAddress)
             streetAddress = tempStreetAddress
-            print(streetAddress)
+        } else {
+            self.showErrorAlert("Error getting location", message: "Tap on your location to manually enter in your address")
+            streetAddress = ""
         }
+        
         if let tempCity = placeMark.addressDictionary?[CLPLACEMARK_ADDRESSDICTIONARY_CITY] as? String {
-            city = tempCity
-            print(city)
+            print(tempCity)
+            streetAddress = streetAddress + ", \(tempCity)"
+        } else{
+            self.showErrorAlert("Error getting location", message: "Tap on your location to manually enter in your address")
+            streetAddress = ""
         }
+        
         if let tempState = placeMark.addressDictionary?[CLPLACEMARK_ADDRESSDICTIONARY_STATE] as? String {
-            state = tempState
-            print(state)
+            print(tempState)
+            streetAddress = streetAddress + ", \(tempState)"
+        } else {
+            self.showErrorAlert("Error getting location", message: "Tap on your location to manually enter in your address")
+            streetAddress = ""
         }
+        
         if let tempZip = placeMark.addressDictionary?[CLPLACEMARK_ADDRESSDICTIONARY_ZIP] as? String {
-            zip = tempZip
-            print(zip)
+            print(tempZip)
+            streetAddress = streetAddress + ", \(tempZip)"
+        } else {
+            self.showErrorAlert("Error getting location", message: "Tap on your location to manually enter in your address")
+            streetAddress = ""
         }
+        
+        if let tempCountry = placeMark.addressDictionary?[CLPLACEMARK_ADDRESSDICTIONARY_COUNTRY] as? String {
+            print(tempCountry)
+            streetAddress = streetAddress + ", \(tempCountry)"
+        } else {
+            self.showErrorAlert("Error getting location", message: "Tap on your location to manually enter in your address")
+            streetAddress = ""
+        }
+        
+        print(streetAddress)
     }
 }

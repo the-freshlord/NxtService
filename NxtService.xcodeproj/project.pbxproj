@@ -10,8 +10,6 @@
 		63B757C70D5AD9D1B2BB2FAC /* Pods_NxtService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F917592FB28876952B5DD74 /* Pods_NxtService.framework */; };
 		884633451CACA20800F660A6 /* MaterialTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884633441CACA20800F660A6 /* MaterialTableView.swift */; };
 		884633471CACA45F00F660A6 /* ProfileMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884633461CACA45F00F660A6 /* ProfileMenuViewController.swift */; };
-		8851FEDF1CAB4354007B7B55 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851FEDE1CAB4354007B7B55 /* LocationSearchViewController.swift */; };
-		8851FEE11CAB4579007B7B55 /* LocationSearchViewBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851FEE01CAB4579007B7B55 /* LocationSearchViewBar.swift */; };
 		8854A5E81CB1C03C00383004 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8854A5E71CB1C03C00383004 /* Account.swift */; };
 		8854A5EA1CB1C40900383004 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8854A5E91CB1C40900383004 /* Provider.swift */; };
 		885B789B1CA38FB800F61EC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B789A1CA38FB800F61EC1 /* AppDelegate.swift */; };
@@ -26,6 +24,8 @@
 		88E966C61CA9B7CA00ED4674 /* MaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E966C51CA9B7CA00ED4674 /* MaterialButton.swift */; };
 		88E966C81CA9B83A00ED4674 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E966C71CA9B83A00ED4674 /* Constants.swift */; };
 		88E966CA1CA9B94200ED4674 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E966C91CA9B94200ED4674 /* MaterialView.swift */; };
+		88F7BFDC1CB7362A0024059E /* GooglePlacesAutocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F7BFDB1CB7362A0024059E /* GooglePlacesAutocomplete.swift */; };
+		88F7BFDE1CB7363C0024059E /* GooglePlacesAutocomplete.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88F7BFDD1CB7363C0024059E /* GooglePlacesAutocomplete.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +34,6 @@
 		6F917592FB28876952B5DD74 /* Pods_NxtService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NxtService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		884633441CACA20800F660A6 /* MaterialTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTableView.swift; sourceTree = "<group>"; };
 		884633461CACA45F00F660A6 /* ProfileMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileMenuViewController.swift; sourceTree = "<group>"; };
-		8851FEDE1CAB4354007B7B55 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
-		8851FEE01CAB4579007B7B55 /* LocationSearchViewBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchViewBar.swift; sourceTree = "<group>"; };
 		8854A5E71CB1C03C00383004 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		8854A5E91CB1C40900383004 /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		885B78971CA38FB700F61EC1 /* NxtService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NxtService.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +50,8 @@
 		88E966C51CA9B7CA00ED4674 /* MaterialButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialButton.swift; sourceTree = "<group>"; };
 		88E966C71CA9B83A00ED4674 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		88E966C91CA9B94200ED4674 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
+		88F7BFDB1CB7362A0024059E /* GooglePlacesAutocomplete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesAutocomplete.swift; sourceTree = "<group>"; };
+		88F7BFDD1CB7363C0024059E /* GooglePlacesAutocomplete.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GooglePlacesAutocomplete.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +91,7 @@
 				88E966BE1CA9B39300ED4674 /* View */,
 				88E966BF1CA9B39800ED4674 /* Controller */,
 				88E966C21CA9B3DB00ED4674 /* Storyboards */,
+				88F7BFDA1CB735F60024059E /* Interface Builder XIB */,
 				88E966C01CA9B3AA00ED4674 /* Resources */,
 				88E966C11CA9B3B400ED4674 /* Utilities */,
 				885B789A1CA38FB800F61EC1 /* AppDelegate.swift */,
@@ -114,7 +115,6 @@
 			children = (
 				88E966C51CA9B7CA00ED4674 /* MaterialButton.swift */,
 				88E966C91CA9B94200ED4674 /* MaterialView.swift */,
-				8851FEE01CAB4579007B7B55 /* LocationSearchViewBar.swift */,
 				884633441CACA20800F660A6 /* MaterialTableView.swift */,
 			);
 			name = View;
@@ -126,7 +126,6 @@
 				885B789C1CA38FB800F61EC1 /* StartViewController.swift */,
 				88DA7F631CA9F90900D3D486 /* LoginViewController.swift */,
 				88DA7F671CAA0F4500D3D486 /* SignUpViewController.swift */,
-				8851FEDE1CAB4354007B7B55 /* LocationSearchViewController.swift */,
 				884633461CACA45F00F660A6 /* ProfileMenuViewController.swift */,
 			);
 			name = Controller;
@@ -145,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				88C6BEF51CB2FC520052233C /* DataService.swift */,
+				88F7BFDB1CB7362A0024059E /* GooglePlacesAutocomplete.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -156,6 +156,14 @@
 				885B78A31CA38FB800F61EC1 /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		88F7BFDA1CB735F60024059E /* Interface Builder XIB */ = {
+			isa = PBXGroup;
+			children = (
+				88F7BFDD1CB7363C0024059E /* GooglePlacesAutocomplete.xib */,
+			);
+			name = "Interface Builder XIB";
 			sourceTree = "<group>";
 		};
 		EA7E6DC2EBB414BB92990F5F /* Pods */ = {
@@ -241,6 +249,7 @@
 				885B78A21CA38FB800F61EC1 /* Assets.xcassets in Resources */,
 				88E966C41CA9B42F00ED4674 /* Viafont.ttf in Resources */,
 				885B78A01CA38FB800F61EC1 /* Main.storyboard in Resources */,
+				88F7BFDE1CB7363C0024059E /* GooglePlacesAutocomplete.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88F7BFDC1CB7362A0024059E /* GooglePlacesAutocomplete.swift in Sources */,
 				88DA7F641CA9F90900D3D486 /* LoginViewController.swift in Sources */,
 				88C6BEF61CB2FC520052233C /* DataService.swift in Sources */,
 				88DA7F681CAA0F4500D3D486 /* SignUpViewController.swift in Sources */,
@@ -307,11 +317,9 @@
 				884633451CACA20800F660A6 /* MaterialTableView.swift in Sources */,
 				8854A5E81CB1C03C00383004 /* Account.swift in Sources */,
 				88E966CA1CA9B94200ED4674 /* MaterialView.swift in Sources */,
-				8851FEE11CAB4579007B7B55 /* LocationSearchViewBar.swift in Sources */,
 				88E966C61CA9B7CA00ED4674 /* MaterialButton.swift in Sources */,
 				8854A5EA1CB1C40900383004 /* Provider.swift in Sources */,
 				88E966C81CA9B83A00ED4674 /* Constants.swift in Sources */,
-				8851FEDF1CAB4354007B7B55 /* LocationSearchViewController.swift in Sources */,
 				884633471CACA45F00F660A6 /* ProfileMenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
