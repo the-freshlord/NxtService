@@ -9,16 +9,22 @@
 import Foundation
 import UIKit
 
-//Material Design
+// Material Design
 let SHADOW_COLOR: CGFloat = 157.0 / 255.0
 
-//Keys
+// Firebase Keys
 let KEY_ACCOUNTID = "uid"
 
-//Firebase error codes
+// Firebase error codes
 let STATUS_ACCOUNT_NONEXIST = -8
 let STATUS_INVALID_EMAIL = -5
 
-//Segue Identifiers
+// Segue Identifiers
 let SEGUE_SIGNUP = "gotosignupview"
 let SEGUE_PROFILE_MENU = "gotoprofilemenu"
+
+// CLPlacemark Keys
+let CLPLACEMARK_ADDRESSDICTIONARY_STREET = "Street"
+let CLPLACEMARK_ADDRESSDICTIONARY_CITY = "City"
+let CLPLACEMARK_ADDRESSDICTIONARY_STATE = "State"
+let CLPLACEMARK_ADDRESSDICTIONARY_ZIP = "ZIP"
