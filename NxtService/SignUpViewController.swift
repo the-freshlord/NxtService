@@ -43,6 +43,7 @@ class SignUpViewController: UIViewController, CLLocationManagerDelegate {
                         if let placeMark = (placeMarks?[0]) {
                             print(placeMark.addressDictionary)
                             self.parseAddress(placeMark)
+                            manager.stopUpdatingLocation()
                         }
                     }
                 }
