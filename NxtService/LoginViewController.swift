@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -46,13 +46,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // MARK: - UITextField
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    // MARK: - Events
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
-        return false
     }
     
-    // MARK: - Events
     @IBAction func loginSignUpButtonTapped(sender: MaterialButton) {
         if let email = emailTextField.text where email != "", let password = passwordTextField.text where password != "" {
             
@@ -70,11 +68,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         //Send user to sign up storyboard
                         self.goToSignUpStoryBoard(email, password: password)
                     case STATUS_INVALID_EMAIL:
-                        self.stopSpinning()
-                        self.showErrorAlert("Invalid email", message: "The email entered is not valid")
+                        // Go back to the main thread to display the alert view controller
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.stopSpinning()
+                            self.showErrorAlert("Invalid email", message: "The email entered is not valid")
+                        })
                     default:
-                        self.stopSpinning()
-                        self.showErrorAlert("Invalid login", message: "Please check your email or password")
+                        // Go back to the main thread to display the alert view controller
+                        dispatch_async(dispatch_get_main_queue(), { 
+                            self.stopSpinning()
+                            self.showErrorAlert("Invalid login", message: "Please check your email or password")
+                        })
                     }
                     
                 } else {
@@ -117,5 +121,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func stopSpinning() {
         indicatorView.hidden = true
         activityIndicatorView.stopAnimating()
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

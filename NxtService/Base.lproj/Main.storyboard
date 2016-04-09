@@ -195,14 +195,14 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6zJ-AV-vdO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6zJ-AV-vdO">
                                 <rect key="frame" x="66" y="264" width="514" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Nmk-7T-8y6"/>
                                 </constraints>
                                 <color key="textColor" red="0.87058823529411766" green="0.89411764705882346" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="done"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="S3N-FA-C9F">
                                 <rect key="frame" x="20" y="309" width="144" height="32"/>
@@ -263,14 +263,14 @@
                                     <constraint firstItem="459-gN-X3P" firstAttribute="top" secondItem="Za6-0D-ufJ" secondAttribute="top" constant="50" id="p0C-v8-rdO"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hIB-ui-S8y">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hIB-ui-S8y">
                                 <rect key="frame" x="66" y="349" width="514" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="RKh-NY-T2H"/>
                                 </constraints>
                                 <color key="textColor" red="0.87058823529999996" green="0.89411764709999997" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFJ-0X-ki6" userLabel="Divider">
                                 <rect key="frame" x="20" y="301.5" width="560" height="1"/>
@@ -432,41 +432,41 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YOT-1Q-Pjh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your phone number" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YOT-1Q-Pjh">
                                 <rect key="frame" x="60" y="254" width="520" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="NNb-5n-GFO"/>
                                 </constraints>
                                 <color key="textColor" red="0.87058823529411766" green="0.89411764705882346" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your full name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tlE-bd-kSL">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your full name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tlE-bd-kSL">
                                 <rect key="frame" x="60" y="316" width="520" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="L9C-UL-t4d"/>
                                 </constraints>
                                 <color key="textColor" red="0.87058823529999996" green="0.89411764709999997" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your main service" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b21-Vt-WeW">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your main service" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="b21-Vt-WeW">
                                 <rect key="frame" x="60" y="373" width="520" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="EJx-yD-HlF"/>
                                 </constraints>
                                 <color key="textColor" red="0.87058823529999996" green="0.89411764709999997" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Anything you specialize in?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aR0-i5-QBA">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Anything you specialize in?" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aR0-i5-QBA">
                                 <rect key="frame" x="60" y="437" width="520" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="JRX-W6-PND"/>
                                 </constraints>
                                 <color key="textColor" red="0.87058823529999996" green="0.89411764709999997" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nmB-Ib-HzM" userLabel="Divider">
                                 <rect key="frame" x="20" y="283" width="560" height="1"/>
@@ -578,6 +578,9 @@
                                         <state key="normal" title="Get started">
                                             <color key="titleColor" red="0.87058823529411766" green="0.89411764705882346" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="getStartedButtonTapped:" destination="hWP-Ad-T9L" eventType="touchUpInside" id="Mk5-H5-BYV"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86274509803921573" green="0.85098039215686272" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
@@ -684,6 +687,12 @@
                             <constraint firstItem="Kh2-3x-hn2" firstAttribute="top" secondItem="QIK-ws-k7Q" secondAttribute="bottom" constant="8" id="yJH-ae-FP7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainServiceTextField" destination="b21-Vt-WeW" id="gW9-6i-Ery"/>
+                        <outlet property="nameTextField" destination="tlE-bd-kSL" id="ez1-iG-irb"/>
+                        <outlet property="phoneNumberTextField" destination="YOT-1Q-Pjh" id="fNw-KX-DwQ"/>
+                        <outlet property="specialitiesTextField" destination="aR0-i5-QBA" id="dlr-vw-zH3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OqB-JH-hW5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="lSe-LD-bbf">
