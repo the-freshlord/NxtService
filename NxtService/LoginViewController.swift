@@ -20,10 +20,11 @@ class LoginViewController: UIViewController {
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
     }
     
     override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
         stopSpinning()
         emailTextField.text = ""
         passwordTextField.text = ""
@@ -65,7 +66,7 @@ class LoginViewController: UIViewController {
                     // Check error code
                     switch NSError.code {
                     case STATUS_ACCOUNT_NONEXIST:
-                        //Send user to sign up storyboard
+                        // Send user to sign up storyboard
                         self.goToSignUpStoryBoard(email, password: password)
                     case STATUS_INVALID_EMAIL:
                         // Go back to the main thread to display the alert view controller
@@ -75,7 +76,7 @@ class LoginViewController: UIViewController {
                         })
                     default:
                         // Go back to the main thread to display the alert view controller
-                        dispatch_async(dispatch_get_main_queue(), { 
+                        dispatch_async(dispatch_get_main_queue(), {
                             self.stopSpinning()
                             self.showErrorAlert("Invalid login", message: "Please check your email or password")
                         })

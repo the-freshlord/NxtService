@@ -34,7 +34,11 @@ class Account {
     }
     
     var accountID: String? {
-        return _accountID
+        if let tempAccountID = _accountID {
+            return tempAccountID
+        } else {
+            return nil
+        }
     }
     
     init(email: String, password: String, accountID: String?) {
@@ -59,6 +63,7 @@ class Account {
                     // Create user
                     let user: [String: String] = ["provider": result.provider, "email": self._email]
                     DataService.dataService.createFireBaseUser(result.uid, serviceProvider: user)
+                    self._accountID = result.uid
                     completion(accountCreated: true)
                 })
             }

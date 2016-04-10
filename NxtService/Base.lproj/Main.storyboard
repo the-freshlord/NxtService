@@ -133,7 +133,23 @@
                     <view key="view" contentMode="scaleToFill" id="Mra-Cg-sy4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpC-AA-HC5">
+                                <rect key="frame" x="254" y="289" width="92" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="GXv-31-nHc"/>
+                                    <constraint firstAttribute="width" constant="92" id="Vt8-4H-ZCa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.87058823529411766" green="0.89411764705882346" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.24313725490196078" green="0.70588235294117641" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="cpC-AA-HC5" firstAttribute="centerX" secondItem="Mra-Cg-sy4" secondAttribute="centerX" id="kuT-u6-1eV"/>
+                            <constraint firstItem="cpC-AA-HC5" firstAttribute="centerY" secondItem="Mra-Cg-sy4" secondAttribute="centerY" id="mV2-sm-wPo"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7L-sM-V3u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -332,7 +348,7 @@
                         <outlet property="indicatorView" destination="0HW-Ps-15k" id="BDK-SE-Be9"/>
                         <outlet property="passwordTextField" destination="hIB-ui-S8y" id="c6Y-8Z-0ug"/>
                         <segue destination="yKf-z5-0A3" kind="show" identifier="gotoprofilemenu" id="1Kr-54-x0N"/>
-                        <segue destination="hWP-Ad-T9L" kind="show" identifier="gotosignupview" id="OdR-rl-xRh"/>
+                        <segue destination="hWP-Ad-T9L" kind="presentation" identifier="gotosignupview" id="OdR-rl-xRh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPw-q1-lwc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -466,7 +482,7 @@
                                 </constraints>
                                 <color key="textColor" red="0.87058823529999996" green="0.89411764709999997" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nmB-Ib-HzM" userLabel="Divider">
                                 <rect key="frame" x="20" y="283" width="560" height="1"/>
@@ -633,13 +649,32 @@
                                     <outletCollection property="gestureRecognizers" destination="lSe-LD-bbf" appends="YES" id="EDo-BS-qJX"/>
                                 </connections>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTT-So-Pn3" userLabel="ActivityIndicatorView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="CcS-LJ-RqY">
+                                        <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="37" id="nrH-Dw-IFv"/>
+                                            <constraint firstAttribute="height" constant="37" id="u5x-dD-cUq"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.24313725489999999" green="0.70588235290000001" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="CcS-LJ-RqY" firstAttribute="centerX" secondItem="pTT-So-Pn3" secondAttribute="centerX" id="a4S-OC-BjO"/>
+                                    <constraint firstItem="CcS-LJ-RqY" firstAttribute="centerY" secondItem="pTT-So-Pn3" secondAttribute="centerY" id="tHg-Nh-jFV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.24313725490196078" green="0.70588235294117641" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7P3-1N-qEM" firstAttribute="leading" secondItem="dOG-c6-gMa" secondAttribute="leadingMargin" id="2dJ-X0-In3"/>
                             <constraint firstItem="QIK-ws-k7Q" firstAttribute="leading" secondItem="dOG-c6-gMa" secondAttribute="leadingMargin" id="4kD-By-HcU"/>
+                            <constraint firstItem="pTT-So-Pn3" firstAttribute="top" secondItem="dOG-c6-gMa" secondAttribute="top" id="4u9-ZR-LEX"/>
                             <constraint firstItem="bht-hE-jFw" firstAttribute="centerX" secondItem="dOG-c6-gMa" secondAttribute="centerX" id="5cv-GG-ieV"/>
                             <constraint firstItem="I8w-Nn-1cA" firstAttribute="leading" secondItem="dOG-c6-gMa" secondAttribute="leadingMargin" constant="40" id="7Zk-5q-7E5"/>
+                            <constraint firstItem="pTT-So-Pn3" firstAttribute="leading" secondItem="dOG-c6-gMa" secondAttribute="leading" id="7b3-9i-ePc"/>
                             <constraint firstItem="erP-5T-7Za" firstAttribute="top" secondItem="bht-hE-jFw" secondAttribute="bottom" constant="51" id="84s-3d-4ui"/>
                             <constraint firstItem="IPg-Kf-FEA" firstAttribute="top" secondItem="7P3-1N-qEM" secondAttribute="bottom" constant="109" id="8AF-2a-92P"/>
                             <constraint firstItem="Rl9-U8-fDA" firstAttribute="leading" secondItem="dOG-c6-gMa" secondAttribute="leadingMargin" id="8ti-ms-VMA"/>
@@ -656,6 +691,7 @@
                             <constraint firstItem="4Xj-ZX-av5" firstAttribute="top" secondItem="5mv-Wf-MSz" secondAttribute="bottom" id="NjW-0B-PHb"/>
                             <constraint firstItem="nmB-Ib-HzM" firstAttribute="trailing" secondItem="dOG-c6-gMa" secondAttribute="trailingMargin" id="P7J-ks-dae"/>
                             <constraint firstItem="1ae-R6-9fZ" firstAttribute="trailing" secondItem="dOG-c6-gMa" secondAttribute="trailingMargin" id="Q9I-9x-e1j"/>
+                            <constraint firstAttribute="trailing" secondItem="pTT-So-Pn3" secondAttribute="trailing" id="RZa-mb-qeo"/>
                             <constraint firstItem="b21-Vt-WeW" firstAttribute="top" secondItem="tlE-bd-kSL" secondAttribute="bottom" constant="31" id="SvL-YV-BJH"/>
                             <constraint firstItem="BGk-YG-CKY" firstAttribute="leading" secondItem="dOG-c6-gMa" secondAttribute="leadingMargin" id="TDz-3W-anx"/>
                             <constraint firstItem="BGk-YG-CKY" firstAttribute="top" secondItem="b21-Vt-WeW" secondAttribute="bottom" constant="12" id="UCN-FH-jmZ"/>
@@ -670,6 +706,7 @@
                             <constraint firstItem="b21-Vt-WeW" firstAttribute="leading" secondItem="dOG-c6-gMa" secondAttribute="leadingMargin" constant="40" id="gi8-Uw-gFv"/>
                             <constraint firstItem="YOT-1Q-Pjh" firstAttribute="trailing" secondItem="dOG-c6-gMa" secondAttribute="trailingMargin" id="guh-Ic-T1N"/>
                             <constraint firstItem="eHX-Hh-Nd1" firstAttribute="top" secondItem="8Zq-PY-wbc" secondAttribute="bottom" constant="51" id="h1j-wF-Ysv"/>
+                            <constraint firstItem="4Xj-ZX-av5" firstAttribute="top" secondItem="pTT-So-Pn3" secondAttribute="bottom" id="hRg-gC-Gmn"/>
                             <constraint firstItem="IPg-Kf-FEA" firstAttribute="leading" secondItem="dOG-c6-gMa" secondAttribute="leadingMargin" id="he4-WG-szo"/>
                             <constraint firstItem="eHX-Hh-Nd1" firstAttribute="centerX" secondItem="dOG-c6-gMa" secondAttribute="centerX" id="hgb-Ge-IXA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5mv-Wf-MSz" secondAttribute="trailing" constant="-20" id="iIp-fd-ZJd"/>
@@ -688,6 +725,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="CcS-LJ-RqY" id="Kf2-Vf-xGN"/>
+                        <outlet property="indicatorView" destination="pTT-So-Pn3" id="Fhd-vN-8w9"/>
                         <outlet property="mainServiceTextField" destination="b21-Vt-WeW" id="gW9-6i-Ery"/>
                         <outlet property="nameTextField" destination="tlE-bd-kSL" id="ez1-iG-irb"/>
                         <outlet property="phoneNumberTextField" destination="YOT-1Q-Pjh" id="fNw-KX-DwQ"/>
