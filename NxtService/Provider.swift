@@ -9,27 +9,22 @@
 import Foundation
 
 class Provider {
-    private var _accountID: String?
-    private var _providerID: String!
+    private var _providerID: String?
     private var _name: String!
     private var _address: String!
-    private var _phoneNumber: Int!
+    private var _phoneNumber: String!
     private var _profilePictureURL: String?
     private var _biography: String?
     private var _mainService: String!
     private var _specialities: String!
     private var _paymentInfo: String?
     
-    var accountID: String? {
-        if let tempAccountID = _accountID {
-            return tempAccountID
+    var providerID: String? {
+        if let tempProviderID = _providerID {
+            return tempProviderID
         } else {
             return nil
         }
-    }
-    
-    var providerID: String {
-        return _providerID
     }
     
     var name: String {
@@ -52,7 +47,7 @@ class Provider {
         }
     }
     
-    var phoneNumber: Int {
+    var phoneNumber: String {
         get {
             return _phoneNumber
         }
@@ -124,11 +119,21 @@ class Provider {
         }
     }
     
-    init(accountID: String?, providerID: String) {
-        if let tempAccountID = accountID {
-            _accountID = tempAccountID
-        }
-        
+    init(providerID: String) {
         _providerID = providerID
+    }
+    
+    func createProvider(completion: (providerCreated: Bool) -> ()) {
+        let providerDictionary: Dictionary<String, String> = [FIREBASE_PROVIDER_NAME: _name,
+                                                              FIREBASE_PROVIDER_ADDRESS: _address,
+                                                              FIREBASE_PROVIDER_PHONENUMBER: _phoneNumber,
+                                                              FIREBASE_PROVIDER_MAINSERVICE: _mainService,
+                                                              FIREBASE_PROVIDER_SUBSERVICES: _specialities,
+                                                              FIREBASE_PROVIDER_BIOGRAPHY: "",
+                                                              FIREBASE_PROVIDER_PAYMENTINFO: "",
+                                                              FIREBASE_PROVIDER_PROFILEPICURL: ""]
+        
+        DataService.dataService.REF_PROVIDERINFO.childByAppendingPath(_providerID).setValue(providerDictionary)
+        completion(providerCreated: true)
     }
 }
