@@ -21,6 +21,7 @@ class SignUpViewController: UIViewController {
     var provider: Provider!
     var locationManager = CLLocationManager()
     var streetAddress: String!
+    var accountCreated = false
     
     var googlePlacesAutoCompleteViewController: GooglePlacesAutocomplete!
     
@@ -46,6 +47,15 @@ class SignUpViewController: UIViewController {
         
         googlePlacesAutoCompleteViewController = GooglePlacesAutocomplete(apiKey: GOOGLE_API_KEY, placeType: .Address)
         googlePlacesAutoCompleteViewController.placeDelegate = self
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if accountCreated {
+            stopSpinning()
+            NSNotificationCenter.defaultCenter().postNotificationName(NOTIFICATION_NAME_ACCOUNT_CREATED, object: nil)
+        }
     }
     
     // MARK: - Events
@@ -86,6 +96,7 @@ class SignUpViewController: UIViewController {
                         
                         self.provider.createProvider({ (providerCreated) in
                             if providerCreated.boolValue == true {
+                                self.accountCreated = true
                                 self.leaveSignUpStoryBoard()
                             } else {
                                 dispatch_async(dispatch_get_main_queue(), {

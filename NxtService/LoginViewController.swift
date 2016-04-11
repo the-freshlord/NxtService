@@ -20,6 +20,9 @@ class LoginViewController: UIViewController {
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        
+        // Listen for the event of when an account is created
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.accountWasCreated), name: NOTIFICATION_NAME_ACCOUNT_CREATED, object: nil)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -98,10 +101,36 @@ class LoginViewController: UIViewController {
     
     // MARK: - Helper methods
     func showErrorAlert(title: String, message: String) {
+        // Check if an alert controller is already being presented
+        if self.presentedViewController == nil {
+            createNewAlertViewController(title, message: message)
+        } else {
+            // The alert controller is already presented or there is another view controller being presented
+            let thePresentedViewController: UIViewController? = self.presentedViewController as UIViewController?
+            
+            if thePresentedViewController != nil {
+                
+                // Check if the presented controller is an alert view controller
+                if let presentedAlertViewController: UIAlertController = thePresentedViewController as? UIAlertController {
+                    
+                    // Do nothing since the alert controller is already on screen
+                    print(presentedAlertViewController)
+                } else {
+                    // Another view controller presented, so use thePresentedViewController
+                    let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+                    let action = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+                    alert.addAction(action)
+                    thePresentedViewController?.presentViewController(alert, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
+    func createNewAlertViewController(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let action = UIAlertAction(title: "Ok", style: .Default, handler: nil)
         alert.addAction(action)
-        presentViewController(alert, animated: true, completion: nil)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func goToSignUpStoryBoard(email: String, password: String) {
@@ -122,6 +151,10 @@ class LoginViewController: UIViewController {
     func stopSpinning() {
         indicatorView.hidden = true
         activityIndicatorView.stopAnimating()
+    }
+    
+    func accountWasCreated() {
+        showErrorAlert("Account created", message: "Please login to check out your profile")
     }
 }
 
