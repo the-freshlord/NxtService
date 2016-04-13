@@ -45,7 +45,7 @@ class SignUpViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        googlePlacesAutoCompleteViewController = GooglePlacesAutocomplete(apiKey: GOOGLE_API_KEY, placeType: .Address)
+        googlePlacesAutoCompleteViewController = GooglePlacesAutocomplete(apiKey: APIKeys.GOOGLE_API_KEY, placeType: .Address)
         googlePlacesAutoCompleteViewController.placeDelegate = self
     }
     
@@ -54,7 +54,7 @@ class SignUpViewController: UIViewController {
         
         if accountCreated {
             stopSpinning()
-            NSNotificationCenter.defaultCenter().postNotificationName(NOTIFICATION_NAME_ACCOUNT_CREATED, object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(NSNotificationCenterPostNotificationNames.ACCOUNT_CREATED, object: nil)
         }
     }
     

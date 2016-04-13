@@ -122,6 +122,41 @@
             </objects>
             <point key="canvasLocation" x="325" y="399"/>
         </scene>
+        <!--Basic Info View Controller-->
+        <scene sceneID="IYF-7m-uDY">
+            <objects>
+                <viewController id="oga-hv-56B" customClass="BasicInfoViewController" customModule="NxtService" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tCZ-nG-Scv"/>
+                        <viewControllerLayoutGuide type="bottom" id="fEo-VM-5hO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2wc-ZM-6gB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" alpha="0.77000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tso-IV-Rp5">
+                                <rect key="frame" x="20" y="28" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="64j-pZ-Aqf"/>
+                                    <constraint firstAttribute="height" constant="32" id="sgi-lZ-jch"/>
+                                </constraints>
+                                <state key="normal" image="backbtn"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="oga-hv-56B" eventType="touchUpInside" id="cKt-A3-KQb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.24313725490196078" green="0.70588235294117641" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="tso-IV-Rp5" firstAttribute="top" secondItem="tCZ-nG-Scv" secondAttribute="bottom" constant="8" id="iDH-3I-QZh"/>
+                            <constraint firstItem="tso-IV-Rp5" firstAttribute="leading" secondItem="2wc-ZM-6gB" secondAttribute="leadingMargin" id="pem-RT-geg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zqt-HW-uec" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-579" y="2716"/>
+        </scene>
         <!--Profile Menu View Controller-->
         <scene sceneID="UeW-Ae-ZwR">
             <objects>
@@ -141,6 +176,9 @@
                                     <constraint firstAttribute="height" constant="32" id="PHp-s5-Efh"/>
                                 </constraints>
                                 <state key="normal" image="logout"/>
+                                <connections>
+                                    <action selector="logoutButtonTapped:" destination="yKf-z5-0A3" eventType="touchUpInside" id="jd3-Y1-rds"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ykA-9J-gYj">
                                 <rect key="frame" x="200" y="28" width="200" height="200"/>
@@ -177,7 +215,7 @@
                                     <constraint firstAttribute="height" constant="40" id="z3g-Po-OWS"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJC-6k-1QZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Basic Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJC-6k-1QZ">
                                 <rect key="frame" x="158" y="251" width="422" height="21"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -186,9 +224,6 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.87058823529411766" green="0.89411764705882346" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="ceT-5N-Fb5" appends="YES" id="sh5-JM-z3G"/>
-                                </connections>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1US-Er-vgh" userLabel="Divider">
                                 <rect key="frame" x="20" y="347" width="560" height="1"/>
@@ -220,9 +255,6 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.87058823529999996" green="0.89411764709999997" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Tbq-3u-Of9" appends="YES" id="UdM-MG-MWL"/>
-                                </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Services Offered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjP-4H-Me6">
                                 <rect key="frame" x="158" y="365" width="422" height="21"/>
@@ -233,9 +265,6 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.87058823529999996" green="0.89411764709999997" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="ghm-9W-UOh" appends="YES" id="BDF-4B-8rA"/>
-                                </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2QQ-5f-TQJ">
                                 <rect key="frame" x="158" y="422" width="422" height="21"/>
@@ -246,9 +275,6 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.87058823529999996" green="0.89411764709999997" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="c2U-BI-ofS" appends="YES" id="mq4-Zc-OWm"/>
-                                </connections>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXN-MG-CR6" customClass="MaterialView" customModule="NxtService" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="461" width="600" height="139"/>
@@ -334,32 +360,17 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="editBasicInfoLabel" destination="VJC-6k-1QZ" id="AC4-s0-vfU"/>
+                        <outlet property="editCredentialsLabel" destination="Bpx-EX-s3Z" id="dvN-Nx-BcB"/>
+                        <outlet property="editLocationLabel" destination="2QQ-5f-TQJ" id="w3d-bM-0HK"/>
+                        <outlet property="editServicesOfferedLabel" destination="kjP-4H-Me6" id="Hy8-h9-igT"/>
                         <outlet property="profileImageView" destination="ykA-9J-gYj" id="VDi-MG-Oxg"/>
+                        <segue destination="oga-hv-56B" kind="presentation" identifier="gotobasicinfo" modalTransitionStyle="flipHorizontal" id="bgc-Nf-S5f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7L-sM-V3u" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="ceT-5N-Fb5">
-                    <connections>
-                        <action selector="editInfoLabelTapped:" destination="yKf-z5-0A3" id="wvj-AI-zjD"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="Tbq-3u-Of9">
-                    <connections>
-                        <action selector="editCredentialsLabelTapped:" destination="yKf-z5-0A3" id="auX-x5-Cb1"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="ghm-9W-UOh">
-                    <connections>
-                        <action selector="editServicesLabelTapped:" destination="yKf-z5-0A3" id="gxr-BK-yNd"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="c2U-BI-ofS">
-                    <connections>
-                        <action selector="editLocationLabelTapped:" destination="yKf-z5-0A3" id="fIN-3t-YBm"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-571" y="1914"/>
+            <point key="canvasLocation" x="-579" y="1914"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="zsD-4E-pzh">

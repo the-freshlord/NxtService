@@ -10,6 +10,15 @@ import UIKit
 
 class ProfileMenuViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var editBasicInfoLabel: UILabel!
+    @IBOutlet weak var editCredentialsLabel: UILabel!
+    @IBOutlet weak var editServicesOfferedLabel: UILabel!
+    @IBOutlet weak var editLocationLabel: UILabel!
+    
+    let editInfoTapGesture = UITapGestureRecognizer()
+    let editCredentialsTapGesture = UITapGestureRecognizer()
+    let editServicesOfferedTapGesture = UITapGestureRecognizer()
+    let editLocationTapGesure = UITapGestureRecognizer()
     
     var account: Account!
     var provider: Provider!
@@ -27,6 +36,24 @@ class ProfileMenuViewController: UIViewController {
         
         imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
+        
+        setupTapGestureRecognizers()
+        
+        provider = Provider(providerID: account.accountID!)
+        provider.loadProvider()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier {
+        case SegueIdentifiers.PROFILE_BASIC_INFO?:
+            if let basicInfoViewController = segue.destinationViewController as? BasicInfoViewController {
+                if let provider = sender as? Provider {
+                    basicInfoViewController.provider = provider
+                }
+            }
+        default:
+            print("No segue")
+        }
     }
     
     // MARK: - Events
@@ -34,20 +61,47 @@ class ProfileMenuViewController: UIViewController {
         presentViewController(imagePickerController, animated: true, completion: nil)
     }
     
+    @IBAction func logoutButtonTapped(sender: UIButton) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func deleteButtonTapped(sender: MaterialButton) {
     }
     
-    // MARK: Helper methods
-    @IBAction func editInfoLabelTapped(sender: UITapGestureRecognizer) {
+    // MARK: - Helper methods
+    func setupTapGestureRecognizers() {
+        editInfoTapGesture.addTarget(self, action: #selector(ProfileMenuViewController.editInfoLabelTapped))
+        editCredentialsTapGesture.addTarget(self, action: #selector(ProfileMenuViewController.editCredentialsLabelTapped))
+        editServicesOfferedTapGesture.addTarget(self, action: #selector(ProfileMenuViewController.editServicesOfferedLabelTapped))
+        editLocationTapGesure.addTarget(self, action: #selector(ProfileMenuViewController.editLocationLabelTapped))
+        
+        editInfoTapGesture.numberOfTapsRequired = 1
+        editCredentialsTapGesture.numberOfTapsRequired = 1
+        editServicesOfferedTapGesture.numberOfTapsRequired = 1
+        editLocationTapGesure.numberOfTapsRequired = 1
+        
+        editBasicInfoLabel.addGestureRecognizer(editInfoTapGesture)
+        editCredentialsLabel.addGestureRecognizer(editCredentialsTapGesture)
+        editServicesOfferedLabel.addGestureRecognizer(editServicesOfferedTapGesture)
+        editLocationLabel.addGestureRecognizer(editLocationTapGesure)
+        
+        editBasicInfoLabel.userInteractionEnabled = true
+        editCredentialsLabel.userInteractionEnabled = true
+        editServicesOfferedLabel.userInteractionEnabled = true
+        editLocationLabel.userInteractionEnabled = true
     }
     
-    @IBAction func editCredentialsLabelTapped(sender: UITapGestureRecognizer) {
+    func editInfoLabelTapped() {
+        performSegueWithIdentifier(SegueIdentifiers.PROFILE_BASIC_INFO, sender: provider)
     }
     
-    @IBAction func editServicesLabelTapped(sender: UITapGestureRecognizer) {
+    func editCredentialsLabelTapped() {
     }
     
-    @IBAction func editLocationLabelTapped(sender: UITapGestureRecognizer) {
+    func editServicesOfferedLabelTapped() {
+    }
+    
+    func editLocationLabelTapped() {
     }
 }
 

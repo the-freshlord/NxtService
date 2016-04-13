@@ -124,16 +124,41 @@ class Provider {
     }
     
     func createProvider(completion: (providerCreated: Bool) -> ()) {
-        let providerDictionary: Dictionary<String, String> = [FIREBASE_PROVIDER_NAME: _name,
-                                                              FIREBASE_PROVIDER_ADDRESS: _address,
-                                                              FIREBASE_PROVIDER_PHONENUMBER: _phoneNumber,
-                                                              FIREBASE_PROVIDER_MAINSERVICE: _mainService,
-                                                              FIREBASE_PROVIDER_SUBSERVICES: _specialities,
-                                                              FIREBASE_PROVIDER_BIOGRAPHY: "",
-                                                              FIREBASE_PROVIDER_PAYMENTINFO: "",
-                                                              FIREBASE_PROVIDER_PROFILEPICURL: ""]
+        let providerDictionary: Dictionary<String, String> = [FirebaseProviderKeys.NAME: _name,
+                                                              FirebaseProviderKeys.ADDRESS: _address,
+                                                              FirebaseProviderKeys.PHONENUMBER: _phoneNumber,
+                                                              FirebaseProviderKeys.MAINSERVICE: _mainService,
+                                                              FirebaseProviderKeys.SUBSERVICES: _specialities,
+                                                              FirebaseProviderKeys.BIOGRAPHY: "",
+                                                              FirebaseProviderKeys.PAYMENTINFO: "",
+                                                              FirebaseProviderKeys.PROFILEPICURL: ""]
         
         DataService.dataService.REF_PROVIDERINFO.childByAppendingPath(_providerID).setValue(providerDictionary)
         completion(providerCreated: true)
+    }
+    
+    func loadProvider() {
+        let reference = DataService.dataService.REF_PROVIDERINFO
+        
+        reference.observeEventType(.Value, withBlock: { snapshot in
+            print(snapshot.value)
+            
+            if let providersDictionary = snapshot.value as? Dictionary<String, AnyObject> {
+                if let providerDictionary = providersDictionary[self._providerID!] as? Dictionary<String, AnyObject> {
+                    print(providerDictionary)
+                    
+                    // Just testing to see if parsing worked correctly
+                    // Will change to create safe checking
+                    self._name = providerDictionary[FirebaseProviderKeys.NAME] as! String
+                    self._address = providerDictionary[FirebaseProviderKeys.ADDRESS] as! String
+                    self._phoneNumber = providerDictionary[FirebaseProviderKeys.PHONENUMBER] as! String
+                    self._profilePictureURL = providerDictionary[FirebaseProviderKeys.PROFILEPICURL] as? String
+                    self._biography = providerDictionary[FirebaseProviderKeys.BIOGRAPHY] as? String
+                    self._mainService = providerDictionary[FirebaseProviderKeys.MAINSERVICE] as! String
+                    self._specialities = providerDictionary[FirebaseProviderKeys.SUBSERVICES] as! String
+                    self.paymentInfo = providerDictionary[FirebaseProviderKeys.PAYMENTINFO] as? String
+                }
+            }
+        })
     }
 }

@@ -12,7 +12,7 @@ import CoreLocation
 public func parseAddress(placeMark: CLPlacemark) -> String {
     var streetAddress = ""
     
-    if let tempStreetAddress = placeMark.addressDictionary?[CLPLACEMARK_ADDRESSDICTIONARY_STREET] as? String {
+    if let tempStreetAddress = placeMark.addressDictionary?[CLPlacemarkAddressDictionaryKeys.STREET] as? String {
         print(tempStreetAddress)
         streetAddress = tempStreetAddress
     } else {
@@ -20,7 +20,7 @@ public func parseAddress(placeMark: CLPlacemark) -> String {
         return streetAddress
     }
     
-    if let tempCity = placeMark.addressDictionary?[CLPLACEMARK_ADDRESSDICTIONARY_CITY] as? String {
+    if let tempCity = placeMark.addressDictionary?[CLPlacemarkAddressDictionaryKeys.CITY] as? String {
         print(tempCity)
         streetAddress = streetAddress + ", \(tempCity)"
     } else{
@@ -28,7 +28,7 @@ public func parseAddress(placeMark: CLPlacemark) -> String {
         return streetAddress
     }
     
-    if let tempState = placeMark.addressDictionary?[CLPLACEMARK_ADDRESSDICTIONARY_STATE] as? String {
+    if let tempState = placeMark.addressDictionary?[CLPlacemarkAddressDictionaryKeys.STATE] as? String {
         print(tempState)
         streetAddress = streetAddress + ", \(tempState)"
     } else {
@@ -36,7 +36,7 @@ public func parseAddress(placeMark: CLPlacemark) -> String {
         return streetAddress
     }
     
-    if let tempZip = placeMark.addressDictionary?[CLPLACEMARK_ADDRESSDICTIONARY_ZIP] as? String {
+    if let tempZip = placeMark.addressDictionary?[CLPlacemarkAddressDictionaryKeys.ZIP] as? String {
         print(tempZip)
         streetAddress = streetAddress + ", \(tempZip)"
     } else {
@@ -44,7 +44,7 @@ public func parseAddress(placeMark: CLPlacemark) -> String {
         return streetAddress
     }
     
-    if let tempCountry = placeMark.addressDictionary?[CLPLACEMARK_ADDRESSDICTIONARY_COUNTRY] as? String {
+    if let tempCountry = placeMark.addressDictionary?[CLPlacemarkAddressDictionaryKeys.COUNTRY] as? String {
         print(tempCountry)
         streetAddress = streetAddress + ", \(tempCountry)"
     } else {

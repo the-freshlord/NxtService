@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
         passwordTextField.delegate = self
         
         // Listen for the event of when an account is created
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.accountWasCreated), name: NOTIFICATION_NAME_ACCOUNT_CREATED, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.accountWasCreated), name: NSNotificationCenterPostNotificationNames.ACCOUNT_CREATED, object: nil)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier {
-        case SEGUE_SIGNUP?:
+        case SegueIdentifiers.SIGNUP?:
             if let signUpViewController = segue.destinationViewController as? SignUpViewController {
                 if let account = sender as? Account {
                     signUpViewController.account = account
@@ -68,14 +68,19 @@ class LoginViewController: UIViewController {
                     
                     // Check error code
                     switch NSError.code {
-                    case STATUS_ACCOUNT_NONEXIST:
+                    case FirebaseErrorCodes.ACCOUNT_NONEXIST:
                         // Send user to sign up storyboard
                         self.goToSignUpStoryBoard(email, password: password)
-                    case STATUS_INVALID_EMAIL:
+                    case FirebaseErrorCodes.INVALID_EMAIL:
                         // Go back to the main thread to display the alert view controller
                         dispatch_async(dispatch_get_main_queue(), {
                             self.stopSpinning()
                             self.showErrorAlert("Invalid email", message: "The email entered is not valid")
+                        })
+                    case FirebaseErrorCodes.TOO_MANY_REQUESTS:
+                        dispatch_async(dispatch_get_main_queue(), { 
+                            self.stopSpinning()
+                            self.showErrorAlert("Unknown error", message: "There was an unknown error logging in")
                         })
                     default:
                         // Go back to the main thread to display the alert view controller
@@ -135,12 +140,12 @@ class LoginViewController: UIViewController {
     
     func goToSignUpStoryBoard(email: String, password: String) {
         let account = Account(email: email, password: password, accountID: nil)
-        performSegueWithIdentifier(SEGUE_SIGNUP, sender: account)
+        performSegueWithIdentifier(SegueIdentifiers.SIGNUP, sender: account)
     }
     
     func goToProfileMenuStoryBoard(email: String, password: String, accountID: String) {
         let account = Account(email: email, password: password, accountID: accountID)
-        performSegueWithIdentifier(SEGUE_PROFILE_MENU, sender: account)
+        performSegueWithIdentifier(SegueIdentifiers.PROFILE_MENU, sender: account)
     }
     
     func startSpinning() {
