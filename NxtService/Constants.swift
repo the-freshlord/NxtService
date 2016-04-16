@@ -60,11 +60,10 @@ struct APIKeys {
 // NSNotificationCenter post notification names
 struct NSNotificationCenterPostNotificationNames {
     static let ACCOUNT_CREATED = "accountCreated"
+    static let BASIC_INFO_UPDATED = "basicInfoUpdated"
 }
 
 // NSNotificationCenter user info dictionary keys
 struct NSNotificationCenterUserInfoDictKeys {
-    static let ACCOUNTID = "accountID"
-    static let EMAIL = "email"
-    static let PASSWORD = "password"
+    static let UPDATED_PROVIDER = "updatedProvider"
 }
