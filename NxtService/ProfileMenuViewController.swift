@@ -43,7 +43,8 @@ class ProfileMenuViewController: UIViewController {
         provider.loadProvider()
         
         // Use Notification Design Pattern (Post & Observe) to listen for when a provider is updated
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileMenuViewController.basicInfoUpdated(_:)), name: NSNotificationCenterPostNotificationNames.BASIC_INFO_UPDATED, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileMenuViewController.providerUpdated(_:)), name: NSNotificationCenterPostNotificationNames.BASIC_INFO_UPDATED, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileMenuViewController.accountUpdated(_:)), name: NSNotificationCenterPostNotificationNames.CREDENTIALS_UPDATED, object: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -56,8 +57,8 @@ class ProfileMenuViewController: UIViewController {
             }
         case SegueIdentifiers.PROFILE_CREDENTIALS?:
             if let credentialsViewController = segue.destinationViewController as? CredentialsViewController {
-                if let provider = sender as? Provider {
-                    credentialsViewController.provider = provider
+                if let account = sender as? Account {
+                    credentialsViewController.account = account
                 }
             }
         default:
@@ -105,7 +106,7 @@ class ProfileMenuViewController: UIViewController {
     }
     
     func editCredentialsLabelTapped() {
-        performSegueWithIdentifier(SegueIdentifiers.PROFILE_CREDENTIALS, sender: provider)
+        performSegueWithIdentifier(SegueIdentifiers.PROFILE_CREDENTIALS, sender: account)
     }
     
     func editServicesOfferedLabelTapped() {
@@ -114,9 +115,15 @@ class ProfileMenuViewController: UIViewController {
     func editLocationLabelTapped() {
     }
     
-    func basicInfoUpdated(notification: NSNotification) {
+    func providerUpdated(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             provider = userInfo[NSNotificationCenterUserInfoDictKeys.UPDATED_PROVIDER] as! Provider
+        }
+    }
+    
+    func accountUpdated(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            account = userInfo[NSNotificationCenterUserInfoDictKeys.UPDATED_ACCOUNT] as! Account
         }
     }
 }
