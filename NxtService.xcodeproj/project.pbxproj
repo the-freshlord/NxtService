@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		63B757C70D5AD9D1B2BB2FAC /* Pods_NxtService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F917592FB28876952B5DD74 /* Pods_NxtService.framework */; };
+		88353DAD1CC454F300E7FE54 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88353DAC1CC454F300E7FE54 /* ServicesViewController.swift */; };
 		884633451CACA20800F660A6 /* MaterialTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884633441CACA20800F660A6 /* MaterialTableView.swift */; };
 		884633471CACA45F00F660A6 /* ProfileMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884633461CACA45F00F660A6 /* ProfileMenuViewController.swift */; };
 		8854A5E81CB1C03C00383004 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8854A5E71CB1C03C00383004 /* Account.swift */; };
@@ -37,6 +38,7 @@
 		2DDBA087D7EB3FA8AAB4DAB3 /* Pods-NxtService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NxtService.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NxtService/Pods-NxtService.debug.xcconfig"; sourceTree = "<group>"; };
 		44378F1835B460E6A6FC95A0 /* Pods-NxtService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NxtService.release.xcconfig"; path = "Pods/Target Support Files/Pods-NxtService/Pods-NxtService.release.xcconfig"; sourceTree = "<group>"; };
 		6F917592FB28876952B5DD74 /* Pods_NxtService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NxtService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88353DAC1CC454F300E7FE54 /* ServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
 		884633441CACA20800F660A6 /* MaterialTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTableView.swift; sourceTree = "<group>"; };
 		884633461CACA45F00F660A6 /* ProfileMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileMenuViewController.swift; sourceTree = "<group>"; };
 		8854A5E71CB1C03C00383004 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				884633461CACA45F00F660A6 /* ProfileMenuViewController.swift */,
 				88F59BBB1CBC8F9400E25D1F /* BasicInfoViewController.swift */,
 				88FD6F0F1CC3330F00C3F9C7 /* CredentialsViewController.swift */,
+				88353DAC1CC454F300E7FE54 /* ServicesViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			files = (
 				88F7BFDC1CB7362A0024059E /* GooglePlacesAutocomplete.swift in Sources */,
 				88DA7F641CA9F90900D3D486 /* LoginViewController.swift in Sources */,
+				88353DAD1CC454F300E7FE54 /* ServicesViewController.swift in Sources */,
 				88C6BEF61CB2FC520052233C /* DataService.swift in Sources */,
 				88DA7F681CAA0F4500D3D486 /* SignUpViewController.swift in Sources */,
 				885B789D1CA38FB800F61EC1 /* StartViewController.swift in Sources */,
