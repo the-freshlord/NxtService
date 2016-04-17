@@ -61,6 +61,12 @@ class ProfileMenuViewController: UIViewController {
                     credentialsViewController.account = account
                 }
             }
+        case SegueIdentifiers.PROFILE_SERVICES?:
+            if let servicesViewController = segue.destinationViewController as? ServicesViewController {
+                if let provider = sender as? Provider {
+                    servicesViewController.provider = provider
+                }
+            }
         default:
             print("No segue")
         }
@@ -110,6 +116,7 @@ class ProfileMenuViewController: UIViewController {
     }
     
     func editServicesOfferedLabelTapped() {
+        performSegueWithIdentifier(SegueIdentifiers.PROFILE_SERVICES, sender: provider)
     }
     
     func editLocationLabelTapped() {
