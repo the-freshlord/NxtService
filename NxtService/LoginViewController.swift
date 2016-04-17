@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
-        stopSpinning()
+        stopSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
         emailTextField.text = ""
         passwordTextField.text = ""
     }
@@ -59,7 +59,7 @@ class LoginViewController: UIViewController {
         if let email = emailTextField.text where email != "", let password = passwordTextField.text where password != "" {
             
             // Start activity indicator animation
-            startSpinning()
+            startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
             
             DataService.dataService.REF_BASE.authUser(email, password: password, withCompletionBlock: { NSError, FAuthData in
                 // Check if login successful
@@ -74,18 +74,18 @@ class LoginViewController: UIViewController {
                     case FirebaseErrorCodes.INVALID_EMAIL:
                         // Go back to the main thread to display the alert view controller
                         dispatch_async(dispatch_get_main_queue(), {
-                            self.stopSpinning()
+                            self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
                             self.showErrorAlert("Invalid email", message: "The email entered is not valid")
                         })
                     case FirebaseErrorCodes.TOO_MANY_REQUESTS:
                         dispatch_async(dispatch_get_main_queue(), { 
-                            self.stopSpinning()
+                            self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
                             self.showErrorAlert("Unknown error", message: "There was an unknown error logging in")
                         })
                     default:
                         // Go back to the main thread to display the alert view controller
                         dispatch_async(dispatch_get_main_queue(), {
-                            self.stopSpinning()
+                            self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
                             self.showErrorAlert("Invalid login", message: "Please check your email or password")
                         })
                     }
@@ -105,39 +105,6 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Helper methods
-    func showErrorAlert(title: String, message: String) {
-        // Check if an alert controller is already being presented
-        if self.presentedViewController == nil {
-            createNewAlertViewController(title, message: message)
-        } else {
-            // The alert controller is already presented or there is another view controller being presented
-            let thePresentedViewController: UIViewController? = self.presentedViewController as UIViewController?
-            
-            if thePresentedViewController != nil {
-                
-                // Check if the presented controller is an alert view controller
-                if let presentedAlertViewController: UIAlertController = thePresentedViewController as? UIAlertController {
-                    
-                    // Do nothing since the alert controller is already on screen
-                    print(presentedAlertViewController)
-                } else {
-                    // Another view controller presented, so use thePresentedViewController
-                    let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-                    let action = UIAlertAction(title: "Ok", style: .Default, handler: nil)
-                    alert.addAction(action)
-                    thePresentedViewController?.presentViewController(alert, animated: true, completion: nil)
-                }
-            }
-        }
-    }
-    
-    func createNewAlertViewController(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let action = UIAlertAction(title: "Ok", style: .Default, handler: nil)
-        alert.addAction(action)
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
     func goToSignUpStoryBoard(email: String, password: String) {
         let account = Account(email: email, password: password, accountID: nil)
         performSegueWithIdentifier(SegueIdentifiers.SIGNUP, sender: account)
@@ -146,16 +113,6 @@ class LoginViewController: UIViewController {
     func goToProfileMenuStoryBoard(email: String, password: String, accountID: String) {
         let account = Account(email: email, password: password, accountID: accountID)
         performSegueWithIdentifier(SegueIdentifiers.PROFILE_MENU, sender: account)
-    }
-    
-    func startSpinning() {
-        indicatorView.hidden = false
-        activityIndicatorView.startAnimating()
-    }
-    
-    func stopSpinning() {
-        indicatorView.hidden = true
-        activityIndicatorView.stopAnimating()
     }
     
     func accountWasCreated() {
