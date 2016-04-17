@@ -53,7 +53,7 @@ class SignUpViewController: UIViewController {
         super.viewDidDisappear(animated)
         
         if accountCreated {
-            stopSpinning()
+            stopSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
             NSNotificationCenter.defaultCenter().postNotificationName(NSNotificationCenterPostNotificationNames.ACCOUNT_CREATED, object: nil)
         }
     }
@@ -82,7 +82,7 @@ class SignUpViewController: UIViewController {
             if streetAddress != "" {
                 
                 // Start activity indicator animation
-                startSpinning()
+                startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
                 
                 // Create the account
                 account.createAccount({ (accountCreated) in
@@ -100,14 +100,14 @@ class SignUpViewController: UIViewController {
                                 self.leaveSignUpStoryBoard()
                             } else {
                                 dispatch_async(dispatch_get_main_queue(), {
-                                    self.stopSpinning()
+                                    self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
                                     self.showErrorAlert("Error creating account", message: "There was an unknown error when creating the account")
                                 })
                             }
                         })
                     } else {
                         dispatch_async(dispatch_get_main_queue(), {
-                            self.stopSpinning()
+                            self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
                             self.showErrorAlert("Error creating account", message: "There was an unknown error when creating the account")
                         })
                     }
@@ -122,39 +122,6 @@ class SignUpViewController: UIViewController {
     }
     
     // MARK: - Helper methods
-    func showErrorAlert(title: String, message: String) {
-        // Check if an alert controller is already being presented
-        if self.presentedViewController == nil {
-            createNewAlertViewController(title, message: message)
-        } else {
-            // The alert controller is already presented or there is another view controller being presented
-            let thePresentedViewController: UIViewController? = self.presentedViewController as UIViewController?
-            
-            if thePresentedViewController != nil {
-                
-                // Check if the presented controller is an alert view controller
-                if let presentedAlertViewController: UIAlertController = thePresentedViewController as? UIAlertController {
-                    
-                    // Do nothing since the alert controller is already on screen
-                    print(presentedAlertViewController)
-                } else {
-                    // Another view controller presented, so use thePresentedViewController
-                    let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-                    let action = UIAlertAction(title: "Ok", style: .Default, handler: nil)
-                    alert.addAction(action)
-                    thePresentedViewController?.presentViewController(alert, animated: true, completion: nil)
-                }
-            }
-        }
-    }
-    
-    func createNewAlertViewController(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let action = UIAlertAction(title: "Ok", style: .Default, handler: nil)
-        alert.addAction(action)
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
     func locationAuthorizationStatus() -> Bool {
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
             return true
@@ -171,16 +138,6 @@ class SignUpViewController: UIViewController {
     
     func leaveSignUpStoryBoard() {
         dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func startSpinning() {
-        indicatorView.hidden = false
-        activityIndicatorView.startAnimating()
-    }
-    
-    func stopSpinning() {
-        indicatorView.hidden = true
-        activityIndicatorView.stopAnimating()
     }
 }
     
