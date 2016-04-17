@@ -30,6 +30,7 @@
 		88F5B8F11CB8E360003DEF4A /* AppUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F5B8F01CB8E360003DEF4A /* AppUtilities.swift */; };
 		88F7BFDC1CB7362A0024059E /* GooglePlacesAutocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F7BFDB1CB7362A0024059E /* GooglePlacesAutocomplete.swift */; };
 		88F7BFDE1CB7363C0024059E /* GooglePlacesAutocomplete.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88F7BFDD1CB7363C0024059E /* GooglePlacesAutocomplete.xib */; };
+		88FD6F101CC3330F00C3F9C7 /* CredentialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FD6F0F1CC3330F00C3F9C7 /* CredentialsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		88F5B8F01CB8E360003DEF4A /* AppUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUtilities.swift; sourceTree = "<group>"; };
 		88F7BFDB1CB7362A0024059E /* GooglePlacesAutocomplete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesAutocomplete.swift; sourceTree = "<group>"; };
 		88F7BFDD1CB7363C0024059E /* GooglePlacesAutocomplete.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GooglePlacesAutocomplete.xib; sourceTree = "<group>"; };
+		88FD6F0F1CC3330F00C3F9C7 /* CredentialsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				88DA7F671CAA0F4500D3D486 /* SignUpViewController.swift */,
 				884633461CACA45F00F660A6 /* ProfileMenuViewController.swift */,
 				88F59BBB1CBC8F9400E25D1F /* BasicInfoViewController.swift */,
+				88FD6F0F1CC3330F00C3F9C7 /* CredentialsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				88F59BBC1CBC8F9400E25D1F /* BasicInfoViewController.swift in Sources */,
 				8854A5EA1CB1C40900383004 /* Provider.swift in Sources */,
 				88E966C81CA9B83A00ED4674 /* Constants.swift in Sources */,
+				88FD6F101CC3330F00C3F9C7 /* CredentialsViewController.swift in Sources */,
 				88C3AE9C1CBF1EA8003CFA92 /* MaterialIndicatorView.swift in Sources */,
 				88C3AEA11CBF35DD003CFA92 /* UIViewControllerExtensions.swift in Sources */,
 				88F5B8F11CB8E360003DEF4A /* AppUtilities.swift in Sources */,
