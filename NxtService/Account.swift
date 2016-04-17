@@ -70,6 +70,44 @@ class Account {
         }
     }
     
+    func updateEmail(newEmail: String, completion: (emailUpdated: Bool, errorMessage: String) -> ()) {
+        // Update the user's email for using Firebase
+        DataService.dataService.REF_BASE.changeEmailForUser(_email, password: _password, toNewEmail: newEmail) { (error: NSError!) in
+            if error != nil {
+                print(error.debugDescription)
+                
+                var errorMessage = ""
+                
+                switch error.code {
+                case FirebaseErrorCodes.EMAIL_TAKEN:
+                    errorMessage = "The email entered is already being used"
+                case FirebaseErrorCodes.INVALID_EMAIL:
+                    errorMessage = "The email entered is not valid"
+                default:
+                    errorMessage = "An unknwon error occured when updating your email"
+                }
+                
+                completion(emailUpdated: false, errorMessage: errorMessage)
+            } else {
+                self._email = newEmail
+                completion(emailUpdated: true, errorMessage: "")
+            }
+        }
+    }
+    
+    func updatePassword(newPassword: String, completion: (passwordUpdated: Bool) -> ()) {
+        // Update the user's password for using Firebase
+        DataService.dataService.REF_BASE.changePasswordForUser(_email, fromOld: _password, toNew: newPassword) { (error: NSError!) in
+            if error != nil {
+                print(error.debugDescription)
+                completion(passwordUpdated: false)
+            } else {
+                self._password = newPassword
+                completion(passwordUpdated: true)
+            }
+        }
+    }
+    
     func deleteAccount() -> Int {
         return 0
     }
