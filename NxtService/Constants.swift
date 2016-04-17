@@ -31,6 +31,7 @@ struct FirebaseErrorCodes {
     static let ACCOUNT_NONEXIST = -8
     static let INVALID_EMAIL = -5
     static let TOO_MANY_REQUESTS = -9999
+    static let EMAIL_TAKEN = -9
 }
 
 // Segue Identifiers
@@ -61,9 +62,11 @@ struct APIKeys {
 struct NSNotificationCenterPostNotificationNames {
     static let ACCOUNT_CREATED = "accountCreated"
     static let BASIC_INFO_UPDATED = "basicInfoUpdated"
+    static let CREDENTIALS_UPDATED = "credentialsUpdated"
 }
 
 // NSNotificationCenter user info dictionary keys
 struct NSNotificationCenterUserInfoDictKeys {
     static let UPDATED_PROVIDER = "updatedProvider"
+    static let UPDATED_ACCOUNT = "updatedAccount"
 }
