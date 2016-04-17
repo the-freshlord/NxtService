@@ -147,18 +147,55 @@ class Provider {
                 if let providerDictionary = providersDictionary[self._providerID!] as? Dictionary<String, AnyObject> {
                     print(providerDictionary)
                     
-                    // Just testing to see if parsing worked correctly
-                    // Will change to create safe checking
-                    self._name = providerDictionary[FirebaseProviderKeys.NAME] as! String
-                    self._address = providerDictionary[FirebaseProviderKeys.ADDRESS] as! String
-                    self._phoneNumber = providerDictionary[FirebaseProviderKeys.PHONENUMBER] as! String
-                    self._profilePictureURL = providerDictionary[FirebaseProviderKeys.PROFILEPICURL] as? String
-                    self._biography = providerDictionary[FirebaseProviderKeys.BIOGRAPHY] as? String
-                    self._mainService = providerDictionary[FirebaseProviderKeys.MAINSERVICE] as! String
-                    self._specialities = providerDictionary[FirebaseProviderKeys.SUBSERVICES] as! String
-                    self.paymentInfo = providerDictionary[FirebaseProviderKeys.PAYMENTINFO] as? String
+                    
+                    if let name = providerDictionary[FirebaseProviderKeys.NAME] as? String {
+                        self._name = name
+                    }
+                    
+                    if let address = providerDictionary[FirebaseProviderKeys.ADDRESS] as? String {
+                        self.address = address
+                    }
+                    
+                    if let phoneNumber = providerDictionary[FirebaseProviderKeys.PHONENUMBER] as? String {
+                        self.phoneNumber = phoneNumber
+                    }
+                    
+                    if let profilePictureURL = providerDictionary[FirebaseProviderKeys.PROFILEPICURL] as? String {
+                        self._profilePictureURL = profilePictureURL
+                    }
+                    
+                    if let biography = providerDictionary[FirebaseProviderKeys.BIOGRAPHY] as? String {
+                        self._biography = biography
+                    }
+                    
+                    if let mainService = providerDictionary[FirebaseProviderKeys.MAINSERVICE] as? String {
+                        self._mainService = mainService
+                    }
+                    
+                    if let specialities = providerDictionary[FirebaseProviderKeys.SUBSERVICES] as? String {
+                        self._specialities = specialities
+                    }
+                    
+                    if let paymentInfo = providerDictionary[FirebaseProviderKeys.PAYMENTINFO] as? String {
+                        self._paymentInfo = paymentInfo
+                    }
                 }
             }
         })
+    }
+    
+    func updateProvider(completion: (providerUpdated: Bool) -> ()) {
+        let providerDictionary: Dictionary<String, String> = [FirebaseProviderKeys.NAME: _name,
+                                                              FirebaseProviderKeys.ADDRESS: _address,
+                                                              FirebaseProviderKeys.PHONENUMBER: _phoneNumber,
+                                                              FirebaseProviderKeys.MAINSERVICE: _mainService,
+                                                              FirebaseProviderKeys.SUBSERVICES: _specialities,
+                                                              FirebaseProviderKeys.BIOGRAPHY: _biography!,
+                                                              FirebaseProviderKeys.PAYMENTINFO: _paymentInfo!,
+                                                              FirebaseProviderKeys.PROFILEPICURL: _profilePictureURL!]
+        
+        // Use method setValue to delete the old dictionary and place new one in the Firebase reference
+        DataService.dataService.REF_PROVIDERINFO.childByAppendingPath(_providerID).setValue(providerDictionary)
+        completion(providerUpdated: true)
     }
 }
