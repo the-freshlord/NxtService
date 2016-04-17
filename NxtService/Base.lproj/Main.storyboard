@@ -464,23 +464,23 @@
                                 <color key="textColor" red="0.87058823529999996" green="0.89411764709999997" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M13-RV-cMy">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="M13-RV-cMy">
                                 <rect key="frame" x="105" y="238" width="475" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1ul-QE-dO6"/>
                                 </constraints>
                                 <color key="textColor" red="0.87058823529411766" green="0.89411764705882346" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Sd-d0-VAB">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7Sd-d0-VAB">
                                 <rect key="frame" x="105" y="319" width="475" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3d6-16-uHF"/>
                                 </constraints>
                                 <color key="textColor" red="0.87058823529411766" green="0.89411764705882346" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2BP-fz-UPi" userLabel="Divider">
                                 <rect key="frame" x="20" y="276" width="560" height="1"/>
@@ -503,6 +503,9 @@
                                         <state key="normal" title="Save">
                                             <color key="titleColor" red="0.87058823529411766" green="0.89411764705882346" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="saveButtonTapped:" destination="Z3e-CF-2J4" eventType="touchUpInside" id="jHO-Or-ygm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86274509803921573" green="0.85098039215686272" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
@@ -522,6 +525,30 @@
                                 <color key="textColor" red="0.95686274509803915" green="0.98431372549019602" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" alpha="0.85000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RFO-p7-xw2" userLabel="IndicatorView" customClass="MaterialIndicatorView" customModule="NxtService" customModuleProvider="target">
+                                <rect key="frame" x="233" y="209" width="135" height="135"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6B7-t8-5fs">
+                                        <rect key="frame" x="49" y="49" width="37" height="37"/>
+                                        <color key="color" red="0.24313725489999999" green="0.70588235290000001" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.86274509799999999" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="6B7-t8-5fs" firstAttribute="centerY" secondItem="RFO-p7-xw2" secondAttribute="centerY" id="81L-4F-Evo"/>
+                                    <constraint firstAttribute="height" constant="135" id="cXd-af-hfm"/>
+                                    <constraint firstAttribute="width" constant="135" id="ffb-Qu-zLk"/>
+                                    <constraint firstItem="6B7-t8-5fs" firstAttribute="centerX" secondItem="RFO-p7-xw2" secondAttribute="centerX" id="hxQ-Wo-cuF"/>
+                                    <constraint firstAttribute="height" constant="135" id="uWy-Xe-GbV"/>
+                                    <constraint firstAttribute="width" constant="135" id="zK6-VK-uML"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="cXd-af-hfm"/>
+                                        <exclude reference="zK6-VK-uML"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.24313725490196078" green="0.70588235294117641" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -536,6 +563,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="px4-I0-4Wy" secondAttribute="trailing" constant="-20" id="HCW-xo-0RL"/>
                             <constraint firstItem="2BP-fz-UPi" firstAttribute="trailing" secondItem="7Jn-ar-akH" secondAttribute="trailingMargin" id="J21-xd-Zae"/>
                             <constraint firstItem="Ehk-Xq-C43" firstAttribute="top" secondItem="2BP-fz-UPi" secondAttribute="bottom" constant="8" id="KQh-Xc-RlD"/>
+                            <constraint firstItem="RFO-p7-xw2" firstAttribute="centerX" secondItem="7Jn-ar-akH" secondAttribute="centerX" id="M5e-NI-cRN"/>
                             <constraint firstItem="7Sd-d0-VAB" firstAttribute="top" secondItem="Ehk-Xq-C43" secondAttribute="bottom" constant="3" id="V34-sB-sro"/>
                             <constraint firstItem="2BP-fz-UPi" firstAttribute="top" secondItem="M13-RV-cMy" secondAttribute="bottom" constant="8" id="VDG-pA-owp"/>
                             <constraint firstItem="M13-RV-cMy" firstAttribute="trailing" secondItem="7Jn-ar-akH" secondAttribute="trailingMargin" id="VdB-RA-N2v"/>
@@ -544,6 +572,7 @@
                             <constraint firstItem="2BP-fz-UPi" firstAttribute="centerX" secondItem="7Jn-ar-akH" secondAttribute="centerX" id="ZXM-VX-aWG"/>
                             <constraint firstItem="7Sd-d0-VAB" firstAttribute="leading" secondItem="b4B-zP-s5I" secondAttribute="trailing" constant="21" id="eLF-TZ-jf5"/>
                             <constraint firstItem="b1V-9P-bEr" firstAttribute="leading" secondItem="7Jn-ar-akH" secondAttribute="leadingMargin" id="ff0-Wk-m0h"/>
+                            <constraint firstItem="RFO-p7-xw2" firstAttribute="top" secondItem="qmV-ge-Wrr" secondAttribute="bottom" constant="56" id="hQf-e2-eqo"/>
                             <constraint firstItem="DAi-m1-hbZ" firstAttribute="top" secondItem="px4-I0-4Wy" secondAttribute="bottom" id="mWD-w6-PYX"/>
                             <constraint firstItem="b1V-9P-bEr" firstAttribute="top" secondItem="7ec-Kc-85Q" secondAttribute="bottom" constant="8" id="n8d-LD-mbH"/>
                             <constraint firstItem="qmV-ge-Wrr" firstAttribute="centerX" secondItem="7Jn-ar-akH" secondAttribute="centerX" id="sdK-zl-Qqi"/>
@@ -552,6 +581,13 @@
                             <constraint firstItem="px4-I0-4Wy" firstAttribute="leading" secondItem="7Jn-ar-akH" secondAttribute="leadingMargin" constant="-20" id="zje-I4-WVn"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="6B7-t8-5fs" id="2Gy-qS-WQr"/>
+                        <outlet property="emailTextField" destination="M13-RV-cMy" id="Yx4-IZ-3YJ"/>
+                        <outlet property="indicatorView" destination="RFO-p7-xw2" id="dqo-Lr-6oK"/>
+                        <outlet property="passwordTextField" destination="7Sd-d0-VAB" id="cXA-RR-7zd"/>
+                        <outlet property="saveButton" destination="agy-Kn-xhc" id="A5d-hP-0SD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xfs-0k-2Bh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
