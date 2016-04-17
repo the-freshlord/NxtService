@@ -41,6 +41,9 @@ class ProfileMenuViewController: UIViewController {
         
         provider = Provider(providerID: account.accountID!)
         provider.loadProvider()
+        
+        // Use Notification Design Pattern (Post & Observe) to listen for when a provider is updated
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileMenuViewController.basicInfoUpdated(_:)), name: NSNotificationCenterPostNotificationNames.BASIC_INFO_UPDATED, object: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -102,6 +105,12 @@ class ProfileMenuViewController: UIViewController {
     }
     
     func editLocationLabelTapped() {
+    }
+    
+    func basicInfoUpdated(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            provider = userInfo[NSNotificationCenterUserInfoDictKeys.UPDATED_PROVIDER] as! Provider
+        }
     }
 }
 
