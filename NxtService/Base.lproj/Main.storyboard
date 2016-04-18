@@ -397,11 +397,13 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicatorView" destination="BmC-pX-shZ" id="KDz-Rz-XHO"/>
+                        <outlet property="backButton" destination="tso-IV-Rp5" id="zc5-p3-sIg"/>
                         <outlet property="biographyTextView" destination="9a2-jQ-In3" id="qcA-mz-9mh"/>
                         <outlet property="indicatorView" destination="6gh-Ga-m8p" id="8em-H3-Mny"/>
                         <outlet property="nameTextField" destination="Ah3-AV-oej" id="gMH-hp-Z58"/>
                         <outlet property="paymentInfoTextField" destination="OT9-uU-sUb" id="ykR-aQ-dlf"/>
                         <outlet property="phoneNumberTextField" destination="yP3-Jq-aGd" id="JZq-oc-BQG"/>
+                        <outlet property="saveButton" destination="8fq-K6-lxO" id="1sD-WV-cNF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zqt-HW-uec" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -514,6 +516,9 @@
                                         <state key="normal" title="Save">
                                             <color key="titleColor" red="0.87058823529411766" green="0.89411764705882346" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="saveButtonTapped:" destination="7Oo-DH-xpr" eventType="touchUpInside" id="wgm-KD-5pa"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86274509803921573" green="0.85098039215686272" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
@@ -587,6 +592,14 @@
                             <constraint firstItem="Buj-ka-d4b" firstAttribute="top" secondItem="WLi-Tr-3Zf" secondAttribute="bottom" constant="2" id="zXW-Yg-ljh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="7GJ-xi-oPQ" id="Svo-kT-OP8"/>
+                        <outlet property="backButton" destination="4ga-gE-KaT" id="9E6-EY-olL"/>
+                        <outlet property="indicatorView" destination="PbF-0G-ryS" id="ben-jg-WCb"/>
+                        <outlet property="mainServiceTextField" destination="6NT-ek-fMm" id="6yR-M8-NUL"/>
+                        <outlet property="saveButton" destination="R8h-UN-lr5" id="O3a-rX-TLW"/>
+                        <outlet property="specialitiesTextField" destination="Buj-ka-d4b" id="h3e-ar-58A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ULf-lL-qcN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -768,6 +781,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicatorView" destination="6B7-t8-5fs" id="2Gy-qS-WQr"/>
+                        <outlet property="backButton" destination="b1V-9P-bEr" id="CXl-ib-UiQ"/>
                         <outlet property="emailTextField" destination="M13-RV-cMy" id="Yx4-IZ-3YJ"/>
                         <outlet property="indicatorView" destination="RFO-p7-xw2" id="dqo-Lr-6oK"/>
                         <outlet property="passwordTextField" destination="7Sd-d0-VAB" id="cXA-RR-7zd"/>
