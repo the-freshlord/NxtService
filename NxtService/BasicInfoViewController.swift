@@ -15,6 +15,8 @@ class BasicInfoViewController: UIViewController {
     @IBOutlet weak var paymentInfoTextField: UITextField!
     @IBOutlet weak var indicatorView: MaterialIndicatorView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var saveButton: MaterialButton!
+    @IBOutlet weak var backButton: UIButton!
     
     var provider: Provider!
     var basicInfoChanged = false
@@ -63,6 +65,7 @@ class BasicInfoViewController: UIViewController {
     
     @IBAction func saveButtonTapped(sender: MaterialButton) {
         if let name = nameTextField.text where name != "", let phoneNumber = phoneNumberTextField.text where phoneNumber != "" {
+            disableComponents()
             
             // Start activity indicator animation
             startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
@@ -85,11 +88,13 @@ class BasicInfoViewController: UIViewController {
                     
                     dispatch_async(dispatch_get_main_queue(), { 
                         self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                        self.enableComponents()
                         self.showErrorAlert("Info updated", message: "Your info was updated")
                     })
                 } else {
                     dispatch_async(dispatch_get_main_queue(), {
                         self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                        self.enableComponents()
                         self.showErrorAlert("Error updating info", message: "There was an unknown error wit updating your info")
                     })
                 }
@@ -97,6 +102,25 @@ class BasicInfoViewController: UIViewController {
         } else {
             showErrorAlert("Certain fields needed", message: "A name and phone number must be used")
         }
+    }
+    
+    // Helper methods
+    func enableComponents() {
+        nameTextField.enabled = true
+        phoneNumberTextField.enabled = true
+        biographyTextView.editable = true
+        paymentInfoTextField.enabled = true
+        saveButton.enabled = true
+        backButton.enabled = true
+    }
+    
+    func disableComponents() {
+        nameTextField.enabled = false
+        phoneNumberTextField.enabled = false
+        biographyTextView.editable = false
+        paymentInfoTextField.enabled = false
+        saveButton.enabled = false
+        backButton.enabled = false
     }
 }
 
