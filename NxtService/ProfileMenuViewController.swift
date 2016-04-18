@@ -69,7 +69,11 @@ class ProfileMenuViewController: UIViewController {
                 }
             }
         default:
-            print("No segue")
+            if let locationViewController = segue.destinationViewController as? LocationViewController {
+                if let provider = sender as? Provider {
+                    locationViewController.provider = provider
+                }
+            }
         }
     }
     
@@ -121,6 +125,7 @@ class ProfileMenuViewController: UIViewController {
     }
     
     func editLocationLabelTapped() {
+        performSegueWithIdentifier(SegueIdentifiers.PROFILE_LOCATION, sender: provider)
     }
     
     func providerUpdated(notification: NSNotification) {
