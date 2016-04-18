@@ -45,6 +45,7 @@ class ProfileMenuViewController: UIViewController {
         // Use Notification Design Pattern (Post & Observe) to listen for when a provider is updated
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileMenuViewController.providerUpdated(_:)), name: NSNotificationCenterPostNotificationNames.BASIC_INFO_UPDATED, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileMenuViewController.accountUpdated(_:)), name: NSNotificationCenterPostNotificationNames.CREDENTIALS_UPDATED, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileMenuViewController.providerUpdated(_:)), name: NSNotificationCenterPostNotificationNames.SERVICES_UPDATED, object: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
