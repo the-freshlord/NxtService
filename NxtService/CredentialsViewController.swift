@@ -14,6 +14,7 @@ class CredentialsViewController: UIViewController {
     @IBOutlet weak var indicatorView: MaterialIndicatorView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var saveButton: MaterialButton!
+    @IBOutlet weak var backButton: UIButton!
     
     var account: Account!
     var credentialsChanged = false
@@ -44,9 +45,7 @@ class CredentialsViewController: UIViewController {
     
     @IBAction func saveButtonTapped(sender: MaterialButton) {
         if let email = emailTextField.text where email != "", let password = passwordTextField.text where password != "" {
-            emailTextField.enabled = false
-            passwordTextField.enabled = false
-            saveButton.enabled = false
+            diableComponents()
             
             // Start activity indicator animation
             startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
@@ -62,17 +61,13 @@ class CredentialsViewController: UIViewController {
                             
                             dispatch_async(dispatch_get_main_queue(), { 
                                 self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
-                                self.emailTextField.enabled = true
-                                self.passwordTextField.enabled = true
-                                self.saveButton.enabled = true
+                                self.enableComponents()
                                 self.showErrorAlert("Credentials updated", message: "Your login info was updated")
                             })
                         } else {
                             dispatch_async(dispatch_get_main_queue(), { 
                                 self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
-                                self.emailTextField.enabled = true
-                                self.passwordTextField.enabled = true
-                                self.saveButton.enabled = true
+                                self.enableComponents()
                                 self.showErrorAlert("Error updating credentials", message: "There was an unknown error when updaing your password")
                             })
                         }
@@ -80,9 +75,7 @@ class CredentialsViewController: UIViewController {
                 } else {
                     dispatch_async(dispatch_get_main_queue(), {
                         self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
-                        self.emailTextField.enabled = true
-                        self.passwordTextField.enabled = true
-                        self.saveButton.enabled = true
+                        self.enableComponents()
                         self.showErrorAlert("Error updating credentials", message: errorMessage)
                     })
                 }
@@ -94,6 +87,21 @@ class CredentialsViewController: UIViewController {
     
     @IBAction func backButtonTapped(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // Helper methods
+    func enableComponents() {
+        emailTextField.enabled = true
+        passwordTextField.enabled = true
+        saveButton.enabled = true
+        backButton.enabled = true
+    }
+    
+    func diableComponents() {
+        emailTextField.enabled = false
+        passwordTextField.enabled = false
+        saveButton.enabled = false
+        backButton.enabled = false
     }
 }
 
