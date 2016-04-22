@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import UIKit
 
 let URL_BASE = "https://nxtservice.firebaseio.com"
 
@@ -17,6 +18,7 @@ class DataService {
     private var _REF_BASE = Firebase(url: "\(URL_BASE)")
     private var _REF_ACCOUNT = Firebase(url: "\(URL_BASE)/account")
     private var _REF_PROVIDERINFO = Firebase(url: "\(URL_BASE)/providerinfo")
+    private var _REF_PROFILEIMAGE = Firebase(url: "\(URL_BASE)/profileimage")
     
     var REF_BASE: Firebase {
         return _REF_BASE
@@ -30,7 +32,43 @@ class DataService {
         return _REF_PROVIDERINFO
     }
     
+    var REF_PROFILEIMAGE: Firebase {
+        return _REF_PROFILEIMAGE
+    }
+    
     func createFireBaseUser(accountID: String, serviceProvider: Dictionary<String, String>) {
-        REF_ACCOUNT.childByAppendingPath(accountID).setValue(serviceProvider)
+        _REF_ACCOUNT.childByAppendingPath(accountID).setValue(serviceProvider)
+    }
+    
+    func deleteFireBaseUser(accountID: String) {
+    }
+    
+    func addProfileImage(providerID: String, image: UIImage) {
+        // Make an NSData PNG representation of the image
+        let imageData: NSData = UIImagePNGRepresentation(image)!
+        
+        // Use base64StringFromData, the image can be converted to a string
+        let base64String = imageData.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+        
+        let imageString = ["imagestring": base64String]
+        
+        _REF_PROFILEIMAGE.childByAppendingPath(providerID).setValue(imageString)
+    }
+    
+    func loadProfileImage(providerID: String, onCompletion: (decodedImage: UIImage) -> ()) {
+        self._REF_PROFILEIMAGE.observeEventType(.Value, withBlock: { snapshot in
+            
+            guard let profileImageDictionary = snapshot.value as? Dictionary<String, AnyObject> else { return }
+            guard let providerImageDictionary = profileImageDictionary[providerID] as? Dictionary<String, AnyObject> else { return }
+            guard let base64String = providerImageDictionary[FirebaseProviderKeys.IMAGEBASE64] as? String else { return }
+            
+            let decodedData = NSData(base64EncodedString: base64String, options:NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+            let decodedImage = UIImage(data: decodedData!)!
+            onCompletion(decodedImage: decodedImage)
+        })
+    }
+    
+    func deleteProfileImage(providerID: String) {
+        _REF_PROFILEIMAGE.childByAppendingPath(providerID).removeValue()
     }
 }

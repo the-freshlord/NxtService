@@ -950,7 +950,7 @@
                                     <action selector="logoutButtonTapped:" destination="yKf-z5-0A3" eventType="touchUpInside" id="jd3-Y1-rds"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ykA-9J-gYj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ykA-9J-gYj">
                                 <rect key="frame" x="200" y="28" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Urj-Qy-fua"/>
@@ -1072,9 +1072,9 @@
                                     <constraint firstItem="1id-rX-xt7" firstAttribute="centerY" secondItem="fXN-MG-CR6" secondAttribute="centerY" id="f3S-dH-dm4"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" alpha="0.77000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lde-Io-Yqz" userLabel="AddImageButton">
-                                <rect key="frame" x="200" y="28" width="200" height="200"/>
-                                <state key="normal" image="camera"/>
+                            <button opaque="NO" alpha="0.77000000000000002" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lde-Io-Yqz" userLabel="AddImageButton">
+                                <rect key="frame" x="268" y="96" width="64" height="64"/>
+                                <state key="normal" image="cross"/>
                                 <connections>
                                     <action selector="cameraImageTapped:" destination="yKf-z5-0A3" eventType="touchUpInside" id="WeM-pB-D65"/>
                                 </connections>
@@ -1130,6 +1130,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addImageButton" destination="Lde-Io-Yqz" id="36E-yG-NaR"/>
                         <outlet property="editBasicInfoLabel" destination="VJC-6k-1QZ" id="AC4-s0-vfU"/>
                         <outlet property="editCredentialsLabel" destination="Bpx-EX-s3Z" id="dvN-Nx-BcB"/>
                         <outlet property="editLocationLabel" destination="2QQ-5f-TQJ" id="w3d-bM-0HK"/>
@@ -1735,7 +1736,7 @@
     <resources>
         <image name="backbtn" width="64" height="64"/>
         <image name="biography" width="64" height="64"/>
-        <image name="camera" width="64" height="64"/>
+        <image name="cross" width="24" height="24"/>
         <image name="email" width="64" height="64"/>
         <image name="location" width="64" height="64"/>
         <image name="locked" width="64" height="64"/>

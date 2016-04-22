@@ -54,35 +54,36 @@ class LocationViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(sender: MaterialButton) {
-        if let streetAddress = streetAddressLabel.text where streetAddress != "" {
-            disableComponents()
-            
-            // Start activity indicator animation
-            startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
-            
-            // Update provider
-            provider.address = streetAddress
-            
-            provider.updateProvider({ (providerUpdated) in
-                if providerUpdated == true {
-                    self.locationChanged = true
-                    
-                    dispatch_async(dispatch_get_main_queue(), { 
-                        self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
-                        self.enableComponents()
-                        self.showErrorAlert("Location updated", message: "Your location has been updated")
-                    })
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), { 
-                        self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
-                        self.enableComponents()
-                        self.showErrorAlert("Error updating location", message: "There was an unknown error when updating your location")
-                    })
-                }
-            })
-        } else {
-            showErrorAlert("Error updating location", message: "There was an unknown error when updating your location")
+        guard let streetAddress = streetAddressLabel.text where streetAddress != "" else {
+           showErrorAlert("Error updating location", message: "There was an unknown error when updating your location")
+            return
         }
+        
+        disableComponents()
+        
+        // Start activity indicator animation
+        startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
+        
+        // Update provider
+        provider.address = streetAddress
+        
+        provider.updateProvider({ (providerUpdated) in
+            if providerUpdated == true {
+                self.locationChanged = true
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                    self.enableComponents()
+                    self.showErrorAlert("Location updated", message: "Your location has been updated")
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                    self.enableComponents()
+                    self.showErrorAlert("Error updating location", message: "There was an unknown error when updating your location")
+                })
+            }
+        })
     }
     
     // Helper methods

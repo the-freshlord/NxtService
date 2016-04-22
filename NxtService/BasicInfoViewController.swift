@@ -64,44 +64,45 @@ class BasicInfoViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(sender: MaterialButton) {
-        if let name = nameTextField.text where name != "", let phoneNumber = phoneNumberTextField.text where phoneNumber != "" {
-            disableComponents()
-            
-            // Start activity indicator animation
-            startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
-            
-            // Update the provider
-            provider.name = name
-            provider.phoneNumber = phoneNumber
-            
-            if biographyTextView.text == placeHolderText {
-                provider.biography = ""
-            } else {
-                provider.biography = biographyTextView.text
-            }
-            
-            provider.paymentInfo = paymentInfoTextField.text
-            
-            provider.updateProvider({ (providerUpdated) in
-                if providerUpdated == true {
-                    self.basicInfoChanged = true
-                    
-                    dispatch_async(dispatch_get_main_queue(), { 
-                        self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
-                        self.enableComponents()
-                        self.showErrorAlert("Info updated", message: "Your info was updated")
-                    })
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
-                        self.enableComponents()
-                        self.showErrorAlert("Error updating info", message: "There was an unknown error wit updating your info")
-                    })
-                }
-            })
-        } else {
+        guard let name = nameTextField.text where name != "", let phoneNumber = phoneNumberTextField.text where phoneNumber != "" else {
             showErrorAlert("Certain fields needed", message: "A name and phone number must be used")
+            return
         }
+        
+        disableComponents()
+        
+        // Start activity indicator animation
+        startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
+        
+        // Update the provider
+        provider.name = name
+        provider.phoneNumber = phoneNumber
+        
+        if biographyTextView.text == placeHolderText {
+            provider.biography = ""
+        } else {
+            provider.biography = biographyTextView.text
+        }
+        
+        provider.paymentInfo = paymentInfoTextField.text
+        
+        provider.updateProvider({ (providerUpdated) in
+            if providerUpdated == true {
+                self.basicInfoChanged = true
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                    self.enableComponents()
+                    self.showErrorAlert("Info updated", message: "Your info was updated")
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                    self.enableComponents()
+                    self.showErrorAlert("Error updating info", message: "There was an unknown error wit updating your info")
+                })
+            }
+        })
     }
     
     // Helper methods

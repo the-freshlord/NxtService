@@ -44,45 +44,46 @@ class CredentialsViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(sender: MaterialButton) {
-        if let email = emailTextField.text where email != "", let password = passwordTextField.text where password != "" {
-            diableComponents()
-            
-            // Start activity indicator animation
-            startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
-            
-            // Update the provider's email
-            account.updateEmail(email, completion: { (emailUpdated, errorMessage) in
-                if emailUpdated == true {
-                    
-                    // Update the password
-                    self.account.updatePassword(password, completion: { (passwordUpdated) in
-                        if passwordUpdated == true {
-                            self.credentialsChanged = true
-                            
-                            dispatch_async(dispatch_get_main_queue(), { 
-                                self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
-                                self.enableComponents()
-                                self.showErrorAlert("Credentials updated", message: "Your login info was updated")
-                            })
-                        } else {
-                            dispatch_async(dispatch_get_main_queue(), { 
-                                self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
-                                self.enableComponents()
-                                self.showErrorAlert("Error updating credentials", message: "There was an unknown error when updaing your password")
-                            })
-                        }
-                    })
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
-                        self.enableComponents()
-                        self.showErrorAlert("Error updating credentials", message: errorMessage)
-                    })
-                }
-            })
-        } else {
+        guard let email = emailTextField.text where email != "", let password = passwordTextField.text where password != "" else {
             showErrorAlert("All fields needed", message: "There must be an email and password associated with the account")
+            return
         }
+        
+        diableComponents()
+        
+        // Start activity indicator animation
+        startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
+        
+        // Update the provider's email
+        account.updateEmail(email, completion: { (emailUpdated, errorMessage) in
+            if emailUpdated == true {
+                
+                // Update the password
+                self.account.updatePassword(password, completion: { (passwordUpdated) in
+                    if passwordUpdated == true {
+                        self.credentialsChanged = true
+                        
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                            self.enableComponents()
+                            self.showErrorAlert("Credentials updated", message: "Your login info was updated")
+                        })
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                            self.enableComponents()
+                            self.showErrorAlert("Error updating credentials", message: "There was an unknown error when updaing your password")
+                        })
+                    }
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                    self.enableComponents()
+                    self.showErrorAlert("Error updating credentials", message: errorMessage)
+                })
+            }
+        })
     }
     
     @IBAction func backButtonTapped(sender: UIButton) {

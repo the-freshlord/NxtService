@@ -23,7 +23,8 @@ struct FirebaseProviderKeys {
     static let SUBSERVICES = "subservices"
     static let BIOGRAPHY = "biography"
     static let PAYMENTINFO = "paymentinfo"
-    static let PROFILEPICURL = "profilepicurl"
+    static let PROFILEIMAGE = "profileimage"
+    static let IMAGEBASE64 = "imagestring"
 }
 
 // Firebase error codes

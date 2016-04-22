@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import UIKit
 
 public func parseAddress(placeMark: CLPlacemark) -> String {
     var streetAddress = ""
@@ -54,4 +55,19 @@ public func parseAddress(placeMark: CLPlacemark) -> String {
     
     print(streetAddress)
     return streetAddress
+}
+
+public func fixImageOrientation(image: UIImage) -> UIImage {
+    if image.imageOrientation == UIImageOrientation.Up {
+        return image
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
+    let rect = CGRect(x: 0.0, y: 0.0, width: image.size.width, height: image.size.height)
+    image.drawInRect(rect)
+    
+    let normalImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    return normalImage
 }

@@ -77,47 +77,47 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func getStartedButtonTapped(sender: MaterialButton) {
-        if let phoneNumber = phoneNumberTextField.text where phoneNumber != "", let name = nameTextField.text where name != "", let mainService = mainServiceTextField.text where mainService != "", let specialities = specialitiesTextField.text where specialities != "" {
-            
-            if streetAddress != "" {
-                
-                // Start activity indicator animation
-                startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
-                
-                // Create the account
-                account.createAccount({ (accountCreated) in
-                    if accountCreated.boolValue == true {
-                        self.provider = Provider(providerID: self.account.accountID!)
-                        self.provider.address = self.streetAddress
-                        self.provider.phoneNumber = phoneNumber
-                        self.provider.name = name
-                        self.provider.mainService = mainService.uppercaseString
-                        self.provider.specialities = specialities.uppercaseString
-                        
-                        self.provider.createProvider({ (providerCreated) in
-                            if providerCreated.boolValue == true {
-                                self.accountCreated = true
-                                self.leaveSignUpStoryBoard()
-                            } else {
-                                dispatch_async(dispatch_get_main_queue(), {
-                                    self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
-                                    self.showErrorAlert("Error creating account", message: "There was an unknown error when creating the account")
-                                })
-                            }
-                        })
-                    } else {
-                        dispatch_async(dispatch_get_main_queue(), {
-                            self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
-                            self.showErrorAlert("Error creating account", message: "There was an unknown error when creating the account")
-                        })
-                    }
-                })
-            } else {
-               showErrorAlert("Street address required", message: "An address of your service is need for clients looking for your service")
-            }
-            
-        } else {
+        guard let phoneNumber = phoneNumberTextField.text where phoneNumber != "", let name = nameTextField.text where name != "", let mainService = mainServiceTextField.text where mainService != "",
+            let specialities = specialitiesTextField.text where specialities != "" else {
             showErrorAlert("All fields required", message: "All fields must be entered in order to sign up")
+            return
+        }
+        
+        if streetAddress != "" {
+            
+            // Start activity indicator animation
+            startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
+            
+            // Create the account
+            account.createAccount({ (accountCreated) in
+                if accountCreated.boolValue == true {
+                    self.provider = Provider(providerID: self.account.accountID!)
+                    self.provider.address = self.streetAddress
+                    self.provider.phoneNumber = phoneNumber
+                    self.provider.name = name
+                    self.provider.mainService = mainService.uppercaseString
+                    self.provider.specialities = specialities.uppercaseString
+                    
+                    self.provider.createProvider({ (providerCreated) in
+                        if providerCreated.boolValue == true {
+                            self.accountCreated = true
+                            self.leaveSignUpStoryBoard()
+                        } else {
+                            dispatch_async(dispatch_get_main_queue(), {
+                                self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                                self.showErrorAlert("Error creating account", message: "There was an unknown error when creating the account")
+                            })
+                        }
+                    })
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                        self.showErrorAlert("Error creating account", message: "There was an unknown error when creating the account")
+                    })
+                }
+            })
+        } else {
+            showErrorAlert("Street address required", message: "An address of your service is need for clients looking for your service")
         }
     }
     

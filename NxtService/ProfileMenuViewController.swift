@@ -14,6 +14,7 @@ class ProfileMenuViewController: UIViewController {
     @IBOutlet weak var editCredentialsLabel: UILabel!
     @IBOutlet weak var editServicesOfferedLabel: UILabel!
     @IBOutlet weak var editLocationLabel: UILabel!
+    @IBOutlet weak var addImageButton: UIButton!
     
     let editInfoTapGesture = UITapGestureRecognizer()
     let editCredentialsTapGesture = UITapGestureRecognizer()
@@ -22,8 +23,8 @@ class ProfileMenuViewController: UIViewController {
     
     var account: Account!
     var provider: Provider!
+    var profileImage: UIImage!
     var imagePickerController: UIImagePickerController!
-    var imageSelect = false
     
     // MARK: - Navigation
     override func viewDidLoad() {
@@ -39,8 +40,14 @@ class ProfileMenuViewController: UIViewController {
         
         setupTapGestureRecognizers()
         
-        provider = Provider(providerID: account.accountID!)
-        provider.loadProvider()
+        if provider.profileImage == true {
+            profileImageView.image = profileImage
+            //addImageButton.imageView?.image = UIImage(named: "cross")
+            addImageButton.setImage(UIImage(named: "cross"), forState: UIControlState.Normal)
+        } else {
+            //addImageButton.imageView?.image = UIImage(named: "camera")
+            addImageButton.setImage(UIImage(named: "camera"), forState: UIControlState.Normal)
+        }
         
         // Use Notification Design Pattern (Post & Observe) to listen for when a provider is updated
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileMenuViewController.providerUpdated(_:)), name: NSNotificationCenterPostNotificationNames.BASIC_INFO_UPDATED, object: nil)
@@ -146,8 +153,15 @@ class ProfileMenuViewController: UIViewController {
 extension ProfileMenuViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         imagePickerController.dismissViewControllerAnimated(true, completion: nil)
+        addImageButton.imageView?.image = UIImage(contentsOfFile: "cross.png")
         profileImageView.image = image
-        imageSelect = true
+        
+        let normalImage = fixImageOrientation(image)
+        DataService.dataService.addProfileImage(provider.providerID!, image: normalImage)
+        
+        provider.profileImage = true
+        provider.updateProvider { (providerUpdated) in
+        }
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

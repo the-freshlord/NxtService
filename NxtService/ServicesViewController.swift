@@ -48,36 +48,37 @@ class ServicesViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(sender: MaterialButton) {
-        if let mainService = mainServiceTextField.text where mainService != "", let specialities = specialitiesTextField.text where specialities != "" {
-            disableComponents()
-            
-            // Start activity indicator animation
-            startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
-            
-            // Update the provider
-            provider.mainService = mainService
-            provider.specialities = specialities
-            
-            provider.updateProvider({ (providerUpdated) in
-                if providerUpdated == true {
-                    self.servicesChanged = true
-                    
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
-                        self.enableComponents()
-                        self.showErrorAlert("Services updated", message: "Your offered services have been updated")
-                    })
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
-                        self.enableComponents()
-                        self.showErrorAlert("Error updating services", message: "There was an unknown error when updating your offered services")
-                    })
-                }
-            })
-        } else {
+        guard let mainService = mainServiceTextField.text where mainService != "", let specialities = specialitiesTextField.text where specialities != "" else {
             showErrorAlert("Fields needed", message: "All fields must be completed")
+            return
         }
+        
+        disableComponents()
+        
+        // Start activity indicator animation
+        startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
+        
+        // Update the provider
+        provider.mainService = mainService
+        provider.specialities = specialities
+        
+        provider.updateProvider({ (providerUpdated) in
+            if providerUpdated == true {
+                self.servicesChanged = true
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                    self.enableComponents()
+                    self.showErrorAlert("Services updated", message: "Your offered services have been updated")
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                    self.enableComponents()
+                    self.showErrorAlert("Error updating services", message: "There was an unknown error when updating your offered services")
+                })
+            }
+        })
     }
     
     // Helper methods
