@@ -114,9 +114,11 @@ extension LocationViewController: GooglePlacesAutocompleteDelegate {
     }
     
     func placeViewClosed() {
-        if let streetAddress = googlePlacesAutoCompleteViewController.gpaViewController.searchBar.text where streetAddress != "" {
-            streetAddressLabel.text = streetAddress
+        guard let streetAddress = googlePlacesAutoCompleteViewController.gpaViewController.searchBar.text where streetAddress != "" else {
+            return
         }
+        
+        streetAddressLabel.text = streetAddress
         
         googlePlacesAutoCompleteViewController.gpaViewController.searchBar.text = ""
         googlePlacesAutoCompleteViewController.gpaViewController.searchBar(googlePlacesAutoCompleteViewController.gpaViewController.searchBar, textDidChange: "")

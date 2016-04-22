@@ -144,33 +144,31 @@ class SignUpViewController: UIViewController {
 // MARK: - CLLocationManagerDelegate
 extension SignUpViewController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = manager.location {
-            
-            // Use reverse geocode to get the physical string address based on the latitude and longitude coordinates
-            CLGeocoder().reverseGeocodeLocation(location) { (placeMarks: [CLPlacemark]?, error: NSError?) in
-                if error != nil {
+        guard let location = manager.location else { return }
+        
+        // Use reverse geocode to get the physical string address based on the latitude and longitude coordinates
+        CLGeocoder().reverseGeocodeLocation(location) { (placeMarks: [CLPlacemark]?, error: NSError?) in
+            if error != nil {
+                
+                // Go back to the main thread to display the alert view controller
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.showErrorAlert("Error getting location", message: "Tap on your location to manually enter in your address")
+                })
+            } else {
+                if placeMarks?.count > 0 {
+                    guard let placeMark = (placeMarks?[0]) else { return }
                     
-                    // Go back to the main thread to display the alert view controller
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.showErrorAlert("Error getting location", message: "Tap on your location to manually enter in your address")
-                    })
-                } else {
-                    if placeMarks?.count > 0 {
-                        if let placeMark = (placeMarks?[0]) {
+                    self.streetAddress = parseAddress(placeMark)
+                    manager.stopUpdatingLocation()
+                    self.locationManager.stopUpdatingLocation()
+                    
+                    // Check if the street address was parsed correctly
+                    if self.streetAddress.isEmpty || self.streetAddress == "" {
                         
-                            self.streetAddress = parseAddress(placeMark)
-                            manager.stopUpdatingLocation()
-                            self.locationManager.stopUpdatingLocation()
-                            
-                            // Check if the street address was parsed correctly
-                            if self.streetAddress.isEmpty || self.streetAddress == "" {
-                                
-                                // Go back to the main thread to display the alert view controller
-                                dispatch_async(dispatch_get_main_queue(), { 
-                                    self.showErrorAlert("Error getting location", message: "Tap on your location to manually enter in your address")
-                                })
-                            }
-                        }
+                        // Go back to the main thread to display the alert view controller
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.showErrorAlert("Error getting location", message: "Tap on your location to manually enter in your address")
+                        })
                     }
                 }
             }
