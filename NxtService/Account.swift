@@ -103,7 +103,15 @@ class Account {
         }
     }
     
-    func deleteAccount() -> Int {
-        return 0
+    func deleteAccount(completion: (accountDeleted: Bool) -> ()) {
+        // Delete the user's account from Firebase
+        DataService.dataService.REF_BASE.removeUser(_email, password: _password) { (error: NSError!) in
+            if error != nil {
+                completion(accountDeleted: false)
+            } else {
+                DataService.dataService.deleteFireBaseUser(self._accountID!)
+                completion(accountDeleted: true)
+            }
+        }
     }
 }

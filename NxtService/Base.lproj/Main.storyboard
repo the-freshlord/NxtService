@@ -1079,6 +1079,39 @@
                                     <action selector="cameraImageTapped:" destination="yKf-z5-0A3" eventType="touchUpInside" id="WeM-pB-D65"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5s-kz-gBn" userLabel="ActivityIndicatorView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ye2-p8-OSx">
+                                        <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="3s5-9i-E5I"/>
+                                            <constraint firstAttribute="width" constant="37" id="cXd-U0-J8J"/>
+                                            <constraint firstAttribute="height" constant="37" id="lTj-ca-eak"/>
+                                            <constraint firstAttribute="width" constant="37" id="mWe-XV-kFp"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="3s5-9i-E5I"/>
+                                                <exclude reference="cXd-U0-J8J"/>
+                                            </mask>
+                                        </variation>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.24313725489999999" green="0.70588235290000001" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Ye2-p8-OSx" firstAttribute="centerX" secondItem="S5s-kz-gBn" secondAttribute="centerX" id="9fe-9d-Lkr"/>
+                                    <constraint firstItem="Ye2-p8-OSx" firstAttribute="centerY" secondItem="S5s-kz-gBn" secondAttribute="centerY" id="BDf-hm-sJX"/>
+                                    <constraint firstItem="Ye2-p8-OSx" firstAttribute="centerX" secondItem="S5s-kz-gBn" secondAttribute="centerX" id="Yr0-aC-5rK"/>
+                                    <constraint firstItem="Ye2-p8-OSx" firstAttribute="centerY" secondItem="S5s-kz-gBn" secondAttribute="centerY" id="gpn-PH-54H"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9fe-9d-Lkr"/>
+                                        <exclude reference="BDf-hm-sJX"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.24313725490196078" green="0.70588235294117641" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1087,6 +1120,7 @@
                             <constraint firstItem="nrU-di-5dv" firstAttribute="top" secondItem="fXN-MG-CR6" secondAttribute="bottom" id="1GD-Uv-Ds7"/>
                             <constraint firstItem="VJC-6k-1QZ" firstAttribute="leading" secondItem="frU-ZC-ICc" secondAttribute="trailing" constant="98" id="2tx-ec-YXk"/>
                             <constraint firstItem="2QQ-5f-TQJ" firstAttribute="leading" secondItem="GdW-1H-AD3" secondAttribute="trailing" constant="98" id="2vM-n9-kWN"/>
+                            <constraint firstAttribute="trailing" secondItem="S5s-kz-gBn" secondAttribute="trailing" id="66q-8O-kEX"/>
                             <constraint firstItem="c0v-f5-0xm" firstAttribute="leading" secondItem="Mra-Cg-sy4" secondAttribute="leadingMargin" id="6NL-d7-mJS"/>
                             <constraint firstItem="1US-Er-vgh" firstAttribute="centerX" secondItem="Mra-Cg-sy4" secondAttribute="centerX" id="8au-HS-NsA"/>
                             <constraint firstItem="1US-Er-vgh" firstAttribute="top" secondItem="c0v-f5-0xm" secondAttribute="bottom" constant="8" id="BoQ-Sc-3f2"/>
@@ -1108,7 +1142,9 @@
                             <constraint firstItem="Lde-Io-Yqz" firstAttribute="height" secondItem="ykA-9J-gYj" secondAttribute="height" id="QZx-DD-PRK"/>
                             <constraint firstItem="2QQ-5f-TQJ" firstAttribute="trailing" secondItem="Mra-Cg-sy4" secondAttribute="trailingMargin" id="QjB-rJ-rzq"/>
                             <constraint firstItem="AMU-wD-DVA" firstAttribute="top" secondItem="1US-Er-vgh" secondAttribute="bottom" constant="8" id="Rjs-ZK-ulg"/>
+                            <constraint firstItem="S5s-kz-gBn" firstAttribute="leading" secondItem="Mra-Cg-sy4" secondAttribute="leading" id="Slv-2F-3Yf"/>
                             <constraint firstItem="2QQ-5f-TQJ" firstAttribute="top" secondItem="2Wp-PD-N1s" secondAttribute="bottom" constant="17" id="UpW-jD-08l"/>
+                            <constraint firstItem="nrU-di-5dv" firstAttribute="top" secondItem="S5s-kz-gBn" secondAttribute="bottom" id="VYo-mW-JsG"/>
                             <constraint firstItem="EfA-2o-aaq" firstAttribute="top" secondItem="frU-ZC-ICc" secondAttribute="bottom" constant="8" id="Yq4-Ik-GN6"/>
                             <constraint firstItem="frU-ZC-ICc" firstAttribute="leading" secondItem="Mra-Cg-sy4" secondAttribute="leadingMargin" id="Zf1-jN-usx"/>
                             <constraint firstItem="fXN-MG-CR6" firstAttribute="centerX" secondItem="Mra-Cg-sy4" secondAttribute="centerX" id="bsj-mE-84Z"/>
@@ -1118,6 +1154,7 @@
                             <constraint firstItem="Lde-Io-Yqz" firstAttribute="width" secondItem="ykA-9J-gYj" secondAttribute="width" id="fzU-pt-bns"/>
                             <constraint firstItem="kjP-4H-Me6" firstAttribute="trailing" secondItem="Mra-Cg-sy4" secondAttribute="trailingMargin" id="iZf-aA-T2D"/>
                             <constraint firstItem="Bpx-EX-s3Z" firstAttribute="trailing" secondItem="Mra-Cg-sy4" secondAttribute="trailingMargin" id="ka4-L0-L8y"/>
+                            <constraint firstItem="S5s-kz-gBn" firstAttribute="top" secondItem="Mra-Cg-sy4" secondAttribute="top" id="n8y-eZ-svb"/>
                             <constraint firstItem="Bpx-EX-s3Z" firstAttribute="top" secondItem="EfA-2o-aaq" secondAttribute="bottom" constant="17" id="nd1-kJ-8vS"/>
                             <constraint firstItem="VJC-6k-1QZ" firstAttribute="top" secondItem="ykA-9J-gYj" secondAttribute="bottom" constant="23" id="pp1-JP-hwf"/>
                             <constraint firstItem="GdW-1H-AD3" firstAttribute="top" secondItem="2Wp-PD-N1s" secondAttribute="bottom" constant="8" id="qZT-yM-Iiq"/>
@@ -1130,11 +1167,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="Ye2-p8-OSx" id="wtt-Oh-ce9"/>
                         <outlet property="addImageButton" destination="Lde-Io-Yqz" id="36E-yG-NaR"/>
                         <outlet property="editBasicInfoLabel" destination="VJC-6k-1QZ" id="AC4-s0-vfU"/>
                         <outlet property="editCredentialsLabel" destination="Bpx-EX-s3Z" id="dvN-Nx-BcB"/>
                         <outlet property="editLocationLabel" destination="2QQ-5f-TQJ" id="w3d-bM-0HK"/>
                         <outlet property="editServicesOfferedLabel" destination="kjP-4H-Me6" id="Hy8-h9-igT"/>
+                        <outlet property="indicatorView" destination="S5s-kz-gBn" id="IYO-Ch-asJ"/>
                         <outlet property="profileImageView" destination="ykA-9J-gYj" id="VDi-MG-Oxg"/>
                         <segue destination="oga-hv-56B" kind="presentation" identifier="gotobasicinfo" modalTransitionStyle="flipHorizontal" id="bgc-Nf-S5f"/>
                         <segue destination="Z3e-CF-2J4" kind="presentation" identifier="gotocredentials" modalTransitionStyle="flipHorizontal" id="KAc-v1-Wd0"/>

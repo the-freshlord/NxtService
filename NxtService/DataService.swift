@@ -41,6 +41,7 @@ class DataService {
     }
     
     func deleteFireBaseUser(accountID: String) {
+        _REF_ACCOUNT.childByAppendingPath(accountID).removeValue()
     }
     
     func addProfileImage(providerID: String, image: UIImage) {
@@ -68,7 +69,8 @@ class DataService {
         })
     }
     
-    func deleteProfileImage(providerID: String) {
+    func deleteProfileImage(providerID: String, onCompletion: (imageDeleted: Bool) -> ()) {
         _REF_PROFILEIMAGE.childByAppendingPath(providerID).removeValue()
+        onCompletion(imageDeleted: true)
     }
 }

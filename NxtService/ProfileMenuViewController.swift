@@ -15,6 +15,8 @@ class ProfileMenuViewController: UIViewController {
     @IBOutlet weak var editServicesOfferedLabel: UILabel!
     @IBOutlet weak var editLocationLabel: UILabel!
     @IBOutlet weak var addImageButton: UIButton!
+    @IBOutlet weak var indicatorView: UIView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     let editInfoTapGesture = UITapGestureRecognizer()
     let editCredentialsTapGesture = UITapGestureRecognizer()
@@ -25,6 +27,7 @@ class ProfileMenuViewController: UIViewController {
     var provider: Provider!
     var profileImage: UIImage!
     var imagePickerController: UIImagePickerController!
+    var userAccountDeleted = false
     
     // MARK: - Navigation
     override func viewDidLoad() {
@@ -54,6 +57,14 @@ class ProfileMenuViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileMenuViewController.accountUpdated(_:)), name: NSNotificationCenterPostNotificationNames.CREDENTIALS_UPDATED, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileMenuViewController.providerUpdated(_:)), name: NSNotificationCenterPostNotificationNames.SERVICES_UPDATED, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ProfileMenuViewController.providerUpdated(_:)), name: NSNotificationCenterPostNotificationNames.LOCATION_UPDATED, object: nil)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if userAccountDeleted {
+            stopSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -87,10 +98,21 @@ class ProfileMenuViewController: UIViewController {
     }
     
     @IBAction func logoutButtonTapped(sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
+        leaveProfileMenuStoryBoard()
     }
     
     @IBAction func deleteButtonTapped(sender: MaterialButton) {
+        let alert = UIAlertController(title: "Delete account", message: "Are you sure you want to delete your account?", preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .Destructive) { (action: UIAlertAction) in
+            self.deleteAccount()
+        }
+        alert.addAction(okAction)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     // MARK: - Helper methods
@@ -140,6 +162,49 @@ class ProfileMenuViewController: UIViewController {
     func accountUpdated(notification: NSNotification) {
         guard let userInfo = notification.userInfo else { return }
         account = userInfo[NSNotificationCenterUserInfoDictKeys.UPDATED_ACCOUNT] as! Account
+    }
+    
+    func deleteAccount() {
+        startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
+        
+        // First delete the user's account
+        account.deleteAccount { (accountDeleted) in
+            if accountDeleted == true {
+                
+                // Delete the user's provider info
+                self.provider.deleteProvider({ (providerDeleted) in
+                    if providerDeleted == true {
+                        
+                        // Delete the user's profile image
+                        DataService.dataService.deleteProfileImage(self.provider.providerID!, onCompletion: { (imageDeleted) in
+                            if imageDeleted == true {
+                                self.userAccountDeleted = true
+                                self.leaveProfileMenuStoryBoard()
+                            } else {
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                                    self.showErrorAlert("Error deleting account", message: "There was an unknown error deleting your account")
+                                })
+                            }
+                        })
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                            self.showErrorAlert("Error deleting account", message: "There was an unknown error deleting your account")
+                        })
+                    }
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), { 
+                    self.stopSpinning(self.indicatorView, activityIndicatorView: self.activityIndicatorView)
+                    self.showErrorAlert("Error deleting account", message: "There was an unknown error deleting your account")
+                })
+            }
+        }
+    }
+    
+    func leaveProfileMenuStoryBoard() {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

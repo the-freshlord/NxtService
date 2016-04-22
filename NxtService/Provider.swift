@@ -171,4 +171,9 @@ class Provider {
         DataService.dataService.REF_PROVIDERINFO.childByAppendingPath(_providerID).setValue(providerDictionary)
         completion(providerUpdated: true)
     }
+    
+    func deleteProvider(completion: (providerDeleted: Bool) -> ()) {
+        DataService.dataService.REF_PROVIDERINFO.childByAppendingPath(_providerID).removeValue()
+        completion(providerDeleted: true)
+    }
 }
