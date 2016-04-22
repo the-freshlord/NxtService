@@ -20,11 +20,9 @@ class Provider {
     private var _profileImage: Bool!
     
     var providerID: String? {
-        if let tempProviderID = _providerID {
-            return tempProviderID
-        } else {
-            return nil
-        }
+        guard let tempProviderID = _providerID else { return nil }
+        
+        return tempProviderID
     }
     
     var name: String {
@@ -59,11 +57,9 @@ class Provider {
     
     var biography: String? {
         get {
-            if let tempBiography = _biography {
-                return tempBiography
-            } else {
-                return nil
-            }
+            guard let tempBiography = _biography else { return nil }
+            
+            return tempBiography
         }
         
         set {
@@ -93,11 +89,9 @@ class Provider {
     
     var paymentInfo: String? {
         get {
-            if let tempPaymentInfo = _paymentInfo {
-                return tempPaymentInfo
-            } else {
-                return nil
-            }
+            guard let tempPaymentInfo = _paymentInfo else { return nil }
+            
+            return tempPaymentInfo
         }
         
         set {

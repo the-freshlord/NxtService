@@ -21,17 +21,13 @@ extension UIViewController {
             if thePresentedViewController != nil {
                 
                 // Check if the presented controller is an alert view controller
-                if let presentedAlertViewController: UIAlertController = thePresentedViewController as? UIAlertController {
-                    
-                    // Do nothing since the alert controller is already on screen
-                    print(presentedAlertViewController)
-                } else {
-                    // Another view controller presented, so use thePresentedViewController
-                    let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-                    let action = UIAlertAction(title: "Ok", style: .Default, handler: nil)
-                    alert.addAction(action)
-                    thePresentedViewController?.presentViewController(alert, animated: true, completion: nil)
-                }
+                guard let _: UIAlertController = thePresentedViewController as? UIAlertController else { return }
+                
+                // Another view controller presented, so use thePresentedViewController
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+                let action = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+                alert.addAction(action)
+                thePresentedViewController?.presentViewController(alert, animated: true, completion: nil)
             }
         }
     }

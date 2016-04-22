@@ -59,29 +59,25 @@ class ProfileMenuViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier {
         case SegueIdentifiers.PROFILE_BASIC_INFO?:
-            if let basicInfoViewController = segue.destinationViewController as? BasicInfoViewController {
-                if let provider = sender as? Provider {
-                    basicInfoViewController.provider = provider
-                }
-            }
+            guard let basicInfoViewController = segue.destinationViewController as? BasicInfoViewController else { return }
+            guard let provider = sender as? Provider else { return }
+            
+            basicInfoViewController.provider = provider
         case SegueIdentifiers.PROFILE_CREDENTIALS?:
-            if let credentialsViewController = segue.destinationViewController as? CredentialsViewController {
-                if let account = sender as? Account {
-                    credentialsViewController.account = account
-                }
-            }
+            guard let credentialsViewController = segue.destinationViewController as? CredentialsViewController else { return }
+            guard let account = sender as? Account else { return }
+            
+            credentialsViewController.account = account
         case SegueIdentifiers.PROFILE_SERVICES?:
-            if let servicesViewController = segue.destinationViewController as? ServicesViewController {
-                if let provider = sender as? Provider {
-                    servicesViewController.provider = provider
-                }
-            }
+            guard let servicesViewController = segue.destinationViewController as? ServicesViewController else { return }
+            guard let provider = sender as? Provider else { return }
+            
+            servicesViewController.provider = provider
         default:
-            if let locationViewController = segue.destinationViewController as? LocationViewController {
-                if let provider = sender as? Provider {
-                    locationViewController.provider = provider
-                }
-            }
+            guard let locationViewController = segue.destinationViewController as? LocationViewController else { return }
+            guard let provider = sender as? Provider else { return }
+            
+            locationViewController.provider = provider
         }
     }
     
@@ -137,15 +133,13 @@ class ProfileMenuViewController: UIViewController {
     }
     
     func providerUpdated(notification: NSNotification) {
-        if let userInfo = notification.userInfo {
-            provider = userInfo[NSNotificationCenterUserInfoDictKeys.UPDATED_PROVIDER] as! Provider
-        }
+        guard let userInfo = notification.userInfo else { return }
+        provider = userInfo[NSNotificationCenterUserInfoDictKeys.UPDATED_PROVIDER] as! Provider
     }
     
     func accountUpdated(notification: NSNotification) {
-        if let userInfo = notification.userInfo {
-            account = userInfo[NSNotificationCenterUserInfoDictKeys.UPDATED_ACCOUNT] as! Account
-        }
+        guard let userInfo = notification.userInfo else { return }
+        account = userInfo[NSNotificationCenterUserInfoDictKeys.UPDATED_ACCOUNT] as! Account
     }
 }
 

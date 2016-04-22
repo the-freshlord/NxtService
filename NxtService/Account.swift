@@ -34,27 +34,25 @@ class Account {
     }
     
     var accountID: String? {
-        if let tempAccountID = _accountID {
-            return tempAccountID
-        } else {
-            return nil
-        }
+        guard let tempAccountID = _accountID else { return nil }
+        
+        return tempAccountID
     }
     
     init(email: String, password: String, accountID: String?) {
         _email = email
         _password = password
         
-        if let tempAccountID = accountID {
-            _accountID = tempAccountID
+        guard let tempAccountID = accountID as String? else {
+            return
         }
+        _accountID = tempAccountID
     }
     
     func createAccount(completion: (accountCreated: Bool) -> ()) {
         // Create the user's Firebase account
         DataService.dataService.REF_BASE.createUser(_email, password: _password) { (error: NSError!, result: [NSObject : AnyObject]!) in
             if error != nil {
-                print(error.debugDescription)
                 completion(accountCreated: false)
             } else {
                 
@@ -74,8 +72,6 @@ class Account {
         // Update the user's email for using Firebase
         DataService.dataService.REF_BASE.changeEmailForUser(_email, password: _password, toNewEmail: newEmail) { (error: NSError!) in
             if error != nil {
-                print(error.debugDescription)
-                
                 var errorMessage = ""
                 
                 switch error.code {
@@ -99,7 +95,6 @@ class Account {
         // Update the user's password for using Firebase
         DataService.dataService.REF_BASE.changePasswordForUser(_email, fromOld: _password, toNew: newPassword) { (error: NSError!) in
             if error != nil {
-                print(error.debugDescription)
                 completion(passwordUpdated: false)
             } else {
                 self._password = newPassword

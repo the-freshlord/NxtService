@@ -13,47 +13,28 @@ import UIKit
 public func parseAddress(placeMark: CLPlacemark) -> String {
     var streetAddress = ""
     
-    if let tempStreetAddress = placeMark.addressDictionary?[CLPlacemarkAddressDictionaryKeys.STREET] as? String {
-        print(tempStreetAddress)
-        streetAddress = tempStreetAddress
-    } else {
-        streetAddress = ""
+    guard let tempStreetAddress = placeMark.addressDictionary?[CLPlacemarkAddressDictionaryKeys.STREET] as? String else {
         return streetAddress
     }
     
-    if let tempCity = placeMark.addressDictionary?[CLPlacemarkAddressDictionaryKeys.CITY] as? String {
-        print(tempCity)
-        streetAddress = streetAddress + ", \(tempCity)"
-    } else{
-        streetAddress = ""
+    guard let tempCity = placeMark.addressDictionary?[CLPlacemarkAddressDictionaryKeys.CITY] as? String else {
         return streetAddress
     }
     
-    if let tempState = placeMark.addressDictionary?[CLPlacemarkAddressDictionaryKeys.STATE] as? String {
-        print(tempState)
-        streetAddress = streetAddress + ", \(tempState)"
-    } else {
-        streetAddress = ""
+    guard let tempState = placeMark.addressDictionary?[CLPlacemarkAddressDictionaryKeys.STATE] as? String else {
         return streetAddress
     }
     
-    if let tempZip = placeMark.addressDictionary?[CLPlacemarkAddressDictionaryKeys.ZIP] as? String {
-        print(tempZip)
-        streetAddress = streetAddress + ", \(tempZip)"
-    } else {
-        streetAddress = ""
+    guard let tempZip = placeMark.addressDictionary?[CLPlacemarkAddressDictionaryKeys.ZIP] as? String else {
         return streetAddress
     }
     
-    if let tempCountry = placeMark.addressDictionary?[CLPlacemarkAddressDictionaryKeys.COUNTRY] as? String {
-        print(tempCountry)
-        streetAddress = streetAddress + ", \(tempCountry)"
-    } else {
-        streetAddress = ""
+    guard let tempCountry = placeMark.addressDictionary?[CLPlacemarkAddressDictionaryKeys.COUNTRY] as? String else {
         return streetAddress
     }
     
-    print(streetAddress)
+    streetAddress = "\(tempStreetAddress), \(tempCity), \(tempState), \(tempZip), \(tempCountry)"
+    
     return streetAddress
 }
 

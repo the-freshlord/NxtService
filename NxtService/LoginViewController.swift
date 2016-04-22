@@ -72,7 +72,6 @@ class LoginViewController: UIViewController {
         DataService.dataService.REF_BASE.authUser(email, password: password, withCompletionBlock: { NSError, FAuthData in
             // Check if login successful
             if NSError != nil {
-                print(NSError.debugDescription)
                 
                 // Check error code
                 switch NSError.code {

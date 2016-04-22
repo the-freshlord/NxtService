@@ -149,7 +149,6 @@ extension SignUpViewController: CLLocationManagerDelegate {
             // Use reverse geocode to get the physical string address based on the latitude and longitude coordinates
             CLGeocoder().reverseGeocodeLocation(location) { (placeMarks: [CLPlacemark]?, error: NSError?) in
                 if error != nil {
-                    print("Error in reverse goecoder: \(error?.localizedDescription)")
                     
                     // Go back to the main thread to display the alert view controller
                     dispatch_async(dispatch_get_main_queue(), {
@@ -158,8 +157,7 @@ extension SignUpViewController: CLLocationManagerDelegate {
                 } else {
                     if placeMarks?.count > 0 {
                         if let placeMark = (placeMarks?[0]) {
-                            print(placeMark.addressDictionary)
-                            
+                        
                             self.streetAddress = parseAddress(placeMark)
                             manager.stopUpdatingLocation()
                             self.locationManager.stopUpdatingLocation()
@@ -180,7 +178,6 @@ extension SignUpViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("Error getting location: \(error.localizedDescription)")
         showErrorAlert("Error getting location", message: "Tap on your location to manually enter in your address")
     }
 }
@@ -197,7 +194,6 @@ extension SignUpViewController: UITextFieldDelegate {
 extension SignUpViewController: GooglePlacesAutocompleteDelegate {
     func placeSelected(place: Place) {
         place.getDetails { (PlaceDetails) in
-            print(PlaceDetails.formattedAddress)
             self.googlePlacesAutoCompleteViewController.gpaViewController.searchBar.text = PlaceDetails.formattedAddress
             self.streetAddress = PlaceDetails.formattedAddress
         }
@@ -206,9 +202,7 @@ extension SignUpViewController: GooglePlacesAutocompleteDelegate {
     func placeViewClosed() {
         googlePlacesAutoCompleteViewController.gpaViewController.searchBar.text = ""
         googlePlacesAutoCompleteViewController.gpaViewController.searchBar(googlePlacesAutoCompleteViewController.gpaViewController.searchBar, textDidChange: "")
-        
-        print("Exiting Autocomplete")
-        print("Last Address: \(streetAddress)")
+
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
