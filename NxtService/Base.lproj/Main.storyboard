@@ -149,6 +149,9 @@
                                     <constraint firstAttribute="width" constant="32" id="u3I-QV-mM5"/>
                                 </constraints>
                                 <state key="normal" image="backbtn"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="OHn-dA-1FC" eventType="touchUpInside" id="fmL-E7-nDF"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NxtService" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUR-PA-Buo">
                                 <rect key="frame" x="163" y="88" width="275" height="54"/>
@@ -267,6 +270,9 @@
                                         <state key="normal" title="Search NxtService">
                                             <color key="titleColor" red="0.87058823529411766" green="0.89411764705882346" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="searchButtonTapped:" destination="OHn-dA-1FC" eventType="touchUpInside" id="nI8-Oa-TvE"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86274509803921573" green="0.85098039215686272" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
@@ -328,6 +334,11 @@
                             <constraint firstItem="qUE-Oc-9JY" firstAttribute="leading" secondItem="ha6-to-wgP" secondAttribute="trailing" constant="1" id="yye-N2-kJI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="locationLabel" destination="qUE-Oc-9JY" id="eNT-gg-YZ1"/>
+                        <outlet property="mainServiceLabel" destination="duW-ns-g9C" id="FUQ-uv-0vD"/>
+                        <outlet property="specialitiesLabel" destination="gBL-he-bMr" id="fZg-PA-LRT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hwO-My-mgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

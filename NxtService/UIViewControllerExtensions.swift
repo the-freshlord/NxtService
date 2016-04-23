@@ -21,7 +21,7 @@ extension UIViewController {
             if thePresentedViewController != nil {
                 
                 // Check if the presented controller is an alert view controller
-                guard let _: UIAlertController = thePresentedViewController as? UIAlertController else { return }
+                guard let alertController: UIAlertController = thePresentedViewController as? UIAlertController else { return }
                 
                 // Another view controller presented, so use thePresentedViewController
                 let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)

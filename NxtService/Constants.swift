@@ -66,6 +66,7 @@ struct NSNotificationCenterPostNotificationNames {
     static let CREDENTIALS_UPDATED = "credentialsUpdated"
     static let SERVICES_UPDATED = "servicesUpdated"
     static let LOCATION_UPDATED = "locationUpdated"
+    static let MAINSERVICE_SELECTED = "mainServiceSelected"
 }
 
 // NSNotificationCenter user info dictionary keys

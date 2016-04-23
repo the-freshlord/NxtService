@@ -24,7 +24,7 @@ class SpecialitiesPickerViewController: UIViewController {
     weak var delegate: SpecialitiesPickerDelegate? = nil
     
     convenience init(mainService: String) {
-        self.init(nibName: "", bundle: nil)
+        self.init(nibName: "SpecialitiesPicker", bundle: nil)
         _mainService = mainService
     }
     

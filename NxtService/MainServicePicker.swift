@@ -19,7 +19,8 @@ class MainServicePickerViewController: UIViewController {
     weak var delegate: MainServicePickerDelegate? = nil
     
     convenience init() {
-        self.init(nibName: "MainServicePicker", bundle: nil)
+        let bundle = NSBundle(forClass: MainServicePickerViewController.self)
+        self.init(nibName: "MainServicePicker", bundle: bundle)
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {

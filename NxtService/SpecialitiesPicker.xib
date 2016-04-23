@@ -15,6 +15,7 @@
                 <outlet property="backButton" destination="W2a-ct-chX" id="QVS-85-iee"/>
                 <outlet property="doneButton" destination="exW-Dc-s6N" id="rYH-s7-AEn"/>
                 <outlet property="pickerView" destination="TCY-nC-Syb" id="1mx-9F-9iD"/>
+                <outlet property="view" destination="iN0-l3-epB" id="7zx-62-tji"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
