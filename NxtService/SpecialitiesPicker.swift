@@ -15,7 +15,6 @@ class SpecialitiesPickerViewController: UIViewController {
     
     private var _specialitySelected = ""
     private var _mainService: String!
-    private var _mainServiceDataSource = ["Tutor", "Cosmetologist", "Handyman", "Nanny"]
     private var _tutorDataSource = ["Math", "Science", "History", "Language", "Music", "Art", "Computers"]
     private var _cosmetologistDataSource = ["Barber", "HairSalon", "Makeup Artist", "Pedicure"]
     private var _handymanDataSource = ["Plumber", "Electrician", "Pool Cleaner", "Roofer", "Carpenter"]
@@ -58,7 +57,6 @@ class SpecialitiesPickerViewController: UIViewController {
         delegate?.specialitySelected(_specialitySelected)
         dismissViewControllerAnimated(true, completion: nil)
     }
-
 }
 
 // MARK: - UIPickerViewDelegate, UIPickerViewDataSource
@@ -112,6 +110,29 @@ extension SpecialitiesPickerViewController: UIPickerViewDelegate, UIPickerViewDa
         }
         
         doneButton.enabled = true
+        doneButton.alpha = 1.0
+    }
+    
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        var titleData: String!
+        
+        switch _mainService {
+        case "Tutor":
+            titleData = _tutorDataSource[row]
+        case "Cosmetologist":
+            titleData = _cosmetologistDataSource[row]
+        case "Handyman":
+            titleData = _handymanDataSource[row]
+        case "Nanny":
+            titleData = _nannyDataSource[row]
+        default:
+            break
+        }
+        
+        let customColor = UIColor(red: 222.0 / 255.0, green: 228.0 / 255.0, blue: 232.0 / 255.0, alpha: 1.0)
+        let attributedTitle = NSAttributedString(string: titleData, attributes: [NSForegroundColorAttributeName: customColor])
+        
+        return attributedTitle
     }
 }
 

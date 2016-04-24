@@ -170,6 +170,7 @@ extension SearchViewController: GooglePlacesAutocompleteDelegate {
 extension SearchViewController: MainServicePickerDelegate {
     func mainServiceSelected(mainService: String) {
         self.mainService = mainService
+        mainServiceLabel.text = mainService
         specialitiesPickerViewController = SpecialitiesPickerViewController(mainService: mainService)
         specialitiesPickerViewController.delegate = self
     }
@@ -179,5 +180,6 @@ extension SearchViewController: MainServicePickerDelegate {
 extension SearchViewController: SpecialitiesPickerDelegate {
     func specialitySelected(speciality: String) {
         self.speciality = speciality
+        specialitiesLabel.text = speciality
     }
 }

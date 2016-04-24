@@ -10,29 +10,36 @@ import UIKit
 import CoreLocation
 
 class SignUpViewController: UIViewController {
-    @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var mainServiceTextField: UITextField!
-    @IBOutlet weak var specialitiesTextField: UITextField!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var mainServiceLabel: UILabel!
+    @IBOutlet weak var specialitiesLabel: UILabel!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var indicatorView: UIView!
+    
+    let locationTapGesture = UITapGestureRecognizer()
+    let mainServiceTapGesture = UITapGestureRecognizer()
+    let specialityTapGesture = UITapGestureRecognizer()
     
     var account: Account!
     var provider: Provider!
     var locationManager = CLLocationManager()
     var streetAddress: String!
+    var mainService: String!
+    var speciality: String!
     var accountCreated = false
     
     var googlePlacesAutoCompleteViewController: GooglePlacesAutocomplete!
+    var mainServicePickerViewController: MainServicePickerViewController!
+    var specialitiesPickerViewController: SpecialitiesPickerViewController!
     
     // MARK: - Navigation
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        phoneNumberTextField.delegate = self
+        setupTapGestureRecognizers()
+        
         nameTextField.delegate = self
-        mainServiceTextField.delegate = self
-        specialitiesTextField.delegate = self
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -61,24 +68,16 @@ class SignUpViewController: UIViewController {
     // MARK: - Events
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
-        
-        phoneNumberTextField.resignFirstResponder()
         nameTextField.resignFirstResponder()
-        mainServiceTextField.resignFirstResponder()
-        specialitiesTextField.resignFirstResponder()
     }
     
     @IBAction func backButtonTapped(sender: UIButton) {
         leaveSignUpStoryBoard()
     }
     
-    @IBAction func locationTapped(sender: UITapGestureRecognizer) {
-        presentViewController(googlePlacesAutoCompleteViewController, animated: true, completion: nil)
-    }
-    
     @IBAction func getStartedButtonTapped(sender: MaterialButton) {
-        guard let phoneNumber = phoneNumberTextField.text where phoneNumber != "", let name = nameTextField.text where name != "", let mainService = mainServiceTextField.text where mainService != "",
-            let specialities = specialitiesTextField.text where specialities != "" else {
+        guard let name = nameTextField.text where name != "", let mainService = self.mainService where mainService != "",
+            let specialities = self.speciality where specialities != "" else {
             showErrorAlert("All fields required", message: "All fields must be entered in order to sign up")
             return
         }
@@ -93,10 +92,9 @@ class SignUpViewController: UIViewController {
                 if accountCreated.boolValue == true {
                     self.provider = Provider(providerID: self.account.accountID!)
                     self.provider.address = self.streetAddress
-                    self.provider.phoneNumber = phoneNumber
                     self.provider.name = name
-                    self.provider.mainService = mainService.uppercaseString
-                    self.provider.specialities = specialities.uppercaseString
+                    self.provider.mainService = mainService
+                    self.provider.specialities = specialities
                     
                     self.provider.createProvider({ (providerCreated) in
                         if providerCreated.boolValue == true {
@@ -138,6 +136,44 @@ class SignUpViewController: UIViewController {
     
     func leaveSignUpStoryBoard() {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func setupTapGestureRecognizers() {
+        locationTapGesture.addTarget(self, action: #selector(SignUpViewController.locationLabelTapped))
+        mainServiceTapGesture.addTarget(self, action: #selector(SignUpViewController.mainServiceLabelTapped))
+        specialityTapGesture.addTarget(self, action: #selector(SignUpViewController.specialityLabelTapped))
+        
+        locationTapGesture.numberOfTapsRequired = 1
+        mainServiceTapGesture.numberOfTapsRequired = 1
+        specialityTapGesture.numberOfTapsRequired = 1
+        
+        locationLabel.addGestureRecognizer(locationTapGesture)
+        mainServiceLabel.addGestureRecognizer(mainServiceTapGesture)
+        specialitiesLabel.addGestureRecognizer(specialityTapGesture)
+        
+        locationLabel.userInteractionEnabled = true
+        mainServiceLabel.userInteractionEnabled = true
+        specialitiesLabel.userInteractionEnabled = true
+    }
+    
+    func locationLabelTapped() {
+        presentViewController(googlePlacesAutoCompleteViewController, animated: true, completion: nil)
+    }
+    
+    func mainServiceLabelTapped() {
+        mainServicePickerViewController = MainServicePickerViewController()
+        mainServicePickerViewController.delegate = self
+        
+        presentViewController(mainServicePickerViewController, animated: true, completion: nil)
+    }
+    
+    func specialityLabelTapped() {
+        guard let mainService = self.mainService where mainService != "" else {
+            showErrorAlert("Main Service", message: "You need to select a main service first")
+            return
+        }
+        
+        presentViewController(specialitiesPickerViewController, animated: true, completion: nil)
     }
 }
     
@@ -202,5 +238,23 @@ extension SignUpViewController: GooglePlacesAutocompleteDelegate {
         googlePlacesAutoCompleteViewController.gpaViewController.searchBar(googlePlacesAutoCompleteViewController.gpaViewController.searchBar, textDidChange: "")
 
         dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+
+// MARK: - MainServicePickerDelegate
+extension SignUpViewController: MainServicePickerDelegate {
+    func mainServiceSelected(mainService: String) {
+        self.mainService = mainService
+        mainServiceLabel.text = mainService
+        specialitiesPickerViewController = SpecialitiesPickerViewController(mainService: mainService)
+        specialitiesPickerViewController.delegate = self
+    }
+}
+
+// MARK: - SpecialitiesPickerDelegate
+extension SignUpViewController: SpecialitiesPickerDelegate {
+    func specialitySelected(speciality: String) {
+        self.speciality = speciality
+        specialitiesLabel.text = speciality
     }
 }

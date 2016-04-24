@@ -14,7 +14,7 @@ class MainServicePickerViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     
     private var _mainServiceSelected = ""
-    private var _mainServiceDataSource = ["Tutor", "Cosmetologist", "Handyman", "Nanny", "Repairman"]
+    private var _mainServiceDataSource = ["Tutor", "Cosmetologist", "Handyman", "Nanny"]
     
     weak var delegate: MainServicePickerDelegate? = nil
     
@@ -72,6 +72,15 @@ extension MainServicePickerViewController: UIPickerViewDelegate, UIPickerViewDat
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         _mainServiceSelected = _mainServiceDataSource[row]
         doneButton.enabled = true
+        doneButton.alpha = 1.0
+    }
+    
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let titleData = _mainServiceDataSource[row]
+        let customColor = UIColor(red: 222.0 / 255.0, green: 228.0 / 255.0, blue: 232.0 / 255.0, alpha: 1.0)
+        let attributedTitle = NSAttributedString(string: titleData, attributes: [NSForegroundColorAttributeName: customColor])
+        
+        return attributedTitle
     }
 }
 

@@ -12,7 +12,7 @@ class Provider {
     private var _providerID: String?
     private var _name: String!
     private var _address: String!
-    private var _phoneNumber: String!
+    private var _phoneNumber: String?
     private var _biography: String?
     private var _mainService: String!
     private var _specialities: String!
@@ -45,9 +45,11 @@ class Provider {
         }
     }
     
-    var phoneNumber: String {
+    var phoneNumber: String? {
         get {
-            return _phoneNumber
+            guard let tempPhoneNumber = _phoneNumber else { return nil }
+            
+            return tempPhoneNumber
         }
         
         set {
@@ -116,7 +118,7 @@ class Provider {
     func createProvider(completion: (providerCreated: Bool) -> ()) {
         let providerDictionary: Dictionary<String, AnyObject> = [FirebaseProviderKeys.NAME: _name,
                                                                  FirebaseProviderKeys.ADDRESS: _address,
-                                                                 FirebaseProviderKeys.PHONENUMBER: _phoneNumber,
+                                                                 FirebaseProviderKeys.PHONENUMBER: "",
                                                                  FirebaseProviderKeys.MAINSERVICE: _mainService,
                                                                  FirebaseProviderKeys.SUBSERVICES: _specialities,
                                                                  FirebaseProviderKeys.BIOGRAPHY: "",
@@ -160,7 +162,7 @@ class Provider {
     func updateProvider(completion: (providerUpdated: Bool) -> ()) {
         let providerDictionary: Dictionary<String, AnyObject> = [FirebaseProviderKeys.NAME: _name,
                                                               FirebaseProviderKeys.ADDRESS: _address,
-                                                              FirebaseProviderKeys.PHONENUMBER: _phoneNumber,
+                                                              FirebaseProviderKeys.PHONENUMBER: _phoneNumber!,
                                                               FirebaseProviderKeys.MAINSERVICE: _mainService,
                                                               FirebaseProviderKeys.SUBSERVICES: _specialities,
                                                               FirebaseProviderKeys.BIOGRAPHY: _biography!,

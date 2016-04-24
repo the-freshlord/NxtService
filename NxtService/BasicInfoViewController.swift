@@ -64,7 +64,7 @@ class BasicInfoViewController: UIViewController {
     }
     
     @IBAction func saveButtonTapped(sender: MaterialButton) {
-        guard let name = nameTextField.text where name != "", let phoneNumber = phoneNumberTextField.text where phoneNumber != "" else {
+        guard let name = nameTextField.text where name != "" else {
             showErrorAlert("Certain fields needed", message: "A name and phone number must be used")
             return
         }
@@ -76,7 +76,7 @@ class BasicInfoViewController: UIViewController {
         
         // Update the provider
         provider.name = name
-        provider.phoneNumber = phoneNumber
+        provider.phoneNumber = phoneNumberTextField.text
         
         if biographyTextView.text == placeHolderText {
             provider.biography = ""
