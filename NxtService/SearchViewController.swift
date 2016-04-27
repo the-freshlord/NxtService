@@ -13,14 +13,16 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var mainServiceLabel: UILabel!
     @IBOutlet weak var specialitiesLabel: UILabel!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var indicatorView: UIView!
     
     let locationTapGesture = UITapGestureRecognizer()
     let mainServiceTapGesture = UITapGestureRecognizer()
     let specialityTapGesture = UITapGestureRecognizer()
     
-    var streetAddress = ""
-    var mainService = ""
-    var speciality = ""
+    var streetAddress: String!
+    var mainService: String!
+    var speciality: String!
     var locationManager = CLLocationManager()
     var googlePlacesAutoCompleteViewController: GooglePlacesAutocomplete!
     var mainServicePickerViewController: MainServicePickerViewController!
@@ -47,12 +49,58 @@ class SearchViewController: UIViewController {
         googlePlacesAutoCompleteViewController.placeDelegate = self
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        stopSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SegueIdentifiers.SEARCH_RESULTS {
+            guard let resultsViewController = segue.destinationViewController as? ResultsViewController else { return }
+            guard let providerList = sender as? ProviderList<Provider,Int> else { return }
+            
+            resultsViewController.providerList = providerList
+        }
+    }
+    
     // MARK: - Events
     @IBAction func backButtonTapped(sender: MaterialButton) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func searchButtonTapped(sender: MaterialButton) {
+        guard let streetAddress = self.streetAddress where streetAddress != "", let mainService = self.mainService where mainService != "", let speciality = self.speciality where speciality != "" else {
+            showErrorAlert("All fields required", message: "All fields must be entered in order to sign up")
+            return
+        }
+        
+        // Start activity indicator animation
+        startSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
+        
+        // Get sorted provider list
+        DataService.dataService.loadProviders(streetAddress, mainService: mainService, speciality: speciality) { (providerList) in
+            let sortedProviderList = ProviderList<Provider,Int>()
+            // Check if any providers were found
+            if providerList.count != 0 {
+                
+                // Get the distance
+                for provider in providerList {
+                    calculateDistance(streetAddress, providerLocation: provider.address) { (distance) in
+                        
+                        // Insert Provider object and distance into sorted provider list
+                        sortedProviderList.insertProvider(provider, distance: distance)
+                        
+                        if sortedProviderList.count == providerList.count {
+                            self.performSegueWithIdentifier(SegueIdentifiers.SEARCH_RESULTS, sender: sortedProviderList)
+                        }
+                    }
+                }
+            } else {
+                // Send empty list
+                self.performSegueWithIdentifier(SegueIdentifiers.SEARCH_RESULTS, sender: sortedProviderList)
+            }
+        }
     }
     
     // Helper methods

@@ -52,3 +52,39 @@ public func fixImageOrientation(image: UIImage) -> UIImage {
     
     return normalImage
 }
+
+public func calculateDistance(userLocation: String, providerLocation: String, onCompletion: (distance: Int) -> ()) {
+    // Get coordinates for user's location
+    getCLLocation(userLocation) { (cLLocation) in
+        let userCLLocation = cLLocation
+        
+        // Get coordinates for provider's location
+        getCLLocation(providerLocation) { (cLLocation) in
+            let providerCLLocation = cLLocation
+            
+            // Calculate distance
+            let distanceMeters = userCLLocation.distanceFromLocation(providerCLLocation)
+            
+            // Convert distanceMeters to miles
+            let distanceMiles = Int(distanceMeters * 0.00062137)
+            
+            onCompletion(distance: distanceMiles)
+        }
+    }
+}
+
+private func getCLLocation(streetAddress: String, completion: (cLLocation: CLLocation) -> ()) {
+    CLGeocoder().geocodeAddressString(streetAddress) { (placemarks: [CLPlacemark]?, error: NSError?) in
+        
+        if error != nil {
+            print(error.debugDescription)
+            return
+        }
+        
+        guard let marks = placemarks where marks.count > 0 else { return }
+        guard let location = marks[0].location else { return }
+        
+        let tempCLLocation = location
+        completion(cLLocation: tempCLLocation)
+    }
+}

@@ -22,6 +22,10 @@
 		88ADDCC11CCAFF1100F4BCCC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ADDCC01CCAFF1100F4BCCC /* SearchViewController.swift */; };
 		88ADDCC31CCB029700F4BCCC /* MainServicePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88ADDCC21CCB029700F4BCCC /* MainServicePicker.xib */; };
 		88ADDCC51CCB264900F4BCCC /* MainServicePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ADDCC41CCB264900F4BCCC /* MainServicePicker.swift */; };
+		88C0EE9E1CCD98FD00682A54 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0EE9D1CCD98FD00682A54 /* ResultsViewController.swift */; };
+		88C0EEA01CCDAE5600682A54 /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0EE9F1CCDAE5600682A54 /* ResultsTableViewCell.swift */; };
+		88C0EEA21CCDD5C300682A54 /* ProviderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0EEA11CCDD5C300682A54 /* ProviderNode.swift */; };
+		88C0EEA41CCDD67600682A54 /* ProviderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0EEA31CCDD67600682A54 /* ProviderList.swift */; };
 		88C3AE9C1CBF1EA8003CFA92 /* MaterialIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3AE9B1CBF1EA8003CFA92 /* MaterialIndicatorView.swift */; };
 		88C3AEA11CBF35DD003CFA92 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3AEA01CBF35DD003CFA92 /* UIViewControllerExtensions.swift */; };
 		88C6BEF61CB2FC520052233C /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6BEF51CB2FC520052233C /* DataService.swift */; };
@@ -60,6 +64,10 @@
 		88ADDCC01CCAFF1100F4BCCC /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		88ADDCC21CCB029700F4BCCC /* MainServicePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainServicePicker.xib; sourceTree = "<group>"; };
 		88ADDCC41CCB264900F4BCCC /* MainServicePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainServicePicker.swift; sourceTree = "<group>"; };
+		88C0EE9D1CCD98FD00682A54 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		88C0EE9F1CCDAE5600682A54 /* ResultsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTableViewCell.swift; sourceTree = "<group>"; };
+		88C0EEA11CCDD5C300682A54 /* ProviderNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderNode.swift; sourceTree = "<group>"; };
+		88C0EEA31CCDD67600682A54 /* ProviderList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderList.swift; sourceTree = "<group>"; };
 		88C3AE9B1CBF1EA8003CFA92 /* MaterialIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialIndicatorView.swift; sourceTree = "<group>"; };
 		88C3AEA01CBF35DD003CFA92 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		88C6BEF51CB2FC520052233C /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -139,6 +147,7 @@
 			children = (
 				8854A5E71CB1C03C00383004 /* Account.swift */,
 				8854A5E91CB1C40900383004 /* Provider.swift */,
+				88C0EEA11CCDD5C300682A54 /* ProviderNode.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -150,6 +159,7 @@
 				88E966C91CA9B94200ED4674 /* MaterialView.swift */,
 				884633441CACA20800F660A6 /* MaterialTableView.swift */,
 				88C3AE9B1CBF1EA8003CFA92 /* MaterialIndicatorView.swift */,
+				88C0EE9F1CCDAE5600682A54 /* ResultsTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -166,6 +176,7 @@
 				88353DAC1CC454F300E7FE54 /* ServicesViewController.swift */,
 				8805478C1CC56C7800C7677D /* LocationViewController.swift */,
 				88ADDCC01CCAFF1100F4BCCC /* SearchViewController.swift */,
+				88C0EE9D1CCD98FD00682A54 /* ResultsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -187,6 +198,7 @@
 				88F7BFDB1CB7362A0024059E /* GooglePlacesAutocomplete.swift */,
 				88F5B8F01CB8E360003DEF4A /* AppUtilities.swift */,
 				88FE625C1CCBF3F600DCC090 /* SpecialitiesPicker.swift */,
+				88C0EEA31CCDD67600682A54 /* ProviderList.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -364,6 +376,7 @@
 				885B789D1CA38FB800F61EC1 /* StartViewController.swift in Sources */,
 				885B789B1CA38FB800F61EC1 /* AppDelegate.swift in Sources */,
 				884633451CACA20800F660A6 /* MaterialTableView.swift in Sources */,
+				88C0EEA21CCDD5C300682A54 /* ProviderNode.swift in Sources */,
 				8854A5E81CB1C03C00383004 /* Account.swift in Sources */,
 				88E966CA1CA9B94200ED4674 /* MaterialView.swift in Sources */,
 				88E966C61CA9B7CA00ED4674 /* MaterialButton.swift in Sources */,
@@ -374,9 +387,12 @@
 				88ADDCC11CCAFF1100F4BCCC /* SearchViewController.swift in Sources */,
 				8805478D1CC56C7800C7677D /* LocationViewController.swift in Sources */,
 				88C3AE9C1CBF1EA8003CFA92 /* MaterialIndicatorView.swift in Sources */,
+				88C0EEA41CCDD67600682A54 /* ProviderList.swift in Sources */,
 				88C3AEA11CBF35DD003CFA92 /* UIViewControllerExtensions.swift in Sources */,
 				88F5B8F11CB8E360003DEF4A /* AppUtilities.swift in Sources */,
 				884633471CACA45F00F660A6 /* ProfileMenuViewController.swift in Sources */,
+				88C0EE9E1CCD98FD00682A54 /* ResultsViewController.swift in Sources */,
+				88C0EEA01CCDAE5600682A54 /* ResultsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

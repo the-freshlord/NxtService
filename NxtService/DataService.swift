@@ -73,4 +73,46 @@ class DataService {
         _REF_PROFILEIMAGE.childByAppendingPath(providerID).removeValue()
         onCompletion(imageDeleted: true)
     }
+    
+    func loadProviders(streetAddress: String, mainService: String, speciality: String, onCompletion: (providerList: [Provider]) -> ()) {
+        // Load the providers based on the main service and sub service
+        self._REF_PROVIDERINFO.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            guard let snapshots = snapshot.children.allObjects as? [FDataSnapshot] else { return }
+            
+            var providerList = [Provider]()
+            
+            // Traverse through the list
+            for snapshot in snapshots {
+                guard let providerDictionary = snapshot.value as? Dictionary<String, AnyObject> else { return }
+                
+                if mainService == providerDictionary[FirebaseProviderKeys.MAINSERVICE] as? String && speciality == providerDictionary[FirebaseProviderKeys.SUBSERVICES] as? String {
+                    
+                    let provider = Provider(providerID: snapshot.key)
+                    
+                    guard let name = providerDictionary[FirebaseProviderKeys.NAME] as? String else { return }
+                    guard let address = providerDictionary[FirebaseProviderKeys.ADDRESS] as? String else { return }
+                    guard let phoneNumber = providerDictionary[FirebaseProviderKeys.PHONENUMBER] as? String else { return }
+                    guard let biography = providerDictionary[FirebaseProviderKeys.BIOGRAPHY] as? String else { return }
+                    guard let mainService = providerDictionary[FirebaseProviderKeys.MAINSERVICE] as? String else { return }
+                    guard let specialities = providerDictionary[FirebaseProviderKeys.SUBSERVICES] as? String else { return }
+                    guard let paymentInfo = providerDictionary[FirebaseProviderKeys.PAYMENTINFO] as? String else { return }
+                    guard let profileImage = providerDictionary[FirebaseProviderKeys.PROFILEIMAGE] as? Bool else { return }
+                    
+                    provider.name = name
+                    provider.address = address
+                    provider.phoneNumber = phoneNumber
+                    provider.biography = biography
+                    provider.mainService = mainService
+                    provider.specialities = specialities
+                    provider.paymentInfo = paymentInfo
+                    provider.profileImage = profileImage
+                    
+                    // Insert Provider object into provider list
+                    providerList.append(provider)
+                }
+            }
+            
+            onCompletion(providerList: providerList)
+        })
+    }
 }

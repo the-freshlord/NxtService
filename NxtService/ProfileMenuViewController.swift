@@ -212,7 +212,7 @@ class ProfileMenuViewController: UIViewController {
 extension ProfileMenuViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         imagePickerController.dismissViewControllerAnimated(true, completion: nil)
-        addImageButton.imageView?.image = UIImage(contentsOfFile: "cross.png")
+        addImageButton.imageView?.image = UIImage(named: "cross")
         profileImageView.image = image
         
         let normalImage = fixImageOrientation(image)
