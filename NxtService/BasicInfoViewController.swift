@@ -47,6 +47,7 @@ class BasicInfoViewController: UIViewController {
         } else {
             biographyTextView.text = provider.biography
             biographyTextView.textColor = UIColor(red: 222.0 / 255.0, green: 228.0 / 255.0, blue: 232.0 / 255.0, alpha: 1.0)
+            biographyTextView.alpha = 1.0
         }
         
         paymentInfoTextField.text = provider.paymentInfo
@@ -154,6 +155,7 @@ extension BasicInfoViewController: UITextViewDelegate {
         if textView.text == placeHolderText {
             textView.text = ""
             textView.textColor = UIColor(red: 222.0 / 255.0, green: 228.0 / 255.0, blue: 232.0 / 255.0, alpha: 1.0)
+            textView.alpha = 1.0
         }
         
         return true
