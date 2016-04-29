@@ -2,7 +2,13 @@
 //  MapViewController.swift
 //  NxtService
 //
-//  Created by Emanuel  Guerrero on 4/28/16.
+//  Created by Emanuel Guerrero on 4/28/16.
+//             Shaquella Dunanson
+//             Santago Facuno
+//             Jevin Francis
+//             Marcus Guerrer
+//             Stephen Green
+//             Ryan Fernandez on 4/28/16.
 //  Copyright © 2016 Project Omicron. All rights reserved.
 //
 
