@@ -58,9 +58,12 @@ class SearchViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SegueIdentifiers.SEARCH_RESULTS {
             guard let resultsViewController = segue.destinationViewController as? ResultsViewController else { return }
-            guard let providerList = sender as? ProviderList<Provider,Int> else { return }
+            guard let senderDictionary = sender as? Dictionary<String, AnyObject> else { return }
+            guard let providerList = senderDictionary["sortedProviderList"] as? ProviderList<Provider,Int,UIImage> else { return }
+            guard let userLocation = senderDictionary["userLocation"] as? String else { return }
             
             resultsViewController.providerList = providerList
+            resultsViewController.userLocation = userLocation
         }
     }
     
@@ -80,7 +83,7 @@ class SearchViewController: UIViewController {
         
         // Get sorted provider list
         DataService.dataService.loadProviders(streetAddress, mainService: mainService, speciality: speciality) { (providerList) in
-            let sortedProviderList = ProviderList<Provider,Int>()
+            let sortedProviderList = ProviderList<Provider,Int,UIImage>()
             // Check if any providers were found
             if providerList.count != 0 {
                 
@@ -88,17 +91,29 @@ class SearchViewController: UIViewController {
                 for provider in providerList {
                     calculateDistance(streetAddress, providerLocation: provider.address) { (distance) in
                         
-                        // Insert Provider object and distance into sorted provider list
-                        sortedProviderList.insertProvider(provider, distance: distance)
-                        
-                        if sortedProviderList.count == providerList.count {
-                            self.performSegueWithIdentifier(SegueIdentifiers.SEARCH_RESULTS, sender: sortedProviderList)
+                        if provider.profileImage == true {
+                            DataService.dataService.loadProfileImage(provider.providerID!, onCompletion: { (decodedImage) in
+                                sortedProviderList.insertProvider(provider, distance: distance, image: decodedImage)
+                                
+                                if sortedProviderList.count == providerList.count {
+                                    let senderDictionary = ["sortedProviderList": sortedProviderList, "userLocation": streetAddress]
+                                    self.performSegueWithIdentifier(SegueIdentifiers.SEARCH_RESULTS, sender: senderDictionary)
+                                }
+                            })
+                        } else {
+                            sortedProviderList.insertProvider(provider, distance: distance, image: UIImage(named: "noimage")!)
+                            
+                            if sortedProviderList.count == providerList.count {
+                                let senderDictionary = ["sortedProviderList": sortedProviderList, "userLocation": streetAddress]
+                                self.performSegueWithIdentifier(SegueIdentifiers.SEARCH_RESULTS, sender: senderDictionary)
+                            }
                         }
                     }
                 }
             } else {
                 // Send empty list
-                self.performSegueWithIdentifier(SegueIdentifiers.SEARCH_RESULTS, sender: sortedProviderList)
+                let senderDictionary = ["sortedProviderList": sortedProviderList, "userLocation": streetAddress]
+                self.performSegueWithIdentifier(SegueIdentifiers.SEARCH_RESULTS, sender: senderDictionary)
             }
         }
     }

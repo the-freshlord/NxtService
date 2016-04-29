@@ -15,7 +15,8 @@ class ResultsViewController: UIViewController {
     
     static var profileImageCache = NSCache()
 
-    var providerList: ProviderList<Provider,Int>!
+    var providerList: ProviderList<Provider,Int,UIImage>!
+    var userLocation: String!
     
     // MARK: - Navigation
     override func viewDidLoad() {
@@ -23,58 +24,28 @@ class ResultsViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        // Load the providers based on the main service and sub service
-//        DataService.dataService.REF_PROVIDERINFO.observeEventType(.Value, withBlock: { snapshot in
-//            self.providerList = ProvidierList()
-//            
-//            guard let snapshots = snapshot.children.allObjects as? [FDataSnapshot] else { return }
-//            
-//            // Traverse through the list
-//            for snapshot in snapshots {
-//                guard let providerDictionary = snapshot.value as? Dictionary<String, AnyObject> else { return }
-//                
-//                if self.mainService == providerDictionary[FirebaseProviderKeys.MAINSERVICE] as? String && self.subService == providerDictionary[FirebaseProviderKeys.SUBSERVICES] as? String {
-//                    
-//                    let provider = Provider(providerID: snapshot.key)
-//                    
-//                    guard let name = providerDictionary[FirebaseProviderKeys.NAME] as? String else { return }
-//                    guard let address = providerDictionary[FirebaseProviderKeys.ADDRESS] as? String else { return }
-//                    guard let phoneNumber = providerDictionary[FirebaseProviderKeys.PHONENUMBER] as? String else { return }
-//                    guard let biography = providerDictionary[FirebaseProviderKeys.BIOGRAPHY] as? String else { return }
-//                    guard let mainService = providerDictionary[FirebaseProviderKeys.MAINSERVICE] as? String else { return }
-//                    guard let specialities = providerDictionary[FirebaseProviderKeys.SUBSERVICES] as? String else { return }
-//                    guard let paymentInfo = providerDictionary[FirebaseProviderKeys.PAYMENTINFO] as? String else { return }
-//                    guard let profileImage = providerDictionary[FirebaseProviderKeys.PROFILEIMAGE] as? Bool else { return }
-//                    
-//                    provider.name = name
-//                    provider.address = address
-//                    provider.phoneNumber = phoneNumber
-//                    provider.biography = biography
-//                    provider.mainService = mainService
-//                    provider.specialities = specialities
-//                    provider.paymentInfo = paymentInfo
-//                    provider.profileImage = profileImage
-//                    
-//                    // Get the distance
-//                    let distance = calculateDistance(self.userLocation, providerLocation: provider.address)
-//                    
-//                    // Insert Provider object and distance into provider list
-//                    self.providerList.insertProvider(provider, distance: distance)
-//                }
-//            }
-//            
-//            self.tableView.reloadData()
-//        })
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         
         if providerList.count > 0 {
             tableView.reloadData()
         } else {
             tableView.hidden = true
             noResultsLabel.hidden = false
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SegueIdentifiers.PROVIDER_VIEW {
+            guard let providerViewController = segue.destinationViewController as? ProviderViewController else { return }
+            guard let senderDictionary = sender as? Dictionary<String, AnyObject> else { return }
+            guard let provider = senderDictionary["provider"] as? Provider else { return }
+            guard let profileImage = senderDictionary["profileImage"] as? UIImage else{ return }
+            guard let userLocation = senderDictionary["userLocation"] as? String else { return }
+            guard let distance = senderDictionary["distance"] as? Int else { return }
+            
+            providerViewController.provider = provider
+            providerViewController.profileImage = profileImage
+            providerViewController.userLocation = userLocation
+            providerViewController.distance = distance
         }
     }
     
@@ -94,20 +65,14 @@ extension ResultsViewController: UITableViewDelegate, UITableViewDataSource {
         let providerTuple = providerList.getProvider(indexPath.row)
         let provider = providerTuple.0
         let distance = providerTuple.1
+        let profileImage = providerTuple.2
         
         guard let cell = tableView.dequeueReusableCellWithIdentifier("resultstableviewcell") as? ResultsTableViewCell else {
             return ResultsTableViewCell()
         }
         
-        // Check if the image is already in the cache
-        guard let image = ResultsViewController.profileImageCache.objectForKey(provider.providerID!) as? UIImage else {
-            cell.configureCell(provider, image: nil, distance: distance)
-            return cell
-        }
-        
-        cell.configureCell(provider, image: image, distance: distance)
+        cell.configureCell(provider, image: profileImage, distance: distance)
 
-        
         return cell
     }
     
@@ -116,7 +81,14 @@ extension ResultsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
         let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! ResultsTableViewCell
         let provider = currentCell.provider
+        let profileImage = currentCell.profileImageView.image
+        let distance = currentCell.distance
+        let senderDictionary: Dictionary<String, AnyObject> = ["provider": provider, "profileImage": profileImage!, "userLocation": userLocation, "distance": distance!]
+        
+        performSegueWithIdentifier(SegueIdentifiers.PROVIDER_VIEW, sender: senderDictionary)
     }
 }

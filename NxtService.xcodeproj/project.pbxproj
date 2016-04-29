@@ -12,6 +12,7 @@
 		88353DAD1CC454F300E7FE54 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88353DAC1CC454F300E7FE54 /* ServicesViewController.swift */; };
 		884633451CACA20800F660A6 /* MaterialTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884633441CACA20800F660A6 /* MaterialTableView.swift */; };
 		884633471CACA45F00F660A6 /* ProfileMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884633461CACA45F00F660A6 /* ProfileMenuViewController.swift */; };
+		884CB33D1CD2C3FE00CB427F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884CB33C1CD2C3FE00CB427F /* MapViewController.swift */; };
 		8854A5E81CB1C03C00383004 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8854A5E71CB1C03C00383004 /* Account.swift */; };
 		8854A5EA1CB1C40900383004 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8854A5E91CB1C40900383004 /* Provider.swift */; };
 		885B789B1CA38FB800F61EC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B789A1CA38FB800F61EC1 /* AppDelegate.swift */; };
@@ -19,6 +20,11 @@
 		885B78A01CA38FB800F61EC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885B789E1CA38FB800F61EC1 /* Main.storyboard */; };
 		885B78A21CA38FB800F61EC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 885B78A11CA38FB800F61EC1 /* Assets.xcassets */; };
 		885B78A51CA38FB800F61EC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885B78A31CA38FB800F61EC1 /* LaunchScreen.storyboard */; };
+		889F06941CD05E2800CA41A6 /* ProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F06931CD05E2800CA41A6 /* ProviderViewController.swift */; };
+		889F06991CD0627400CA41A6 /* ServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F06981CD0627400CA41A6 /* ServicesTableViewCell.swift */; };
+		889F069B1CD068A000CA41A6 /* BiographyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F069A1CD068A000CA41A6 /* BiographyTableViewCell.swift */; };
+		889F069D1CD076F900CA41A6 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F069C1CD076F900CA41A6 /* ContactTableViewCell.swift */; };
+		889F069F1CD08CE600CA41A6 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F069E1CD08CE600CA41A6 /* CustomAnnotation.swift */; };
 		88ADDCC11CCAFF1100F4BCCC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ADDCC01CCAFF1100F4BCCC /* SearchViewController.swift */; };
 		88ADDCC31CCB029700F4BCCC /* MainServicePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88ADDCC21CCB029700F4BCCC /* MainServicePicker.xib */; };
 		88ADDCC51CCB264900F4BCCC /* MainServicePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ADDCC41CCB264900F4BCCC /* MainServicePicker.swift */; };
@@ -52,6 +58,7 @@
 		88353DAC1CC454F300E7FE54 /* ServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
 		884633441CACA20800F660A6 /* MaterialTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTableView.swift; sourceTree = "<group>"; };
 		884633461CACA45F00F660A6 /* ProfileMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileMenuViewController.swift; sourceTree = "<group>"; };
+		884CB33C1CD2C3FE00CB427F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8854A5E71CB1C03C00383004 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		8854A5E91CB1C40900383004 /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		885B78971CA38FB700F61EC1 /* NxtService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NxtService.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +68,11 @@
 		885B78A11CA38FB800F61EC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		885B78A41CA38FB800F61EC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		885B78A61CA38FB800F61EC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		889F06931CD05E2800CA41A6 /* ProviderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderViewController.swift; sourceTree = "<group>"; };
+		889F06981CD0627400CA41A6 /* ServicesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesTableViewCell.swift; sourceTree = "<group>"; };
+		889F069A1CD068A000CA41A6 /* BiographyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BiographyTableViewCell.swift; sourceTree = "<group>"; };
+		889F069C1CD076F900CA41A6 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		889F069E1CD08CE600CA41A6 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		88ADDCC01CCAFF1100F4BCCC /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		88ADDCC21CCB029700F4BCCC /* MainServicePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainServicePicker.xib; sourceTree = "<group>"; };
 		88ADDCC41CCB264900F4BCCC /* MainServicePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainServicePicker.swift; sourceTree = "<group>"; };
@@ -134,6 +146,35 @@
 			path = NxtService;
 			sourceTree = "<group>";
 		};
+		889F06951CD05FD800CA41A6 /* Material */ = {
+			isa = PBXGroup;
+			children = (
+				88E966C51CA9B7CA00ED4674 /* MaterialButton.swift */,
+				88E966C91CA9B94200ED4674 /* MaterialView.swift */,
+				884633441CACA20800F660A6 /* MaterialTableView.swift */,
+				88C3AE9B1CBF1EA8003CFA92 /* MaterialIndicatorView.swift */,
+			);
+			name = Material;
+			sourceTree = "<group>";
+		};
+		889F06961CD05FEC00CA41A6 /* ResultsTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				88C0EE9F1CCDAE5600682A54 /* ResultsTableViewCell.swift */,
+			);
+			name = ResultsTableCell;
+			sourceTree = "<group>";
+		};
+		889F06971CD0600100CA41A6 /* ProviderTableCells */ = {
+			isa = PBXGroup;
+			children = (
+				889F06981CD0627400CA41A6 /* ServicesTableViewCell.swift */,
+				889F069A1CD068A000CA41A6 /* BiographyTableViewCell.swift */,
+				889F069C1CD076F900CA41A6 /* ContactTableViewCell.swift */,
+			);
+			name = ProviderTableCells;
+			sourceTree = "<group>";
+		};
 		88C3AE9F1CBF35B9003CFA92 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +189,7 @@
 				8854A5E71CB1C03C00383004 /* Account.swift */,
 				8854A5E91CB1C40900383004 /* Provider.swift */,
 				88C0EEA11CCDD5C300682A54 /* ProviderNode.swift */,
+				889F069E1CD08CE600CA41A6 /* CustomAnnotation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -155,11 +197,9 @@
 		88E966BE1CA9B39300ED4674 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				88E966C51CA9B7CA00ED4674 /* MaterialButton.swift */,
-				88E966C91CA9B94200ED4674 /* MaterialView.swift */,
-				884633441CACA20800F660A6 /* MaterialTableView.swift */,
-				88C3AE9B1CBF1EA8003CFA92 /* MaterialIndicatorView.swift */,
-				88C0EE9F1CCDAE5600682A54 /* ResultsTableViewCell.swift */,
+				889F06971CD0600100CA41A6 /* ProviderTableCells */,
+				889F06961CD05FEC00CA41A6 /* ResultsTableCell */,
+				889F06951CD05FD800CA41A6 /* Material */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -177,6 +217,8 @@
 				8805478C1CC56C7800C7677D /* LocationViewController.swift */,
 				88ADDCC01CCAFF1100F4BCCC /* SearchViewController.swift */,
 				88C0EE9D1CCD98FD00682A54 /* ResultsViewController.swift */,
+				889F06931CD05E2800CA41A6 /* ProviderViewController.swift */,
+				884CB33C1CD2C3FE00CB427F /* MapViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -372,6 +414,8 @@
 				88DA7F641CA9F90900D3D486 /* LoginViewController.swift in Sources */,
 				88353DAD1CC454F300E7FE54 /* ServicesViewController.swift in Sources */,
 				88C6BEF61CB2FC520052233C /* DataService.swift in Sources */,
+				889F069D1CD076F900CA41A6 /* ContactTableViewCell.swift in Sources */,
+				889F069F1CD08CE600CA41A6 /* CustomAnnotation.swift in Sources */,
 				88DA7F681CAA0F4500D3D486 /* SignUpViewController.swift in Sources */,
 				885B789D1CA38FB800F61EC1 /* StartViewController.swift in Sources */,
 				885B789B1CA38FB800F61EC1 /* AppDelegate.swift in Sources */,
@@ -381,8 +425,12 @@
 				88E966CA1CA9B94200ED4674 /* MaterialView.swift in Sources */,
 				88E966C61CA9B7CA00ED4674 /* MaterialButton.swift in Sources */,
 				88F59BBC1CBC8F9400E25D1F /* BasicInfoViewController.swift in Sources */,
+				889F069B1CD068A000CA41A6 /* BiographyTableViewCell.swift in Sources */,
 				8854A5EA1CB1C40900383004 /* Provider.swift in Sources */,
 				88E966C81CA9B83A00ED4674 /* Constants.swift in Sources */,
+				889F06991CD0627400CA41A6 /* ServicesTableViewCell.swift in Sources */,
+				889F06941CD05E2800CA41A6 /* ProviderViewController.swift in Sources */,
+				884CB33D1CD2C3FE00CB427F /* MapViewController.swift in Sources */,
 				88FD6F101CC3330F00C3F9C7 /* CredentialsViewController.swift in Sources */,
 				88ADDCC11CCAFF1100F4BCCC /* SearchViewController.swift in Sources */,
 				8805478D1CC56C7800C7677D /* LocationViewController.swift in Sources */,

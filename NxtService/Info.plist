@@ -48,5 +48,10 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Need your location to save address of service</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

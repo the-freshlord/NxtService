@@ -8,9 +8,10 @@
 
 import Foundation
 
-class ProviderNode<T,D> {
+class ProviderNode<T,D,I> {
     var providerKey: T?
     var distance: D?
+    var image: I?
     var next: ProviderNode?
     var previous: ProviderNode?
 }

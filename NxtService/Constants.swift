@@ -44,6 +44,8 @@ struct SegueIdentifiers {
     static let PROFILE_SERVICES = "gotoservices"
     static let PROFILE_LOCATION = "gotolocation"
     static let SEARCH_RESULTS = "gotosearchresults"
+    static let PROVIDER_VIEW = "gotoproviderview"
+    static let MAP_VIEW = "gotomapview"
 }
 
 // CLPlacemark Keys

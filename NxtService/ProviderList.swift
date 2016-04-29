@@ -8,9 +8,9 @@
 
 import Foundation
 
-class ProviderList<T, D: Comparable> {
-    private var _head: ProviderNode<T,D> = ProviderNode<T,D>()
-    private var _tail: ProviderNode<T,D>?
+class ProviderList<T, D: Comparable, I> {
+    private var _head: ProviderNode<T,D,I> = ProviderNode<T,D,I>()
+    private var _tail: ProviderNode<T,D,I>?
     private var _count = 0
     
     var count: Int {
@@ -21,11 +21,12 @@ class ProviderList<T, D: Comparable> {
         return _count == 0
     }
     
-    func insertProvider(providerKey: T, distance: D) {
+    func insertProvider(providerKey: T, distance: D, image: I) {
         // Check if the list is empty
         if _head.providerKey == nil {
             _head.providerKey = providerKey
             _head.distance = distance
+            _head.image = image
             _tail = _head
             _count += 1
             return
@@ -39,9 +40,10 @@ class ProviderList<T, D: Comparable> {
             if current?.previous == nil && current?.distance > distance {
                 
                 // Insert new node to front of the list
-                let providerNode: ProviderNode = ProviderNode<T,D>()
+                let providerNode: ProviderNode = ProviderNode<T,D,I>()
                 providerNode.providerKey = providerKey
                 providerNode.distance = distance
+                providerNode.image = image
                 providerNode.next = current
                 current?.previous = providerNode
                 _head = providerNode
@@ -50,9 +52,10 @@ class ProviderList<T, D: Comparable> {
             } else if current?.next == nil && current?.distance < distance {
                 
                 // Insert new node to the end of the list
-                let providerNode: ProviderNode = ProviderNode<T,D>()
+                let providerNode: ProviderNode = ProviderNode<T,D,I>()
                 providerNode.providerKey = providerKey
                 providerNode.distance = distance
+                providerNode.image = image
                 providerNode.previous = current
                 current?.next = providerNode
                 _tail = providerNode
@@ -61,9 +64,10 @@ class ProviderList<T, D: Comparable> {
             } else if distance > current?.distance && distance < current?.next?.distance {
                 
                 // Insert new node between two existing nodes
-                let providerNode: ProviderNode = ProviderNode<T,D>()
+                let providerNode: ProviderNode = ProviderNode<T,D,I>()
                 providerNode.providerKey = providerKey
                 providerNode.distance = distance
+                providerNode.image = image
                 providerNode.previous = current
                 providerNode.next = current?.next
                 current?.next?.previous = providerNode
@@ -78,7 +82,7 @@ class ProviderList<T, D: Comparable> {
         }
     }
     
-    func getProvider(position: Int) -> (T,D) {
+    func getProvider(position: Int) -> (T,D,I) {
         // Get a pointer to the first node of the list
         var current: ProviderNode! = _head
         var currentPosition = 0
@@ -92,6 +96,6 @@ class ProviderList<T, D: Comparable> {
             }
         }
         
-        return (current.providerKey!, current.distance!)
+        return (current.providerKey!, current.distance!, current.image!)
     }
 }

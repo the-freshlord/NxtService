@@ -1,22 +1,17 @@
 //
-//  ResultsTableViewCell.swift
+//  ServicesTableViewCell.swift
 //  NxtService
 //
-//  Created by Emanuel  Guerrero on 4/24/16.
+//  Created by Emanuel  Guerrero on 4/26/16.
 //  Copyright © 2016 Project Omicron. All rights reserved.
 //
 
 import UIKit
 
-class ResultsTableViewCell: UITableViewCell {
+class ServicesTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var mainServiceLabel: UILabel!
     @IBOutlet weak var specialityLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
-    
-    var provider: Provider!
-    var distance: Int!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,15 +28,10 @@ class ResultsTableViewCell: UITableViewCell {
 //    override func setSelected(selected: Bool, animated: Bool) {
 //        super.setSelected(selected, animated: animated)
 //    }
-    
-    func configureCell(provider: Provider, image: UIImage?, distance: Int) {
-        self.provider = provider
-        self.distance = distance
-        
-        nameLabel.text = provider.name
+
+    func configureCell(provider: Provider, profileImage: UIImage) {
+        profileImageView.image = profileImage
         mainServiceLabel.text = provider.mainService
         specialityLabel.text = provider.specialities
-        distanceLabel.text = "\(distance) mi"
-        profileImageView.image = image
     }
 }
