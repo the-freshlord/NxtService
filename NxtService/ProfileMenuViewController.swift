@@ -217,7 +217,6 @@ class ProfileMenuViewController: UIViewController {
 // MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension ProfileMenuViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        imagePickerController.dismissViewControllerAnimated(true, completion: nil)
         addImageButton.imageView?.image = UIImage(named: "cross")
         profileImageView.image = image
         
@@ -226,6 +225,7 @@ extension ProfileMenuViewController: UIImagePickerControllerDelegate, UINavigati
         
         provider.profileImage = true
         provider.updateProvider { (providerUpdated) in
+            self.imagePickerController.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     

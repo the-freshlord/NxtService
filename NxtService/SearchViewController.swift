@@ -80,7 +80,7 @@ class SearchViewController: UIViewController {
     
     @IBAction func searchButtonTapped(sender: MaterialButton) {
         guard let streetAddress = self.streetAddress where streetAddress != "", let mainService = self.mainService where mainService != "", let speciality = self.speciality where speciality != "" else {
-            showErrorAlert("All fields required", message: "All fields must be entered in order to sign up")
+            showErrorAlert("All fields required", message: "All fields must be entered in order to search")
             return
         }
         
@@ -155,11 +155,12 @@ class SearchViewController: UIViewController {
     }
     
     func specialityLabelTapped() {
-        if mainService == "" {
+        guard let mainService = self.mainService where mainService != "" else {
             showErrorAlert("Main Service", message: "You need to select a main service first")
-        } else {
-          presentViewController(specialitiesPickerViewController, animated: true, completion: nil)  
+            return
         }
+        
+        presentViewController(specialitiesPickerViewController, animated: true, completion: nil)
     }
     
     func locationAuthorizationStatus() -> Bool {

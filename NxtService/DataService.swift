@@ -52,7 +52,8 @@ class DataService {
     
     func addProfileImage(providerID: String, image: UIImage) {
         // Make an NSData PNG representation of the image
-        let imageData: NSData = UIImagePNGRepresentation(image)!
+        // Make a JPEG representation to compress and store
+        let imageData: NSData = UIImageJPEGRepresentation(image, 0.2)!
         
         // Use base64StringFromData, the image can be converted to a string
         let base64String = imageData.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
