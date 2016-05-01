@@ -17,6 +17,7 @@ import UIKit
 class ProviderViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var callButton: UIButton!
     
     var provider: Provider!
     var profileImage: UIImage!
@@ -31,6 +32,11 @@ class ProviderViewController: UIViewController {
         tableView.dataSource = self
         
         nameLabel.text = provider.name
+        
+        if provider.phoneNumber == "" {
+            callButton.enabled = false
+            callButton.alpha = 0.8
+        }
         
         tableView.reloadData()
     }
@@ -50,6 +56,32 @@ class ProviderViewController: UIViewController {
     // MARK: - Events
     @IBAction func backButtonTapped(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func callButtonTapped(sender: MaterialButton) {
+        let alert = UIAlertController(title: "Call \(provider.phoneNumber!)", message: "Do you want to call \(provider.name)?", preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .Default) { (action: UIAlertAction) in
+            guard let phoneCallURL = NSURL(string: "tel://\(self.provider.phoneNumber!)") else { return }
+            let application = UIApplication.sharedApplication()
+            
+            if application.canOpenURL(phoneCallURL) {
+                application.openURL(phoneCallURL)
+            } else {
+                self.showErrorAlert("Can't call number", message: "\(self.provider.name) number can not be called")
+            }
+        }
+        alert.addAction(okAction)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func checkMapButtonTapped(sender: MaterialButton) {
+        let senderDictionary = ["userLocation": userLocation, "providerAddress": provider.address]
+        performSegueWithIdentifier(SegueIdentifiers.MAP_VIEW, sender: senderDictionary)
     }
     
     // MARK: - Helper methods
@@ -110,13 +142,6 @@ extension ProviderViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             cell.configureCell(provider, userLocation: userLocation, distance: distance)
-            cell.callButton.addTarget(self, action: #selector(ProviderViewController.callButtonTapped), forControlEvents: .TouchUpInside)
-            
-            let addressLabelTapGesture = UITapGestureRecognizer()
-            addressLabelTapGesture.addTarget(self, action: #selector(ProviderViewController.goToMapStoryBoard))
-            addressLabelTapGesture.numberOfTapsRequired = 1
-            cell.addressLabel.addGestureRecognizer(addressLabelTapGesture)
-            cell.addressLabel.userInteractionEnabled = true
             
             return cell
         }

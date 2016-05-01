@@ -154,6 +154,11 @@ extension ServicesViewController: UITextFieldDelegate {
 // MARK: - MainServicePickerDelegate
 extension ServicesViewController: MainServicePickerDelegate {
     func mainServiceSelected(mainService: String) {
+        if self.mainService != mainService {
+            self.speciality = nil
+            self.specialitiesLabel.text = "Any specific type of service?"
+        }
+        
         self.mainService = mainService
         mainServiceLabel.text = mainService
         specialitiesPickerViewController = SpecialitiesPickerViewController(mainService: mainService)

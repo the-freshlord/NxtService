@@ -187,11 +187,8 @@ extension SearchViewController: CLLocationManagerDelegate {
         CLGeocoder().reverseGeocodeLocation(location) { (placeMarks: [CLPlacemark]?, error: NSError?) in
             if error != nil {
                 
-                // Go back to the main thread to display the alert view controller
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.showErrorAlert("Error getting location", message: "Tap on your location to manually enter in your address")
-                    return
-                })
+                // Display the alert view controller
+                self.showErrorAlert("Error getting location", message: "Tap on your location to manually enter in your address")
             } else {
                 if placeMarks?.count > 0 {
                     guard let placeMark = (placeMarks?[0]) else { return }
@@ -203,11 +200,8 @@ extension SearchViewController: CLLocationManagerDelegate {
                     // Check if the street address was parsed correctly
                     if self.streetAddress.isEmpty || self.streetAddress == "" {
                         
-                        // Go back to the main thread to display the alert view controller
-                        dispatch_async(dispatch_get_main_queue(), {
-                            self.showErrorAlert("Error getting location", message: "Tap on your location to manually enter in your address")
-                            return
-                        })
+                        // Display the alert view controller
+                        self.showErrorAlert("Error getting location", message: "Tap on your location to manually enter in your address")
                     }
                 }
             }
@@ -239,6 +233,11 @@ extension SearchViewController: GooglePlacesAutocompleteDelegate {
 // MARK: - MainServicePickerDelegate
 extension SearchViewController: MainServicePickerDelegate {
     func mainServiceSelected(mainService: String) {
+        if self.mainService != mainService {
+            self.speciality = nil
+            self.specialitiesLabel.text = "Any specific type of service?"
+        }
+        
         self.mainService = mainService
         mainServiceLabel.text = mainService
         specialitiesPickerViewController = SpecialitiesPickerViewController(mainService: mainService)

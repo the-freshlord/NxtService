@@ -113,9 +113,9 @@ extension MapViewController: MKMapViewDelegate {
             
             
             if annotation.coordinate.latitude == points[0].latitude && annotation.coordinate.longitude == points[0].longitude {
-                annotationView.pinTintColor = UIColor(red: 62.0 / 255.0, green: 180.0 / 255.0, blue: 137.0 / 255.0, alpha: 1.0)
-            } else {
                 annotationView.pinTintColor = UIColor.redColor()
+            } else {
+                annotationView.pinTintColor = UIColor(red: 62.0 / 255.0, green: 180.0 / 255.0, blue: 137.0 / 255.0, alpha: 1.0)
             }
             
             annotationView.animatesDrop = true
