@@ -83,7 +83,7 @@ class SignUpViewController: UIViewController {
     
     @IBAction func getStartedButtonTapped(sender: MaterialButton) {
         guard let name = nameTextField.text where name != "", let mainService = self.mainService where mainService != "",
-            let specialities = self.speciality where specialities != "" else {
+            let specialities = self.speciality where specialities != "", let streetAddress = streetAddress where streetAddress != "" else {
             showErrorAlert("All fields required", message: "All fields must be entered in order to sign up")
             return
         }
