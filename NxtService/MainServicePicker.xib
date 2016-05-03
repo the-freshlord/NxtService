@@ -4,11 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="Viafont.ttf">
-            <string>Viafont</string>
-        </mutableArray>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainServicePickerViewController" customModule="NxtService" customModuleProvider="target">
             <connections>
@@ -78,7 +73,7 @@
                         <action selector="doneButtonTapped:" destination="-1" eventType="touchUpInside" id="0qQ-B5-MrL"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main Service" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0I8-K8-4lX">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main Service" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0I8-K8-4lX" customClass="CustomLabel" customModule="NxtService" customModuleProvider="target">
                     <rect key="frame" x="227" y="30" width="146" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="146" id="VoB-9x-Uan">
@@ -86,11 +81,11 @@
                         </constraint>
                         <constraint firstAttribute="height" constant="21" id="guy-my-MYW"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Viafont" family="Viafont" pointSize="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <color key="textColor" red="0.95686274509803915" green="0.98431372549019602" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <variation key="heightClass=regular-widthClass=regular">
-                        <fontDescription key="fontDescription" name="Viafont" family="Viafont" pointSize="25"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     </variation>
                 </label>
             </subviews>

@@ -107,7 +107,7 @@ class SearchViewController: UIViewController {
                                 }
                             })
                         } else {
-                            sortedProviderList.insertProvider(provider, distance: distance, image: UIImage(named: "noimage")!)
+                            sortedProviderList.insertProvider(provider, distance: distance, image: UIImage(named: "defaultimage")!)
                             
                             if sortedProviderList.count == providerList.count {
                                 let senderDictionary = ["sortedProviderList": sortedProviderList, "userLocation": streetAddress]

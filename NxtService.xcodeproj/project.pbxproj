@@ -35,6 +35,7 @@
 		88C3AE9C1CBF1EA8003CFA92 /* MaterialIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3AE9B1CBF1EA8003CFA92 /* MaterialIndicatorView.swift */; };
 		88C3AEA11CBF35DD003CFA92 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3AEA01CBF35DD003CFA92 /* UIViewControllerExtensions.swift */; };
 		88C6BEF61CB2FC520052233C /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6BEF51CB2FC520052233C /* DataService.swift */; };
+		88D7F0371CD960A000F44E9A /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7F0361CD960A000F44E9A /* CustomLabel.swift */; };
 		88DA7F641CA9F90900D3D486 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA7F631CA9F90900D3D486 /* LoginViewController.swift */; };
 		88DA7F681CAA0F4500D3D486 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA7F671CAA0F4500D3D486 /* SignUpViewController.swift */; };
 		88E966C41CA9B42F00ED4674 /* Viafont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 88E966C31CA9B42F00ED4674 /* Viafont.ttf */; };
@@ -83,6 +84,7 @@
 		88C3AE9B1CBF1EA8003CFA92 /* MaterialIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialIndicatorView.swift; sourceTree = "<group>"; };
 		88C3AEA01CBF35DD003CFA92 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		88C6BEF51CB2FC520052233C /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		88D7F0361CD960A000F44E9A /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		88DA7F631CA9F90900D3D486 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		88DA7F671CAA0F4500D3D486 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		88E966C31CA9B42F00ED4674 /* Viafont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Viafont.ttf; sourceTree = "<group>"; };
@@ -183,6 +185,14 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		88D7F0351CD9608300F44E9A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				88D7F0361CD960A000F44E9A /* CustomLabel.swift */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
 		88E966BD1CA9B38B00ED4674 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +207,7 @@
 		88E966BE1CA9B39300ED4674 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				88D7F0351CD9608300F44E9A /* Components */,
 				889F06971CD0600100CA41A6 /* ProviderTableCells */,
 				889F06961CD05FEC00CA41A6 /* ResultsTableCell */,
 				889F06951CD05FD800CA41A6 /* Material */,
@@ -413,6 +424,7 @@
 				88FE625D1CCBF3F600DCC090 /* SpecialitiesPicker.swift in Sources */,
 				88DA7F641CA9F90900D3D486 /* LoginViewController.swift in Sources */,
 				88353DAD1CC454F300E7FE54 /* ServicesViewController.swift in Sources */,
+				88D7F0371CD960A000F44E9A /* CustomLabel.swift in Sources */,
 				88C6BEF61CB2FC520052233C /* DataService.swift in Sources */,
 				889F069D1CD076F900CA41A6 /* ContactTableViewCell.swift in Sources */,
 				889F069F1CD08CE600CA41A6 /* CustomAnnotation.swift in Sources */,

@@ -47,7 +47,10 @@ class ResultsTableViewCell: UITableViewCell {
         nameLabel.text = provider.name
         mainServiceLabel.text = provider.mainService
         specialityLabel.text = provider.specialities
-        distanceLabel.text = "\(Int(distance)) mi"
+        
+        let str = NSString(format: "%.3f", distance)
+        distanceLabel.text = "\(str) mi"
+        
         profileImageView.image = image
     }
 }
