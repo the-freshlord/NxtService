@@ -67,7 +67,7 @@ class ProviderList<T, D: Comparable, I> {
                 _tail = providerNode
                 _count += 1
                 break
-            } else if distance > current?.distance && distance < current?.next?.distance {
+            } else if distance >= current?.distance && distance <= current?.next?.distance {
                 
                 // Insert new node between two existing nodes
                 let providerNode: ProviderNode = ProviderNode<T,D,I>()

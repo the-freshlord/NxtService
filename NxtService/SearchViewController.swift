@@ -65,7 +65,7 @@ class SearchViewController: UIViewController {
         if segue.identifier == SegueIdentifiers.SEARCH_RESULTS {
             guard let resultsViewController = segue.destinationViewController as? ResultsViewController else { return }
             guard let senderDictionary = sender as? Dictionary<String, AnyObject> else { return }
-            guard let providerList = senderDictionary["sortedProviderList"] as? ProviderList<Provider,Int,UIImage> else { return }
+            guard let providerList = senderDictionary["sortedProviderList"] as? ProviderList<Provider,Double,UIImage> else { return }
             guard let userLocation = senderDictionary["userLocation"] as? String else { return }
             
             resultsViewController.providerList = providerList
@@ -89,7 +89,7 @@ class SearchViewController: UIViewController {
         
         // Get sorted provider list
         DataService.dataService.loadProviders(streetAddress, mainService: mainService, speciality: speciality) { (providerList) in
-            let sortedProviderList = ProviderList<Provider,Int,UIImage>()
+            let sortedProviderList = ProviderList<Provider,Double,UIImage>()
             // Check if any providers were found
             if providerList.count != 0 {
                 

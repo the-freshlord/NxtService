@@ -59,7 +59,7 @@ public func fixImageOrientation(image: UIImage) -> UIImage {
     return normalImage
 }
 
-public func calculateDistance(userLocation: String, providerLocation: String, onCompletion: (distance: Int) -> ()) {
+public func calculateDistance(userLocation: String, providerLocation: String, onCompletion: (distance: Double) -> ()) {
     // Get coordinates for user's location
     getCLLocation(userLocation) { (cLLocation) in
         let userCLLocation = cLLocation
@@ -72,7 +72,7 @@ public func calculateDistance(userLocation: String, providerLocation: String, on
             let distanceMeters = userCLLocation.distanceFromLocation(providerCLLocation)
             
             // Convert distanceMeters to miles
-            let distanceMiles = Int(distanceMeters * 0.00062137)
+            let distanceMiles = distanceMeters * 0.00062137
             
             onCompletion(distance: distanceMiles)
         }

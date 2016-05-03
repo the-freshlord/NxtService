@@ -22,7 +22,7 @@ class ResultsTableViewCell: UITableViewCell {
     @IBOutlet weak var distanceLabel: UILabel!
     
     var provider: Provider!
-    var distance: Int!
+    var distance: Double!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,14 +40,14 @@ class ResultsTableViewCell: UITableViewCell {
 //        super.setSelected(selected, animated: animated)
 //    }
     
-    func configureCell(provider: Provider, image: UIImage?, distance: Int) {
+    func configureCell(provider: Provider, image: UIImage?, distance: Double) {
         self.provider = provider
         self.distance = distance
         
         nameLabel.text = provider.name
         mainServiceLabel.text = provider.mainService
         specialityLabel.text = provider.specialities
-        distanceLabel.text = "\(distance) mi"
+        distanceLabel.text = "\(Int(distance)) mi"
         profileImageView.image = image
     }
 }

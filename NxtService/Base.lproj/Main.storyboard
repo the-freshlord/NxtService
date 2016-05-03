@@ -557,7 +557,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="283" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MFh-Aa-k3S" customClass="MaterialTableView" customModule="NxtService" customModuleProvider="target">
-                                <rect key="frame" x="20" y="68" width="560" height="396"/>
+                                <rect key="frame" x="20" y="68" width="560" height="359"/>
                                 <color key="backgroundColor" red="0.55686274509803924" green="0.75294117647058822" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.86274509799999999" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -782,31 +782,16 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9mK-Gb-7Zu" customClass="MaterialView" customModule="NxtService" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="472" width="600" height="128"/>
+                                <rect key="frame" x="0.0" y="435" width="600" height="165"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7w-wL-YWq" customClass="MaterialButton" customModule="NxtService" customModuleProvider="target">
-                                        <rect key="frame" x="404" y="33" width="188" height="62"/>
-                                        <color key="backgroundColor" red="0.24313725489999999" green="0.70588235290000001" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="188" id="voE-Fn-qRt"/>
-                                            <constraint firstAttribute="height" constant="62" id="xLj-um-5nj"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal" title="Check Map">
-                                            <color key="titleColor" red="0.86274509799999999" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="checkMapButtonTapped:" destination="xmV-ZJ-V2D" eventType="touchUpInside" id="Xl9-nk-dou"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbV-5O-DFO" customClass="MaterialButton" customModule="NxtService" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="33" width="188" height="62"/>
+                                        <rect key="frame" x="176" y="8" width="248" height="62"/>
                                         <color key="backgroundColor" red="0.24313725489999999" green="0.70588235290000001" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="188" id="8j4-cV-M5C"/>
-                                            <constraint firstAttribute="height" constant="62" id="SEh-uB-eGr"/>
+                                            <constraint firstAttribute="height" constant="62" id="0ck-tQ-EGa"/>
+                                            <constraint firstAttribute="width" constant="248" id="wzv-Tr-Mms"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                         <state key="normal" title="Call Provider">
                                             <color key="titleColor" red="0.86274509799999999" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -814,14 +799,29 @@
                                             <action selector="callButtonTapped:" destination="xmV-ZJ-V2D" eventType="touchUpInside" id="zXg-yw-qzR"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7w-wL-YWq" customClass="MaterialButton" customModule="NxtService" customModuleProvider="target">
+                                        <rect key="frame" x="176" y="95" width="248" height="62"/>
+                                        <color key="backgroundColor" red="0.24313725489999999" green="0.70588235290000001" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="248" id="56q-j5-hcE"/>
+                                            <constraint firstAttribute="height" constant="62" id="RPU-ev-hGY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Check Map">
+                                            <color key="titleColor" red="0.86274509799999999" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="checkMapButtonTapped:" destination="xmV-ZJ-V2D" eventType="touchUpInside" id="Xl9-nk-dou"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86274509799999999" green="0.85098039219999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="UbV-5O-DFO" firstAttribute="leading" secondItem="9mK-Gb-7Zu" secondAttribute="leading" constant="8" id="ONh-3l-fhF"/>
-                                    <constraint firstItem="UbV-5O-DFO" firstAttribute="top" secondItem="9mK-Gb-7Zu" secondAttribute="top" constant="33" id="QAA-5W-dJO"/>
-                                    <constraint firstAttribute="height" constant="128" id="Toi-Yj-Xz8"/>
-                                    <constraint firstItem="O7w-wL-YWq" firstAttribute="top" secondItem="9mK-Gb-7Zu" secondAttribute="top" constant="33" id="XOj-Xi-gvX"/>
-                                    <constraint firstAttribute="trailing" secondItem="O7w-wL-YWq" secondAttribute="trailing" constant="8" id="nBO-LE-gzX"/>
+                                    <constraint firstItem="UbV-5O-DFO" firstAttribute="centerX" secondItem="9mK-Gb-7Zu" secondAttribute="centerX" id="9GG-Mp-LBD"/>
+                                    <constraint firstItem="UbV-5O-DFO" firstAttribute="top" secondItem="9mK-Gb-7Zu" secondAttribute="top" constant="8" id="BJK-nC-p8s"/>
+                                    <constraint firstItem="O7w-wL-YWq" firstAttribute="centerX" secondItem="9mK-Gb-7Zu" secondAttribute="centerX" id="EHA-YS-5ip"/>
+                                    <constraint firstAttribute="height" constant="165" id="Toi-Yj-Xz8"/>
+                                    <constraint firstAttribute="bottom" secondItem="O7w-wL-YWq" secondAttribute="bottom" constant="8" id="UFx-mR-vvj"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1084,6 +1084,9 @@
                                         <exclude reference="rta-mK-jXe"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="28"/>
+                                </variation>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lVW-Ki-lLN" userLabel="Divider">
                                 <rect key="frame" x="20" y="382" width="560" height="1"/>
@@ -1113,7 +1116,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.86274509803921573" green="0.85098039215686272" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="4p4-vq-KxZ"/>
+                                    <constraint firstAttribute="height" constant="128" id="4p4-vq-KxZ">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="108"/>
+                                    </constraint>
                                     <constraint firstItem="8fq-K6-lxO" firstAttribute="centerY" secondItem="1k6-xk-lCI" secondAttribute="centerY" id="Ctm-ud-mq4"/>
                                     <constraint firstItem="8fq-K6-lxO" firstAttribute="centerX" secondItem="1k6-xk-lCI" secondAttribute="centerX" id="Jgi-il-8hj"/>
                                 </constraints>
@@ -1235,7 +1240,7 @@
                                     <action selector="backButtonTapped:" destination="7Oo-DH-xpr" eventType="touchUpInside" id="P3l-SW-vE6"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Services" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWE-QK-XX2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Services" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWE-QK-XX2">
                                 <rect key="frame" x="138" y="102" width="324" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="324" id="1Gy-X7-vwx"/>
@@ -1244,6 +1249,9 @@
                                 <fontDescription key="fontDescription" name="Viafont" family="Viafont" pointSize="45"/>
                                 <color key="textColor" red="0.95686274509803915" green="0.98431372549019602" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="Viafont" family="Viafont" pointSize="40"/>
+                                </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" alpha="0.77000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainservice" translatesAutoresizingMaskIntoConstraints="NO" id="qni-ux-Ss4">
                                 <rect key="frame" x="20" y="206" width="64" height="64"/>
@@ -1443,6 +1451,9 @@
                                 <fontDescription key="fontDescription" name="Viafont" family="Viafont" pointSize="45"/>
                                 <color key="textColor" red="0.95686274509803915" green="0.98431372549019602" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="Viafont" family="Viafont" pointSize="41"/>
+                                </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" alpha="0.77000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="NpG-Li-D2M">
                                 <rect key="frame" x="20" y="234" width="64" height="64"/>

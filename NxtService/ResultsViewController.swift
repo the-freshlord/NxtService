@@ -21,7 +21,7 @@ class ResultsViewController: UIViewController {
     
     static var profileImageCache = NSCache()
 
-    var providerList: ProviderList<Provider,Int,UIImage>!
+    var providerList: ProviderList<Provider,Double,UIImage>!
     var userLocation: String!
     
     // MARK: - Navigation
