@@ -67,7 +67,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginSignUpButtonTapped(sender: MaterialButton) {
-        guard let email = emailTextField.text where email != "", let password = passwordTextField.text where email != "" else {
+        guard let email = emailTextField.text where email != "", let password = passwordTextField.text where password != "" else {
              showErrorAlert("Email and Password Required", message: "You must enter an email and a password")
             return
         }
