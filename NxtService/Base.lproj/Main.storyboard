@@ -592,6 +592,7 @@
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.5568627451" green="0.75294117650000003" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="59v-0U-HcP" secondAttribute="bottom" constant="19.5" id="DYk-7P-Xxa"/>
                                                 <constraint firstItem="lqz-Xq-QUy" firstAttribute="top" secondItem="Xzk-gb-Bup" secondAttribute="topMargin" constant="11" id="Iea-Js-tVg"/>
@@ -688,7 +689,7 @@
                                 <color key="textColor" red="0.95686274509803915" green="0.98431372549019602" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" type="system" pointSize="70"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 </variation>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="283" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MFh-Aa-k3S" customClass="MaterialTableView" customModule="NxtService" customModuleProvider="target">
@@ -751,6 +752,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.5568627451" green="0.75294117650000003" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Wrq-ZD-bfn" firstAttribute="top" secondItem="0qS-Vf-Idr" secondAttribute="bottom" constant="21" id="9w4-vr-jro"/>
                                                 <constraint firstItem="mKa-Pn-kkx" firstAttribute="leading" secondItem="MJR-nl-duV" secondAttribute="leadingMargin" id="LKH-SG-NrR"/>
@@ -818,6 +820,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.5568627451" green="0.75294117650000003" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="6cr-gw-g0G" firstAttribute="trailing" secondItem="R4z-e5-dra" secondAttribute="trailingMargin" id="1W4-Xm-Xhl"/>
                                                 <constraint firstItem="Lmg-Qa-n6W" firstAttribute="top" secondItem="R4z-e5-dra" secondAttribute="topMargin" id="BnI-vQ-DWq"/>
@@ -895,6 +898,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.5568627451" green="0.75294117650000003" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="9DZ-Tn-LcM" firstAttribute="leading" secondItem="fmO-zG-OCC" secondAttribute="trailing" constant="8" id="2cu-ZT-8No"/>
                                                 <constraint firstItem="Xgf-gh-ONf" firstAttribute="top" secondItem="5Z6-c9-nqv" secondAttribute="topMargin" constant="58" id="8us-vJ-C1q"/>
@@ -2500,28 +2504,9 @@
                                             <action selector="loginSignUpButtonTapped:" destination="YOs-s5-NkG" eventType="touchUpInside" id="tHh-jG-CQx"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPn-22-gM5">
-                                        <rect key="frame" x="217" y="176" width="167" height="17"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="167" id="LKL-SA-Qsp">
-                                                <variation key="heightClass=regular-widthClass=regular" constant="275"/>
-                                            </constraint>
-                                            <constraint firstAttribute="height" constant="17" id="zqk-6n-HVZ">
-                                                <variation key="heightClass=regular-widthClass=regular" constant="29"/>
-                                            </constraint>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                        <color key="textColor" red="0.61568627450980395" green="0.63137254901960782" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
-                                        </variation>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86274509803921573" green="0.85098039215686272" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="hPn-22-gM5" firstAttribute="centerX" secondItem="Za6-0D-ufJ" secondAttribute="centerX" id="9hr-Oy-KVj"/>
-                                    <constraint firstAttribute="bottom" secondItem="hPn-22-gM5" secondAttribute="bottom" constant="8" id="MWl-yg-ip5"/>
                                     <constraint firstItem="459-gN-X3P" firstAttribute="centerX" secondItem="Za6-0D-ufJ" secondAttribute="centerX" id="mmx-c5-QCX"/>
                                     <constraint firstItem="459-gN-X3P" firstAttribute="top" secondItem="Za6-0D-ufJ" secondAttribute="top" constant="50" id="p0C-v8-rdO">
                                         <variation key="heightClass=regular-widthClass=regular" constant="76"/>
