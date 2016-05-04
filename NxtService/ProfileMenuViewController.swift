@@ -40,7 +40,7 @@ class ProfileMenuViewController: UIViewController {
         super.viewDidLoad()
         
         profileImageView.layer.borderColor = UIColor(red: 220.0 / 255.0, green: 217.0 / 255.0, blue: 222.0 / 255.0, alpha: 1.0).CGColor
-        //profileImageView.layer.borderWidth = 1.5
+        profileImageView.layer.borderWidth = 1.5
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
         profileImageView.clipsToBounds = true
         
@@ -217,7 +217,7 @@ class ProfileMenuViewController: UIViewController {
 // MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension ProfileMenuViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        addImageButton.imageView?.image = UIImage(named: "cross")
+        addImageButton.setImage(UIImage(named: "cross"), forState: UIControlState.Normal)
         profileImageView.image = image
         
         let normalImage = fixImageOrientation(image)
