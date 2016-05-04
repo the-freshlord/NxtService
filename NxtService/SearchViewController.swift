@@ -42,6 +42,10 @@ class SearchViewController: UIViewController {
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         if locationAuthorizationStatus() {
             locationManager.startUpdatingLocation()
@@ -59,6 +63,7 @@ class SearchViewController: UIViewController {
         super.viewDidDisappear(animated)
         
         stopSpinning(indicatorView, activityIndicatorView: activityIndicatorView)
+        locationManager.stopUpdatingLocation()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -70,6 +75,13 @@ class SearchViewController: UIViewController {
             
             resultsViewController.providerList = providerList
             resultsViewController.userLocation = userLocation
+            
+            streetAddress = nil
+            mainService = nil
+            speciality = nil
+            
+            mainServiceLabel.text = "What main service do you need?"
+            specialitiesLabel.text = "Any specific type of service?"
         }
     }
     

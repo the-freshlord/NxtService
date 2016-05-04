@@ -49,7 +49,9 @@ class SignUpViewController: UIViewController {
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         if locationAuthorizationStatus() {
             locationManager.startUpdatingLocation()
         }
