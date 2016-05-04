@@ -40,7 +40,7 @@ class ProfileMenuViewController: UIViewController {
         super.viewDidLoad()
         
         profileImageView.layer.borderColor = UIColor(red: 220.0 / 255.0, green: 217.0 / 255.0, blue: 222.0 / 255.0, alpha: 1.0).CGColor
-        profileImageView.layer.borderWidth = 1.5
+        //profileImageView.layer.borderWidth = 1.5
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
         profileImageView.clipsToBounds = true
         

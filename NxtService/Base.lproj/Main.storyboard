@@ -2063,12 +2063,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ykA-9J-gYj">
                                 <rect key="frame" x="200" y="28" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Urj-Qy-fua">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="300"/>
-                                    </constraint>
-                                    <constraint firstAttribute="width" constant="200" id="wzS-Tr-1HH">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="300"/>
-                                    </constraint>
+                                    <constraint firstAttribute="height" constant="200" id="Urj-Qy-fua"/>
+                                    <constraint firstAttribute="width" constant="200" id="wzS-Tr-1HH"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" alpha="0.77000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="name" translatesAutoresizingMaskIntoConstraints="NO" id="frU-ZC-ICc">
@@ -2291,7 +2287,7 @@
                                 <variation key="heightClass=regular-widthClass=regular" constant="25"/>
                             </constraint>
                             <constraint firstItem="ykA-9J-gYj" firstAttribute="top" secondItem="mgf-oN-qNs" secondAttribute="bottom" constant="8" id="Jun-b8-epC">
-                                <variation key="heightClass=regular-widthClass=regular" constant="39"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="32"/>
                             </constraint>
                             <constraint firstItem="AMU-wD-DVA" firstAttribute="leading" secondItem="Mra-Cg-sy4" secondAttribute="leadingMargin" id="L0K-Xf-qOb"/>
                             <constraint firstItem="2Wp-PD-N1s" firstAttribute="centerX" secondItem="Mra-Cg-sy4" secondAttribute="centerX" id="L7I-fM-spz"/>
@@ -2331,7 +2327,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="fXN-MG-CR6" secondAttribute="trailing" constant="-20" id="sdq-u9-9OR"/>
                             <constraint firstItem="Bpx-EX-s3Z" firstAttribute="leading" secondItem="c0v-f5-0xm" secondAttribute="trailing" constant="98" id="thd-iK-v4h"/>
                             <constraint firstItem="VJC-6k-1QZ" firstAttribute="top" secondItem="Lde-Io-Yqz" secondAttribute="bottom" constant="23" id="wJC-aU-YgT">
-                                <variation key="heightClass=regular-widthClass=regular" constant="30"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="137"/>
                             </constraint>
                             <constraint firstItem="1p8-ff-Zyj" firstAttribute="leading" secondItem="Mra-Cg-sy4" secondAttribute="leadingMargin" id="wPy-AV-6PC"/>
                             <constraint firstItem="EfA-2o-aaq" firstAttribute="leading" secondItem="Mra-Cg-sy4" secondAttribute="leadingMargin" id="yOP-Sg-khN"/>
